@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  resources :signups, :payments
+
+  match '/signups/pay/:id'     => 'signups#pay',     :as => :signups_pay,     :via => :get
+  match '/signups/receipt/:id' => 'signups#receipt', :as => :signups_receipt, :via => :get
+  match '/signups/denied'      => 'signups#denied',  :as => :signups_denied,  :via => :get
+
+  devise_for :users
+
+  root 'signups#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

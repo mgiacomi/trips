@@ -1,6 +1,8 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  config.url_enc_base = "4c71e197be9d616cc42f2d8dc1de76bb6bcc3ca128073e32353672282a37d219972e343457520a5a54004c6a8699285f807447ed7365a05526d5b05cb48b1c8c"
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Settings specified here will take precedence over those in config/application.rb.
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -14,7 +16,17 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+      :address              => "mail.oyanokai.org",
+      :port                 => 587,
+      :domain               => "oyanokai.org",
+      :user_name            => "no-reply@oyanokai.org",
+      :password             => "",
+      :authentication       => "plain",
+      :enable_starttls_auto => true,
+      :openssl_verify_mode  => 'none'
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -38,4 +50,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
 end
