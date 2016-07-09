@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160623031841) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "admin",                              default: false
-    t.integer  "grade",                  limit: 4,   default: 0
+    t.boolean  "chaperone",                          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

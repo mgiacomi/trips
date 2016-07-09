@@ -1,0 +1,20 @@
+<h3>Japan Trip Registration</h3>
+<br/>
+<% if @registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+      <ul>
+        <% @registration.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for @registration, url: registrations_path  do |f| %>
+    <%= current_user.chaperone ? render('/registrations/chaperone_form', f: f) : render('/registrations/edit_form', f: f) %>
+    <br/>
+    <%= f.submit "Submit My Application", :class => 'button black', :style => "float:left; margin-right:10px;" %>
+    <%= link_to "Back", :back, :class => 'button white', :style => 'float:right; margin-left:10px;' %>
+<% end %>

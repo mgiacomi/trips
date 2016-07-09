@@ -10,6 +10,10 @@ class TodosController < ApplicationController
 #  def destroy
 
   def status
+    @registration = Registration.find_by(user_id: current_user.id)
+  end
+
+  def denied
   end
 
 

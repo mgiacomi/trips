@@ -1,0 +1,79 @@
+<p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
+<table>
+  <tr>
+    <td><p style="margin-bottom:0;">Student First Name:</p></td>
+    <td><%= f.text_field :sfname, style: 'width:500px' %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Student Last Name:</p></td>
+    <td><%= f.text_field :slname, style: 'width:500px' %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Gender:</p></td>
+    <td>
+      <span style="font-size: 13px;color: #8c8c8c;">Male</span> <%= f.radio_button :sgender, "Male" %>
+      <br/>
+      <span style="font-size: 13px;color: #8c8c8c;">Female</span> <%= f.radio_button :sgender, "Female" %>
+    </td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Trip:</p></td>
+    <td>
+      <%= f.select :grade,
+                   options_for_select([['', ''], ['5th Grade', '5'], ['8th Grade', '8']], @registration.grade),
+                   {}, {:style => 'width:130px;'} %>
+    </td>
+  </tr>
+</table>
+<br/><br/>
+<p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
+<table>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
+    <td><%= f.text_field :p1fname, style: 'width:500px' %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 1 Last Name:</p></td>
+    <td><%= f.text_field :p1lname %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 1 Phone:</p></td>
+    <td><%= f.text_field :p1phone %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 1 Email:</p></td>
+    <td><%= f.text_field :p1email %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
+    <td><%= f.text_field :p2fname %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 2 Last Name:</p></td>
+    <td><%= f.text_field :p2lname %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 2 Phone:</p></td>
+    <td><%= f.text_field :p2phone %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Parent 2 Email:</p></td>
+    <td><%= f.text_field :p2email %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Street:</p></td>
+    <td><%= f.text_field :street %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">City:</p></td>
+    <td><%= f.text_field :city %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">State:</p></td>
+    <td><%= f.text_field :state, style: 'width:150px;' %></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;">Zip:</p></td>
+    <td><%= f.text_field :zip, style: 'width:150px;' %></td>
+  </tr>
+</table>

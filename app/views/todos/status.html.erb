@@ -9,34 +9,54 @@
     <ul>
       <div class="box one_half">
         <div class="inner">
-          <div class="box_heading"><h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/buy-stuff/">Setup Account</a></h4></div>
+          <div class="box_heading">
+            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/buy-stuff/">Setup Account</a></h4></div>
           <p>Create an account on the site and setup a password.</p>
-          <div style="margin-top:10px;">Status: <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
+          <div style="margin-top:10px;">Status:
+            <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
           <%= link_to 'Update email or password', edit_user_registration_path %>.
         </div>
       </div>
       <div class="box one_half column_last">
         <div class="inner">
-          <div class="box_heading"><h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/donate/">Letter Of Intent</a></h4></div>
+          <div class="box_heading">
+            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/donate/">Letter Of Intent</a></h4></div>
           <p>Your LOI curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus..</p>
-          <div style="margin-top:10px;">Status: <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
-          <%= link_to 'Upload your Letter of Intent' %>
+          <% if current_user.chaperone %>
+              <div style="margin-top:10px;">Status:
+                <span style="margin-left:20px;font-weight:bold;">Not Required</span></div>
+          <% else %>
+              <div style="margin-top:10px;">Status:
+                <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
+              <%= link_to 'Upload your Letter of Intent' %>
+          <% end %>
           <!--<a href="">View your current LOI or upload a new one.</p></div>-->
         </div>
       </div>
       <div class="box one_half">
         <div class="inner">
-          <div class="box_heading"><h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/volunteer/">Registration Information</a></h4></div>
-          <p>In order to prepare for the trip we need address and contact information for students and parents.  </p>
-          <div style="margin-top:10px;">Status: <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
-          <%= link_to 'Edit your registration' %>
+          <div class="box_heading">
+            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/volunteer/">Registration Information</a>
+            </h4></div>
+          <p>In order to prepare for the trip we need address and contact information for students and parents. </p>
+          <% if @registration == nil %>
+              <div style="margin-top:10px;">Status:
+                <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
+              <%= link_to 'Fill out registration', registrations_edit_path %>
+          <% else %>
+              <div style="margin-top:10px;">Status:
+                <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
+              <%= link_to 'Edit your registration', registrations_edit_path %>
+          <% end %>
         </div>
       </div>
       <div class="box one_half column_last">
         <div class="inner">
-          <div class="box_heading"><h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/share/">Payments</a></h4></div>
+          <div class="box_heading">
+            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/share/">Payments</a></h4></div>
           <p>Every month you have a portion of your payment due for your trip.</p>
-          <div style="margin-top:10px;">Status: <span style="margin-left:20px;font-weight:bold; color:green;">Up to Date</span></div>
+          <div style="margin-top:10px;">Status:
+            <span style="margin-left:20px;font-weight:bold; color:green;">Up to Date</span></div>
           <%= link_to 'View payment history' %>
         </div>
       </div>

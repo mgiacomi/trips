@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :signups, :payments
+  match '/registration' => 'registrations#edit',   :as => :registrations_edit, :via => :get
+  match '/registration' => 'registrations#update', :as => :registrations,      :via => [:post,:put,:patch]
 
-  match '/todo'     => 'todos#status',     :as => :todos_home,     :via => :get
-  match '/signups/receipt/:id' => 'signups#receipt', :as => :signups_receipt, :via => :get
-  match '/signups/denied'      => 'signups#denied',  :as => :signups_denied,  :via => :get
+  match '/todo'  => 'todos#status',  :as => :todos_home, :via => :get
+  match '/denied' => 'todos#denied',  :as => :denied,     :via => :get
 
   devise_for :users
 
