@@ -1,4 +1,5 @@
 class Registration < ActiveRecord::Base
+  include LoiFileMgr
 
   belongs_to :user
   has_many :payment

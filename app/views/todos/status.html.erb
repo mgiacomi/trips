@@ -20,22 +20,6 @@
       <div class="box one_half column_last">
         <div class="inner">
           <div class="box_heading">
-            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/donate/">Letter Of Intent</a></h4></div>
-          <p>Your LOI curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus..</p>
-          <% if current_user.chaperone %>
-              <div style="margin-top:10px;">Status:
-                <span style="margin-left:20px;font-weight:bold;">Not Required</span></div>
-          <% else %>
-              <div style="margin-top:10px;">Status:
-                <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
-              <%= link_to 'Upload your Letter of Intent' %>
-          <% end %>
-          <!--<a href="">View your current LOI or upload a new one.</p></div>-->
-        </div>
-      </div>
-      <div class="box one_half">
-        <div class="inner">
-          <div class="box_heading">
             <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/volunteer/">Registration Information</a>
             </h4></div>
           <p>In order to prepare for the trip we need address and contact information for students and parents. </p>
@@ -50,15 +34,46 @@
           <% end %>
         </div>
       </div>
+      <div class="box one_half">
+        <div class="inner">
+          <div class="box_heading">
+            <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/donate/">Letter Of Intent</a></h4></div>
+          <p>Your LOI curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus..</p>
+          <div style="margin-top:10px;">Status:
+            <% if current_user.chaperone %>
+                <span style="margin-left:20px;font-weight:bold;">Not Required</span>
+            <% else %>
+                <% if @registration == nil %>
+                    <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
+                <% else %>
+                    <% if @registration.file_ext != nil %>
+                        <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+                        <%= link_to 'Download LOI', "#{registrations_download_loi_path}/#{@registration.file_name}#{@registration.file_ext}" %><br/>
+                    <% else %>
+                        <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                    <% end %>
+                    <%= form_tag registrations_upload_loi_path, multipart: true do %>
+                        <input type="file" name="loi_file"/>
+                        <input type="submit" value="Upload Letter of Intent" class="button black"/>
+                    <% end %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="box one_half column_last">
         <div class="inner">
           <div class="box_heading">
             <h4><a href="http://demo.t2themes.com/wordpress/advocate/feature/share/">Payments</a></h4></div>
           <p>Every month you have a portion of your payment due for your trip.</p>
           <div style="margin-top:10px;">Status:
-            <span style="margin-left:20px;font-weight:bold; color:green;">Up to Date</span></div>
-          <%= link_to 'View payment history' %>
-        </div>
+            <% if @registration == nil %>
+                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
+            <% else %>
+                <span style="margin-left:20px;font-weight:bold; color:green;">Up to Date</span></div>
+                <%= link_to 'View payment history' %>
+            <% end %>
+            </div>
       </div>
     </ul>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623031841) do
+ActiveRecord::Schema.define(version: 20160624001021) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "registration_id", limit: 4
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160623031841) do
     t.string   "state",       limit: 45
     t.string   "zip",         limit: 45
     t.decimal  "scholarship",             precision: 6, scale: 2, default: 0.0
+    t.string   "file_name",   limit: 255
+    t.string   "file_ext",    limit: 255
   end
 
   create_table "users", force: :cascade do |t|
