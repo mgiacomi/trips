@@ -4,6 +4,10 @@ module LoiFileMgr
   module ClassMethods
   end
 
+  def file_url
+    "#{self.file_name}#{self.file_ext}"
+  end
+
   def file
     nil
   end

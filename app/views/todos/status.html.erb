@@ -48,7 +48,7 @@
                 <% else %>
                     <% if @registration.file_ext != nil %>
                         <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-                        <%= link_to 'Download LOI', "#{registrations_download_loi_path}/#{@registration.file_name}#{@registration.file_ext}" %><br/>
+                        <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
                     <% else %>
                         <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
                     <% end %>
