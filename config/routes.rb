@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  match '/tmgr/overview'               => 'tmgr/overviews#index',      :as => :tmgr_overview,            :via => :get
+
   root 'todos#status'
 
   # The priority is based upon order of creation: first created -> highest priority.
