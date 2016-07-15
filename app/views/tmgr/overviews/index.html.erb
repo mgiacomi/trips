@@ -13,20 +13,39 @@
   <tr>
     <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;"></p></td>
     <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">5th Graders</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">5th Grade Chaperones</p></td>
     <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">8th Graders</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">Chaperones</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">8th Grade Chaperones</p></td>
     <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">Total</p></td>
   </tr>
   <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Num Students</p></td>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Num Registrations</p></td>
     <td><p style="margin-bottom:0;text-align:right;">58</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">35</p></td>
     <td><p style="margin-bottom:0;text-align:right;">35</p></td>
     <td><p style="margin-bottom:0;text-align:right;">35</p></td>
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;">93</p></td>
   </tr>
   <tr>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">LOI's Uploaded</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">24</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">87</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;">98</p></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Outstanding LOI's</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">24</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">87</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;">98</p></td>
+  </tr>
+  <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Collected</p></td>
     <td><p style="margin-bottom:0;text-align:right;">$8,000</p></td>
+    <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
     <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
     <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;">$10,236</p></td>
@@ -36,35 +55,10 @@
     <td><p style="margin-bottom:0;text-align:right;color:red;">$852</p></td>
     <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
     <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
+    <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
     <td><p style="margin-bottom:0;color: red;font-weight:bold;text-align:right;">$1,354</p></td>
   </tr>
 </table>
 
 <br/><br/>
-<table style="border-bottom: 1px;width:100%;">
-  <tr>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Id</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student First</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student Last</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Grade</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent First</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent Last</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Paid</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amt Due</p></td>
-  </tr>
-  <% @outstanding5.each do |registration| %>
-      <tr>
-        <td>
-          <p style="margin-bottom:0;">
-            <!--%= link_to signup.id, kmgr_form_path(signup) %-->
-          </p>
-        </td>
-        <td><p style="margin-bottom:0;"><%= registration.sfname %></p></td>
-        <td><p style="margin-bottom:0;"><%= registration.slname %></p></td>
-        <td><p style="margin-bottom:0;"><%= registration.grade %></p></td>
-        <td><p style="margin-bottom:0;"><%= registration.p1fname %></p></td>
-        <td><p style="margin-bottom:0;"><%= registration.p1lname %></p></td>
-      </tr>
-  <% end %>
-</table>
 

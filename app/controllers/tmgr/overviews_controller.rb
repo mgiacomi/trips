@@ -5,7 +5,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def index
-    @outstanding5 = Array.new
+
   end
 
 end

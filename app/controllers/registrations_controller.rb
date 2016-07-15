@@ -15,10 +15,6 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def view_loi
-
-  end
-
   def download_loi
     registration = Registration.find_by(user_id: current_user.id)
     file_path = "#{Rails.configuration.loi_file_dir}/#{registration.id}#{registration.file_ext}"
