@@ -3,7 +3,17 @@
     <h3>Japan Trip Overview</h3>
     <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site you
       manage your personal information,
-      your letter of intent, and make payments to the trip.</p>
+      your letter of intent, and make payments to the trip.</p><br/>
+
+    <% if @registration == nil %>
+        <% if current_user.chaperone == true %>
+            <p>You are Currently setup as a Chaperone.</p>
+            <%= button_to 'Switch to Student', registrations_chaperone_path, class: "button black" %>
+        <% else %>
+            <p>You are Currently setup as a Student.</p>
+            <%= button_to 'Switch to Chaperone', registrations_chaperone_path, class: "button black" %>
+        <% end %>
+    <% end %>
   </div>
   <div id="actions">
     <ul>
