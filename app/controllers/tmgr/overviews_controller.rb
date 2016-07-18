@@ -30,4 +30,8 @@ class Tmgr::OverviewsController < ApplicationController
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
   end
+
+  def view
+    @registration = Registration.find(params[:id])
+  end
 end
