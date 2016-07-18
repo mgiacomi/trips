@@ -37,7 +37,7 @@
         <td><p style="margin-bottom:0;"><%= reg.p1lname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.created_at.strftime("%d/%m/%Y") %></p></td>
         <% if params[:outstanding] != 'true' %>
-            <td><p style="margin-bottom:0;"><%= link_to 'Download LOI', registrations_download_loi_path(reg.file_url) %></p></td>
+            <td><p style="margin-bottom:0;"><%= link_to 'Download LOI', tmgr_form_loi_path(reg.id) %></p></td>
         <% end %>
       </tr>
   <% end %>

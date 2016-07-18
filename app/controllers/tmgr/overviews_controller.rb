@@ -34,4 +34,10 @@ class Tmgr::OverviewsController < ApplicationController
   def view
     @registration = Registration.find(params[:id])
   end
+
+  def download_loi
+    registration = Registration.find(params[:id])
+    file_path = "#{Rails.configuration.loi_file_dir}/#{registration.id}#{registration.file_ext}"
+    send_file file_path, disposition: 'attachment', filename: registration.file_url
+  end
 end

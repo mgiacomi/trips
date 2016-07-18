@@ -29,17 +29,17 @@
   <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">LOI's Uploaded</p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:uploaded_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'false') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:uploaded_loi][:s_eighth].length, tmgr_overview_loi_path('8th', 'false') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:uploaded_loi][:total] %></p></td>
   </tr>
   <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">Outstanding LOI's</p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:outstanding_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'true') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:outstanding_loi][:s_eighth].length, tmgr_overview_loi_path('8th', 'true') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:outstanding_loi][:total] %></p></td>
   </tr>
   <tr>

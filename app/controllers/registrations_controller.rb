@@ -18,9 +18,7 @@ class RegistrationsController < ApplicationController
   def download_loi
     registration = Registration.find_by(user_id: current_user.id)
     file_path = "#{Rails.configuration.loi_file_dir}/#{registration.id}#{registration.file_ext}"
-
     send_file file_path, disposition: 'attachment', filename: registration.file_url
-
   end
 
   def upload_loi
