@@ -1,6 +1,7 @@
 <h3><%= @registration.grade %>th Grade Trip Administration</h3>
 
 <br/><br/>
+<div style="width:45%; float:left;">
 <% if @registration.user.chaperone %>
 
     <p style="color:black;margin-bottom:10px;"><strong>Chaperone Information</strong></p>
@@ -64,7 +65,7 @@
         <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
       </tr>
     </table>
-    <br/><br/>
+    <br/>
     <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
     <table>
       <tr>
@@ -119,3 +120,41 @@
 
 <% end %>
 
+</div>
+
+<div style="width:45%; float:left;">
+  <p style="color:black;margin-bottom:10px;"><strong>Add Payment</strong></p>
+  <% if @payment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+        <ul>
+          <% @payment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for @payment, :url => tmgr_payment_path(@registration) do |f| %>
+      <%= f.hidden_field :registration_id %>
+      <table>
+        <tr>
+          <td><p style="margin-bottom:0;">Payment Type:</p></td>
+          <td><%= f.text_field :pmtnum, style: "height:25px;" %></td>
+        </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Payment Date:</p></td>
+          <td><%= f.text_field :pmtdate, style: "height:25px;" %></td>
+        </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Payment Amount:</p></td>
+          <td nowrap="nowrap">$<%= f.text_field :amount, style: "height:25px;width:185px;" %></td>
+        </tr>
+      </table>
+      <%= f.submit "Add Payment", class: "button black" %>
+  <% end %>
+
+  <br/><br/>
+  <p style="color:black;margin-bottom:10px;"><strong>Payment History</strong></p>
+</div>
