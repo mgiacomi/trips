@@ -15,8 +15,8 @@ class Payment < ActiveRecord::Base
 
   private
 
-  def validate_pmt_date
-    DateTime.strptime(pmtdate.to_s, '%m/%d/%Y') rescue errors.add(:pmtdate, "must be a date (mm/dd/yy)")
-  end
+  #def validate_pmt_date
+  #  DateTime.strptime(pmtdate.to_s, '%m/%d/%Y') rescue errors.add(:pmtdate, "must be a date (mm/dd/yy)")
+  #end
 
 end

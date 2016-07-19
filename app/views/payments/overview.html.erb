@@ -13,22 +13,10 @@
         <br/><br/>
         <span style="font-weight:bold;color:black;">Payment schedule:</span>
       <ul>
-        <li style="width:100px;">Jun 30th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Aug 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Oct 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Nov 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Dec 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Jan 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Feb 15th</li>
-        <li class="last" style="width:150px;">$400</li>
-        <li style="width:100px;">Apr 15th</li>
-        <li class="last" style="width:150px;">$400</li>
+        <% @schedule.each do |pmt| %>
+            <li style="width:125px;"><%= pmt[:date].strftime("%b #{pmt[:date].day.ordinalize} %Y") %></li>
+            <li class="last" style="width:125px;"><%= number_to_currency(pmt[:amount]) %></li>
+        <% end %>
       </ul>
       </p>
     </div>
@@ -39,11 +27,11 @@
     <div class="events">
       <ul>
         <li style="border-bottom: none;">
-          <div class="date"><span>30</span>Jun</div>
+          <div class="date"><span>15</span>Jun</div>
           <div class="details">
-            <h5><a href="http://demo.t2themes.com/wordpress/advocate/event/beach-clean-up/">June Payment</a></h5>
+            <h5 style="margin-bottom:0;"><a href="http://demo.t2themes.com/wordpress/advocate/event/beach-clean-up/">Upcoming Payment</a></h5>
             <!--p>Current - no payment needed</p-->
-            <p>Upcoming payment</p>
+            <p>Status: <span style="color:green">Current</span></p>
             <!--p>Upcoming + catch up payment</p-->
           </div>
           <div>
@@ -56,7 +44,7 @@
               <input type="hidden" name="item_name_1" value="5th Trip Payment">
               <input type="hidden" name="item_number_1" value="Matt Giacomini">
               <input type="hidden" name="quantity_1" value="1">
-              $<input style="width:135px;height:25px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="400"><br/>
+              $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="400"><br/>
               <input type="image" name="submit" style="margin-top: 10px;"
                      src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
             </form>
