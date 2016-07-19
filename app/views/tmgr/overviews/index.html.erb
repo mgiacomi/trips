@@ -7,7 +7,11 @@
 </script>
 
 <h3>5th & 8th Grade Trip Administration</h3>
-
+<br/><br/>
+<%= form_tag(tmgr_search_path, method: :put) do %>
+    Search: <%= text_field_tag 'term', "", style: "width:200px;" %>
+    <%= submit_tag 'Search', class: "button black" %>
+<% end %>
 <br/><br/>
 <table style="border-bottom: 1px;width:100%;">
   <tr>

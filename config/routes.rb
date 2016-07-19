@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   match '/tmgr/overview/registered/:grade/:type' => 'tmgr/overviews#registered', :as => :tmgr_overview_registered, :via => :get
   match '/tmgr/forms/view/:id' => 'tmgr/overviews#view', :as => :tmgr_form_view, :via => :get
   match '/tmgr/forms/loi/:id' => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi, :via => :get
+  match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]
 
   root 'todos#status'
 

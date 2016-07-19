@@ -8,6 +8,10 @@ class Tmgr::OverviewsController < ApplicationController
     @summary = Registration.get_summary
   end
 
+  def search
+    @results = Registration.search params[:term]
+  end
+
   def loi
     all = Registration.all
     if params[:outstanding] == 'true'
