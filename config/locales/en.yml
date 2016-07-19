@@ -33,5 +33,7 @@ en:
           p1lname: "Parent #1 Last Name"
           p1phone: "Parent #1 Phone"
           p1email: "Parent #1 Email"
+        payment:
+          pmtdate: "Payment Date"
 
 

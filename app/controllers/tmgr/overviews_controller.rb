@@ -52,7 +52,6 @@ class Tmgr::OverviewsController < ApplicationController
     @payment = Payment.new(params[:payment])
     @payment.registration = @registration
     @payment.user = current_user
-    @payment.receipt_date = Time.now
 
     if @payment.save
       redirect_to tmgr_form_view_path, notice: 'Payment has been added.'

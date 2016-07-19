@@ -126,7 +126,7 @@
   <p style="color:black;margin-bottom:10px;"><strong>Add Payment</strong></p>
   <% if @payment.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this registration from being saved:</h2>
+        <h2><%= pluralize(@payment.errors.count, "error") %> Error(s):</h2>
 
         <ul>
           <% @payment.errors.full_messages.each do |msg| %>
@@ -157,4 +157,19 @@
 
   <br/><br/>
   <p style="color:black;margin-bottom:10px;"><strong>Payment History</strong></p>
+  <table style="border-bottom: 1px; width:100%; ">
+    <tr>
+      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
+      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
+      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
+    </tr>
+    <% @registration.payments.each do |pmt| %>
+        <tr>
+          <td><p style="margin-bottom:0;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></p></td>
+          <td><p style="margin-bottom:0;"><%= pmt.pmtnum %></p></td>
+          <td><p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
+        </tr>
+    <% end %>
+  </table>
+
 </div>

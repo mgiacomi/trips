@@ -2,7 +2,7 @@ class Registration < ActiveRecord::Base
   include LoiFileMgr, SummaryMgr
 
   belongs_to :user
-  has_many :payment
+  has_many :payments
 
   validates :sfname, :slname, :sgender, :grade, presence: {message: " is required"}
   validates :p1fname, :p1lname, :street, :city, :state, :zip, :p1email, :p1phone, presence: {message: " is required"}

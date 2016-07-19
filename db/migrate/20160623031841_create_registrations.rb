@@ -27,17 +27,5 @@ class CreateRegistrations < ActiveRecord::Migration
 
       t.decimal   "scholarship",        precision: 6, scale: 2, default: 0
     end
-
-    create_table "payments", force: :cascade do |t|
-      t.integer  "registration_id",    limit: 4
-      t.integer  "user_id",    limit: 4
-      t.string   "pmtnum",       limit: 255
-      t.string   "pmtdate",      limit: 255
-      t.string   "amount",       limit: 255
-      t.datetime "receipt_date"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-    end
-
   end
 end
