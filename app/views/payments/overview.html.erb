@@ -14,7 +14,7 @@
         <span style="font-weight:bold;color:black;">Payment schedule:</span>
       <ul>
         <% @schedule.each do |pmt| %>
-            <li style="width:125px;"><%= pmt[:date].strftime("%b #{pmt[:date].day.ordinalize} %Y") %></li>
+            <li style="width:125px;"><%= pmt[:date].strftime("%b #{pmt[:date].day.ordinalize}, %Y") %></li>
             <li class="last" style="width:125px;"><%= number_to_currency(pmt[:amount]) %></li>
         <% end %>
       </ul>
@@ -52,7 +52,7 @@
         </li>
       </ul>
       <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payment Due:</span> $400</p>
-      <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payments Made:</span> $800</p>
+      <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payments Made:</span> <%= number_to_currency(@registration.total_payments) %></p>
       <p style="margin-bottom:10px;"><span style="font-weight:bold;color:black;">Payoff Amount:</span> $2,800</p>
       <p>
         Payment flexiblity: If you can not make a full payment this pay period, then pay what you can.  Make the rest up
@@ -66,27 +66,14 @@
     </div>
     <div class="news">
       <ul>
-        <li><h5>$800 - Augest 15th, 2016</h5>
-          <p style="font-size: .9em;">
-            Payment Method: Check<br/>
-            Check# 3075<br/>
-            Logged By: cblack@pdx.edu 8/24/2016
-          </p>
-        </li>
-        <li><h5>$400 - June 30th, 2016</h5>
-          <p style="font-size: .9em;">
-            Payment Method: Paypal<br/>
-            Payment ID #23423473<br/>
-            Logged By: Paypal 06/30/2016
-          </p>
-        </li>
-        <li><h5>$400 - June 30th, 2016</h5>
-          <p style="font-size: .9em;">
-            Payment Method: Paypal<br/>
-            Payment ID #23423473<br/>
-            Logged By: Paypal 06/30/2016
-          </p>
-        </li>
+        <% @registration.payments.each do |pmt| %>
+            <li><h5><%= number_to_currency(pmt.amount) %> - <%= pmt.pmtdate.strftime("%b #{pmt.pmtdate.day.ordinalize}, %Y") %></h5>
+              <p style="font-size: .9em;">
+                Payment: <%= pmt.pmtnum %><br/>
+                Logged on: <%= pmt.pmtdate.strftime("%m/%d/%Y") %>
+              </p>
+            </li>
+        <% end %>
       </ul>
     </div>
   </div>

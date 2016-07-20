@@ -1,5 +1,4 @@
 class Payment < ActiveRecord::Base
-  include PaymentMgr
 
   belongs_to :registration
   belongs_to :user
