@@ -29,7 +29,7 @@
         <li style="border-bottom: none;">
           <div class="date"><span>15</span>Jun</div>
           <div class="details">
-            <h5 style="margin-bottom:0;"><a href="http://demo.t2themes.com/wordpress/advocate/event/beach-clean-up/">Upcoming Payment</a></h5>
+            <h5 style="margin-bottom:0;">Upcoming Payment</h5>
             <!--p>Current - no payment needed</p-->
             <p>Status: <span style="color:green">Current</span></p>
             <!--p>Upcoming + catch up payment</p-->
@@ -44,7 +44,7 @@
               <input type="hidden" name="item_name_1" value="5th Trip Payment">
               <input type="hidden" name="item_number_1" value="Matt Giacomini">
               <input type="hidden" name="quantity_1" value="1">
-              $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="400"><br/>
+              $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="<%= @registration.total_due %>"><br/>
               <input type="image" name="submit" style="margin-top: 10px;"
                      src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
             </form>

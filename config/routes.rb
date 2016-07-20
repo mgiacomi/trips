@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]
 
   match '/tmgr/payment/:id' => 'tmgr/overviews#payment', :as => :tmgr_payment, :via => [:post,:put]
+  match '/tmgr/delete/payment' => 'tmgr/overviews#payment_delete', :as => :tmgr_payment_delete, :via => [:post]
 
   root 'todos#status'
 

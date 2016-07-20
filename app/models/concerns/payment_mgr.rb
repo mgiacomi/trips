@@ -53,7 +53,8 @@ module PaymentMgr
       r[:date] < Date.today ? r[:amount] : 0
     }.reduce { |map, n| map + n }
 
-    due - total_paid
+    due = due - total_paid
+    due > 0 ? due : 0
   end
 
   def payoff_amount

@@ -56,7 +56,17 @@ class Tmgr::OverviewsController < ApplicationController
     if @payment.save
       redirect_to tmgr_form_view_path, notice: 'Payment has been added.'
     else
-      render action: "view", notice: "Failed to add Payment."
+      render action: "view", alert: "Failed to add Payment."
+    end
+  end
+
+  def payment_delete
+    payment = Payment.find params[:id]
+
+    if payment.delete
+      redirect_to tmgr_form_view_path(params[:reg_id]), notice: 'Payment has been delete.'
+    else
+      redirect_to tmgr_form_view_path(params[:reg_id]), alert: 'Failed to delete payment.'
     end
   end
 end
