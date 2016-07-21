@@ -24,13 +24,16 @@ module PaymentMgr
     end
   end
 
-  def total_amount
+  def get_schedule
     if self.user.chaperone
       schedule = Registration.get_chaperone_pay_schedule
     else
       schedule = Registration.get_student_pay_schedule
     end
+  end
 
+  def total_amount
+    schedule = get_schedule
     due = schedule.map { |r| r[:amount] }.reduce { |map, n| map + n }
   end
 
@@ -43,11 +46,7 @@ module PaymentMgr
   end
 
   def total_due
-    if self.user.chaperone
-      schedule = Registration.get_chaperone_pay_schedule
-    else
-      schedule = Registration.get_student_pay_schedule
-    end
+    schedule = get_schedule
 
     due = schedule.map { |r|
       r[:date] < Date.today ? r[:amount] : 0
@@ -59,6 +58,19 @@ module PaymentMgr
 
   def payoff_amount
     total_amount - total_paid
+  end
+
+  def next_pmt_date
+    schedule = get_schedule
+
+    sofar = 0
+
+    schedule.each do |r|
+      sofar += r.amount
+      if sofar >
+how do we do this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+      end
+    end
   end
 
 end
