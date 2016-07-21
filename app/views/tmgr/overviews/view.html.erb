@@ -181,14 +181,15 @@
     <tr>
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
-      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Remove?</p></td>
     </tr>
     <% @registration.payments.each do |pmt| %>
         <tr>
           <td><p style="margin-bottom:0;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></p></td>
           <td><p style="margin-bottom:0;"><%= pmt.pmtnum %></p></td>
-          <td><p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
-          <td><img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
+          <td style="text-align:right;"><p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
+          <td style="text-align:right;width:50px;"><img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
         </tr>
     <% end %>
   </table>

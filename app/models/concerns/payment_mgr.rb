@@ -66,9 +66,9 @@ module PaymentMgr
     sofar = 0
 
     schedule.each do |r|
-      sofar += r.amount
-      if sofar >
-how do we do this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+      sofar += r[:amount]
+      if sofar > total_paid
+        return r[:date]
       end
     end
   end

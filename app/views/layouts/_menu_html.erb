@@ -4,10 +4,11 @@
       <% if current_user != nil %>
           <% if current_user.admin %>
               <a href="/tmgr/overview">Admin Overview</a>
+          <% else %>
+              <a href="/">Overview</a>
+              <a href="/registration">Registration</a>
+              <a href="/payments">Payments</a>
           <% end %>
-          <a href="/">Overview</a>
-          <a href="/registration">Registration</a>
-          <a href="/payments">Payments</a>
       <% end %>
     </li>
   </ul>
