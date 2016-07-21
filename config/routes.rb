@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  match '/payments/overview' => 'payments#overview',          :as => :payments_overview,          :via => :get
+  match '/payments' => 'payments#overview',          :as => :payments_overview,          :via => :get
 
   match '/registration'           => 'registrations#edit',        :as => :registrations_edit,         :via => :get
   match '/registration'           => 'registrations#update',      :as => :registrations,              :via => [:post,:put,:patch]

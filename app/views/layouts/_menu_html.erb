@@ -1,0 +1,25 @@
+<nav>
+  <ul id="nav" class="menu">
+    <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923">
+      <% if current_user != nil %>
+          <% if current_user.admin %>
+              <a href="/tmgr/overview">Admin Overview</a>
+          <% end %>
+          <a href="/">Overview</a>
+          <a href="/registration">Registration</a>
+          <a href="/payments">Payments</a>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+
+<% if current_user != nil %>
+    <nav style="float:right;">
+      <ul id="nav" class="menu">
+        <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923" style="float:right;color:white;">
+          <%= current_user.email %> &nbsp;&nbsp;&nbsp;-
+          <%= link_to "Logout", destroy_user_session_path %>
+        </li>
+      </ul>
+    </nav>
+<% end %>

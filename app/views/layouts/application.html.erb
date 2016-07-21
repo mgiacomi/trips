@@ -63,24 +63,7 @@
 <header>
   <div class="container">
     <!-- Start Menu -->
-    <nav>
-      <ul id="nav" class="menu">
-        <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923">
-          <a href="http://oyanokai.org">Home</a>
-        </li>
-      </ul>
-    </nav>
-
-    <% if current_user != nil %>
-    <nav style="float:right;">
-      <ul id="nav" class="menu">
-        <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923" style="float:right;color:white;">
-          <%= current_user.email %> &nbsp;&nbsp;&nbsp;-
-          <%= link_to "Logout", destroy_user_session_path %>
-        </li>
-      </ul>
-    </nav>
-    <% end %>
+    <%= render('layouts/menu_html') %>
     <!-- End Menu -->
 
     <!-- Start Social Icons -->
