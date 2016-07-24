@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  match '/todo'  => 'todos#status',  :as => :todos_home, :via => :get
+  match '/denied' => 'todos#denied',  :as => :denied,     :via => :get
   match '/payments' => 'payments#overview',          :as => :payments_overview,          :via => :get
 
   match '/registration'           => 'registrations#edit',        :as => :registrations_edit,         :via => :get
@@ -7,9 +9,6 @@ Rails.application.routes.draw do
   match '/registration/chaperone' => 'registrations#chaperone',   :as => :registrations_chaperone,    :via => [:post]
   match '/registration/loi'       => 'registrations#upload_loi',  :as => :registrations_upload_loi,   :via => :post
   match '/registration/loi/:file_name' => 'registrations#download_loi', :as => :registrations_download_loi, :via => :get
-
-  match '/todo'  => 'todos#status',  :as => :todos_home, :via => :get
-  match '/denied' => 'todos#denied',  :as => :denied,     :via => :get
 
   devise_for :users
 

@@ -3,11 +3,13 @@
     <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923">
       <% if current_user != nil %>
           <% if current_user.admin %>
-              <a href="/tmgr/overview">Admin Overview</a>
+              <%= link_to 'Admin Overview', tmgr_overview_path %>
+              <%= link_to 'Change Password', edit_user_registration_path %>
           <% else %>
-              <a href="/">Overview</a>
-              <a href="/registration">Registration</a>
-              <a href="/payments">Payments</a>
+              <%= link_to 'Overview', todos_home_path %>
+              <%= link_to 'Account', edit_user_registration_path %>
+              <%= link_to 'Registration', registrations_edit_path %>
+              <%= link_to 'Payments', payments_overview_path %>
           <% end %>
       <% end %>
     </li>
