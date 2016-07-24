@@ -54,11 +54,47 @@ module SummaryMgr
     end
 
     def collected all
+      s_fifth = all.select { |reg| reg.grade == 5 && !reg.user.chaperone }
+      s_eighth = all.select { |reg| reg.grade == 8 && !reg.user.chaperone }
+      c_fifth = all.select { |reg| reg.grade == 5 && reg.user.chaperone }
+      c_eighth = all.select { |reg| reg.grade == 8 && reg.user.chaperone }
 
+      s_fifth_r = s_fifth.map{|r| r.total_paid}.reduce {|sum, n| sum + n}
+      s_eighth_r = s_eighth.map{|r| r.total_paid}.reduce {|sum, r| sum + r.total_paid}
+      c_fifth_r = c_fifth.map{|r| r.total_paid}.reduce {|sum, r| sum + r.total_paid}
+      c_eighth_r = c_eighth.map{|r| r.total_paid}.reduce {|sum, r| sum + r.total_paid}
+
+      s_fifth_r = s_fifth_r.nil? ? 0 : s_fifth_r
+      s_eighth_r = s_eighth_r.nil? ? 0 : s_eighth_r
+      c_fifth_r = c_fifth_r.nil? ? 0 : c_fifth_r
+      c_eighth_r = c_eighth_r.nil? ? 0 : c_eighth_r
+
+      total = s_fifth_r + s_eighth_r + c_fifth_r + c_eighth_r
+
+      {s_fifth: s_fifth, s_eighth: s_eighth, c_fifth: c_fifth, c_eighth: c_eighth, total: total,
+       s_fifth_r: s_fifth_r, s_eighth_r: s_eighth_r, c_fifth_r: c_fifth_r, c_eighth_r: c_eighth_r}
     end
 
     def past_due all
+      s_fifth = all.select { |reg| reg.grade == 5 && !reg.user.chaperone }
+      s_eighth = all.select { |reg| reg.grade == 8 && !reg.user.chaperone }
+      c_fifth = all.select { |reg| reg.grade == 5 && reg.user.chaperone }
+      c_eighth = all.select { |reg| reg.grade == 8 && reg.user.chaperone }
 
+      s_fifth_r = s_fifth.map{|r| r.total_due}.reduce {|sum, n| sum + n}
+      s_eighth_r = s_eighth.map{|r| r.total_due}.reduce {|sum, r| sum + r.total_paid}
+      c_fifth_r = c_fifth.map{|r| r.total_due}.reduce {|sum, r| sum + r.total_paid}
+      c_eighth_r = c_eighth.map{|r| r.total_due}.reduce {|sum, r| sum + r.total_paid}
+
+      s_fifth_r = s_fifth_r.nil? ? 0 : s_fifth_r
+      s_eighth_r = s_eighth_r.nil? ? 0 : s_eighth_r
+      c_fifth_r = c_fifth_r.nil? ? 0 : c_fifth_r
+      c_eighth_r = c_eighth_r.nil? ? 0 : c_eighth_r
+
+      total = s_fifth_r + s_eighth_r + c_fifth_r + c_eighth_r
+
+      {s_fifth: s_fifth, s_eighth: s_eighth, c_fifth: c_fifth, c_eighth: c_eighth, total: total,
+       s_fifth_r: s_fifth_r, s_eighth_r: s_eighth_r, c_fifth_r: c_fifth_r, c_eighth_r: c_eighth_r}
     end
   end
 

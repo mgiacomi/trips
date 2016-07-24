@@ -35,6 +35,16 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
+  def past_due
+    all = Registration.all
+    registrations = Registration.past_due all
+    if params[:type] == "Students"
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+    else
+      @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
+    end
+  end
+
   def view
     @registration = Registration.find(params[:id])
     @payment = Payment.new

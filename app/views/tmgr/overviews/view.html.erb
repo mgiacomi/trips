@@ -84,6 +84,12 @@
           <td><p style="margin-bottom:0;">Trip:</p></td>
           <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
         </tr>
+        <% unless @registration.file_name.nil? %>
+            <tr>
+              <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
+              <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p></td>
+            </tr>
+        <% end %>
       </table>
       <br/>
       <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>

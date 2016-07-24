@@ -48,19 +48,19 @@
   </tr>
   <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Collected</p></td>
-    <td><p style="margin-bottom:0;text-align:right;">$8,000</p></td>
-    <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
-    <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
-    <td><p style="margin-bottom:0;text-align:right;">$876</p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;">$10,236</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:s_fifth_r]) %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:c_fifth_r]) %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:s_eighth_r]) %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:c_eighth_r]) %></p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:collected][:total]) %></p></td>
   </tr>
   <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Past Due</p></td>
-    <td><p style="margin-bottom:0;text-align:right;color:red;">$852</p></td>
-    <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
-    <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
-    <td><p style="margin-bottom:0;text-align:right;color:red;">$124</p></td>
-    <td><p style="margin-bottom:0;color: red;font-weight:bold;text-align:right;">$1,354</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_fifth_r]), tmgr_overview_past_due_path('5th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_fifth_r]), tmgr_overview_past_due_path('5th', 'Chaperones') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_eighth_r]), tmgr_overview_past_due_path('8th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_eighth_r]), tmgr_overview_past_due_path('8th', 'Chaperones') %></p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:past_due][:total]) %></p></td>
   </tr>
 </table>
 
