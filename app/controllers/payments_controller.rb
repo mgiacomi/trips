@@ -13,7 +13,6 @@ class PaymentsController < ApplicationController
   end
 
   def receipt
-
     if params[:payment_status] == "Completed"
       reg_id = params[:invoice].split('-')[0]
       registration = Registration.find reg_id
