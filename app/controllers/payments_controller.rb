@@ -13,6 +13,6 @@ class PaymentsController < ApplicationController
   end
 
   def receipt
-    Rails.logger.warn "got payment #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
+    logger.warn "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} Got Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
   end
 end
