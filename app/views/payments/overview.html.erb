@@ -41,7 +41,7 @@
               <input type="hidden" name="upload" value="1">
               <input type="hidden" name="business" value="mgiacomi-facilitator@gltech.com">
               <input type="hidden" name="currency_code" value="USD">
-              <input type="hidden" name="notify_url" value="<%= Rails.configuration.notify_url %>">
+              <input type="hidden" name="notify_url" value="<%= payments_receipt_url %>">
               <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= @registration.payments.length %>">
               <input type="hidden" name="item_name_1" value="<%= @registration.first_name %> <%= @registration.last_name %> - <%= @registration.grade %>th Grade Trip">
               <input type="hidden" name="item_number_1" value="<%= @registration.next_pmt_date.strftime("%m/%d/%Y") %> <%= @registration.user.chaperone ? "Chaperone" : "Student" %> Payment">

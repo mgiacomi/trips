@@ -11,4 +11,7 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def receipt
+p "got payment #{params}"
+  end
 end
