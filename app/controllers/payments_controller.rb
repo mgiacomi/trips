@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :receipt
 
   def overview
     @registration = Registration.find_or_initialize_by(user_id: current_user.id)
@@ -12,6 +12,6 @@ class PaymentsController < ApplicationController
   end
 
   def receipt
-p "got payment #{params}"
+    p "got payment #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
   end
 end
