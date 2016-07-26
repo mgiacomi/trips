@@ -31,6 +31,7 @@ Rails.application.configure do
   }
 
   # Print deprecation notices to the Rails logger.
+  #config.logger = ActiveSupport::Logger.new('trips.log')
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.

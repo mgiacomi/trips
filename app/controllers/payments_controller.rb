@@ -13,6 +13,10 @@ class PaymentsController < ApplicationController
   end
 
   def receipt
-    logger.warn "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} Got Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
+    logger.info "Got Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
+
+    if params[:payment_status] == "Completed"
+      logger.info "got completed payment"
+    end
   end
 end
