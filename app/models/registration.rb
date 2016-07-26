@@ -16,6 +16,14 @@ class Registration < ActiveRecord::Base
   #scope :uploaded_loi, lambda {|grade| where('file_name is not null and grade = ?', grade) }
   #scope :registered, lambda {|grade| where('grade = ?', grade) }
 
+  def first_name
+    self.user.chaperone ? self.p1fname : self.sfname
+  end
+
+  def last_name
+    self.user.chaperone ? self.p1lname : self.slname
+  end
+
   private
 
 end
