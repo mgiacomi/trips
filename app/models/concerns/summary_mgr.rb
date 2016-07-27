@@ -3,8 +3,7 @@ module SummaryMgr
 
   module ClassMethods
     def get_summary
-      all = Registration.all
-
+      all = Registration.order(:slname).all
       {
           registered: registered(all),
           outstanding_loi: outstanding_loi(all),

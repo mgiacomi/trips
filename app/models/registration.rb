@@ -13,17 +13,6 @@ class Registration < ActiveRecord::Base
     where('sfname like ? or slname like ? or p1fname like ? or p1lname like ? or p1email like ?', term, term, term, term, term)
   }
 
-  #scope :uploaded_loi, lambda {|grade| where('file_name is not null and grade = ?', grade) }
-  #scope :registered, lambda {|grade| where('grade = ?', grade) }
-
-  def first_name
-    self.user.chaperone ? self.p1fname : self.sfname
-  end
-
-  def last_name
-    self.user.chaperone ? self.p1lname : self.slname
-  end
-
   private
 
 end

@@ -1,5 +1,5 @@
-<%= f.hidden_field :sfname, value: "n/a" %>
-<%= f.hidden_field :slname, value: "n/a" %>
+<%= f.hidden_field :p1fname, value: "n/a" %>
+<%= f.hidden_field :p1lname, value: "n/a" %>
 <%= f.hidden_field :sgender, value: "n/a" %>
 <p style="color:black;margin-bottom:10px;"><strong>Chaperone Information</strong></p>
 <table>
@@ -13,11 +13,11 @@
   </tr>
   <tr>
     <td><p style="margin-bottom:0;">First Name:</p></td>
-    <td><%= f.text_field :p1fname, style: 'width:500px' %></td>
+    <td><%= f.text_field :sfname, style: 'width:500px' %></td>
   </tr>
   <tr>
     <td><p style="margin-bottom:0;">Last Name:</p></td>
-    <td><%= f.text_field :p1lname %></td>
+    <td><%= f.text_field :slname %></td>
   </tr>
   <tr>
     <td><p style="margin-bottom:0;">Phone:</p></td>
