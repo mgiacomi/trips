@@ -13,7 +13,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def loi
-    all = Registration.all
+    all = Registration.all.order(:slname, :sfname)
     if params[:outstanding] == 'true'
       registrations = Registration.outstanding_loi all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -26,7 +26,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def registered
-    all = Registration.all
+    all = Registration.all.order(:slname, :sfname)
     registrations = Registration.registered all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -36,7 +36,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def past_due
-    all = Registration.all
+    all = Registration.all.order(:slname, :sfname)
     registrations = Registration.past_due all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]

@@ -10,7 +10,7 @@ class Registration < ActiveRecord::Base
 
   scope :search, lambda {|term|
     term = "%#{term}%"
-    where('sfname like ? or slname like ? or p1fname like ? or p1lname like ? or p1email like ?', term, term, term, term, term)
+    where('sfname like ? or slname like ? or p1fname like ? or p1lname like ? or p1email like ?', term, term, term, term, term).order(:slname, :sfname)
   }
 
   private
