@@ -19,6 +19,7 @@ class PaymentsController < ApplicationController
 
       payment = Payment.new
       payment.amount = params[:payment_gross]
+      payment.fee = params[:payment_fee]
       payment.pmtdate = params[:payment_date]
       payment.pmtnum = "Paypal"
       payment.registration = registration

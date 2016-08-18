@@ -177,6 +177,10 @@
           <td><p style="margin-bottom:0;">Payment Amount:</p></td>
           <td nowrap="nowrap">$<%= f.text_field :amount, style: "height:25px;width:185px;" %></td>
         </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Payment Fee:</p></td>
+          <td nowrap="nowrap">$<%= f.text_field :fee, style: "height:25px;width:185px;" %></td>
+        </tr>
       </table>
       <%= f.submit "Add Payment", class: "button black" %>
   <% end %>
@@ -188,6 +192,7 @@
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
       <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Fee</p></td>
       <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Remove?</p></td>
     </tr>
     <% @registration.payments.each do |pmt| %>
@@ -195,6 +200,7 @@
           <td><p style="margin-bottom:0;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></p></td>
           <td><p style="margin-bottom:0;"><%= pmt.pmtnum %></p></td>
           <td style="text-align:right;"><p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
+          <td style="text-align:right;"><p style="margin-bottom:0;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></p></td>
           <td style="text-align:right;width:50px;"><img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
         </tr>
     <% end %>

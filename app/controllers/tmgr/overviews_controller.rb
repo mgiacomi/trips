@@ -60,6 +60,7 @@ class Tmgr::OverviewsController < ApplicationController
   def payment
     @registration = Registration.find(params[:id])
     @payment = Payment.new(params[:payment])
+    @payment.pmtdate = Date.strptime(params[:payment]["pmtdate"], "%m/%d/%Y")
     @payment.registration = @registration
     @payment.user = current_user
 
