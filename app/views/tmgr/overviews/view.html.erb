@@ -23,32 +23,46 @@
 <br/>
 <div style="width:45%; float:left;">
   <p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
-  <table>
-    <tr>
-      <td><p style="margin-bottom:0;">Student First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sfname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Student Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.slname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Gender:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sgender %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Trip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
-    </tr>
-    <% unless @registration.file_name.nil? %>
+  <%= form_tag(registrations_chaperone_path, method: :post, id: 'onk_member_form') do %>
+      <table>
         <tr>
-          <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
+          <td><p style="margin-bottom:0;">Student First Name:</p></td>
+          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sfname %></p></td>
+        </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Student Last Name:</p></td>
+          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.slname %></p></td>
+        </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Gender:</p></td>
+          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sgender %></p></td>
+        </tr>
+        <tr>
+          <td><p style="margin-bottom:0;">Trip:</p></td>
+          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
+        </tr>
+        <% unless @registration.file_name.nil? %>
+            <tr>
+              <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
+              <td>
+                <p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p>
+              </td>
+            </tr>
+        <% end %>
+        <tr>
+          <td><p style="margin-bottom:0;">ONK Member:</p></td>
           <td>
-            <p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p>
+            <p style="margin-bottom:0;color:black;margin-left:10px;">
+              <input type="checkbox"
+                     <%= @registration.onk == true ? 'checked="checked"' : '' %>
+                     name="onk_member"
+                     onclick="jQuery('#chaperone_form').submit()"/>
+            </p>
           </td>
         </tr>
-    <% end %>
-  </table>
+      </table>
+  <% end %>
+
   <br/>
   <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
   <table>
@@ -131,11 +145,11 @@
         </tr>
         <tr>
           <td><p style="margin-bottom:0;">Payment Amount:</p></td>
-          <td nowrap="nowrap">$<%= f.text_field :amount, style: "height:25px;width:185px;" %></td>
+          <td nowrap="nowrap">$<%= f.text_field :amount, style: "padding-top:0;padding-bottom:0;height:25px;width:185px;" %></td>
         </tr>
         <tr>
           <td><p style="margin-bottom:0;">Payment Fee:</p></td>
-          <td nowrap="nowrap">$<%= f.text_field :fee, style: "height:25px;width:185px;" %></td>
+          <td nowrap="nowrap">$<%= f.text_field :fee, style: "padding-top:0;padding-bottom:0;height:25px;width:185px;" %></td>
         </tr>
       </table>
       <%= f.submit "Add Payment", class: "button black" %>
