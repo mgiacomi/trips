@@ -14,17 +14,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  match '/tmgr' => 'tmgr/overviews#index', :as => :tmgr_overview, :via => :get
-  match '/tmgr/overview/loi/:grade/:outstanding' => 'tmgr/overviews#loi', :as => :tmgr_overview_loi, :via => :get
+  match '/tmgr'                                  => 'tmgr/overviews#index',      :as => :tmgr_overview,            :via => :get
+  match '/tmgr/overview/loi/:grade/:outstanding' => 'tmgr/overviews#loi',        :as => :tmgr_overview_loi,        :via => :get
+  match '/tmgr/overview/onk/:grade/:member'      => 'tmgr/overviews#onk_member', :as => :tmgr_overview_onk_member, :via => :get
   match '/tmgr/overview/registered/:grade/:type' => 'tmgr/overviews#registered', :as => :tmgr_overview_registered, :via => :get
-  match '/tmgr/overview/past_due/:grade/:type' => 'tmgr/overviews#past_due', :as => :tmgr_overview_past_due, :via => :get
+  match '/tmgr/overview/past_due/:grade/:type'   => 'tmgr/overviews#past_due',   :as => :tmgr_overview_past_due,   :via => :get
 
-  match '/tmgr/forms/view/:id' => 'tmgr/overviews#view', :as => :tmgr_form_view, :via => :get
-  match '/tmgr/forms/loi/:id' => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi, :via => :get
+  match '/tmgr/forms/view/:id' => 'tmgr/overviews#view',         :as => :tmgr_form_view, :via => :get
+  match '/tmgr/forms/loi/:id'  => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi,  :via => :get
 
   match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]
 
-  match '/tmgr/payment/:id' => 'tmgr/overviews#payment', :as => :tmgr_payment, :via => [:post,:put]
+  match '/tmgr/payment/:id'    => 'tmgr/overviews#payment',        :as => :tmgr_payment,        :via => [:post,:put]
   match '/tmgr/delete/payment' => 'tmgr/overviews#payment_delete', :as => :tmgr_payment_delete, :via => [:post]
 
   root 'todos#status'

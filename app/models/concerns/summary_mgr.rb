@@ -6,6 +6,8 @@ module SummaryMgr
       all = Registration.all
       {
           registered: registered(all),
+          onk_members: onk_members(all),
+          not_onk_members: not_onk_members(all),
           outstanding_loi: outstanding_loi(all),
           uploaded_loi: uploaded_loi(all),
           collected: collected(all),
@@ -28,6 +30,28 @@ module SummaryMgr
       end
       total = s_fifth.length + s_eighth.length + c_fifth.length + c_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, c_fifth: c_fifth, c_eighth: c_eighth, total: total}
+    end
+
+    def not_onk_members all
+      s_fifth = all.select do |reg|
+        reg.grade == 5 && !reg.onk
+      end
+      s_eighth = all.select do |reg|
+        reg.grade == 8 && !reg.onk
+      end
+      total = s_fifth.length + s_eighth.length
+      {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
+    end
+
+    def onk_members all
+      s_fifth = all.select do |reg|
+        reg.grade == 5 && reg.onk
+      end
+      s_eighth = all.select do |reg|
+        reg.grade == 8 && reg.onk
+      end
+      total = s_fifth.length + s_eighth.length
+      {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
     end
 
     def outstanding_loi all

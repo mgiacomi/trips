@@ -18,9 +18,7 @@
     <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent First</p></td>
     <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent Last</p></td>
     <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Registration Date</p></td>
-    <% if params[:outstanding] != 'true' %>
-      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Letter Of Intent</p></td>
-    <% end %>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">ONK Member</p></td>
   </tr>
   <% @registrations.each do |reg| %>
       <tr>
@@ -35,14 +33,8 @@
         <td><p style="margin-bottom:0;"><%= reg.grade %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.p1fname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.p1lname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.created_at.strftime("%m/%d/%Y") %></p></td>
-        <% if params[:outstanding] != 'true' %>
-            <td>
-              <% unless reg.file_name.nil? %>
-                  <p style="margin-bottom:0;"><%= link_to 'Download LOI', tmgr_form_loi_path(reg.id) %></p>
-              <% end %>
-            </td>
-      <% end %>
+        <td><p style="margin-bottom:0;"><%= reg.created_at.strftime("%d/%m/%Y") %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.onk %></p></td>
       </tr>
   <% end %>
 </table>

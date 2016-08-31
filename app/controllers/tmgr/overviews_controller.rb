@@ -25,6 +25,19 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
+  def onk_member
+    all = Registration.all.order(:slname, :sfname)
+    if params[:member] == 'true'
+      registrations = Registration.onk_members all
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @title = "ONK Members"
+    else
+      registrations = Registration.not_onk_members all
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @title = "Not ONK Members"
+    end
+  end
+
   def registered
     all = Registration.all.order(:slname, :sfname)
     registrations = Registration.registered all

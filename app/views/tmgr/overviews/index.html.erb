@@ -31,6 +31,22 @@
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:registered][:total] %></p></td>
   </tr>
   <tr>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">ONK Members</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'true') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'true') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:onk_members][:total] %></p></td>
+  </tr>
+  <tr>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Not ONK Members</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:not_onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'false') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:not_onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'false') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:not_onk_members][:total] %></p></td>
+  </tr>
+  <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">LOI's Uploaded</p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:uploaded_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'false') %></p></td>
     <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
