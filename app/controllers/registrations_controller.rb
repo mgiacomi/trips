@@ -44,7 +44,7 @@ class RegistrationsController < ApplicationController
     else
       current_user.update_attribute(:chaperone, true)
       redirect_to todos_home_path, notice: 'You have been switched to a Chaperone.'
-      end
+    end
   end
 
   def denied

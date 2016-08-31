@@ -93,4 +93,10 @@ class Tmgr::OverviewsController < ApplicationController
       redirect_to tmgr_form_view_path(params[:reg_id]), alert: 'Failed to delete payment.'
     end
   end
+
+  def update_onk
+    registration = Registration.find(params[:id])
+    registration.update_attribute(:onk, params[:onk_member])
+    redirect_to tmgr_form_view_path, notice: 'ONK status has bee updated.'
+  end
 end

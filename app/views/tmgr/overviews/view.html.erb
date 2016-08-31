@@ -23,7 +23,7 @@
 <br/>
 <div style="width:45%; float:left;">
   <p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
-  <%= form_tag(registrations_chaperone_path, method: :post, id: 'onk_member_form') do %>
+  <%= form_tag tmgr_form_onk_path(@registration.id), method: :post, id: 'onk_member_form'  do %>
       <table>
         <tr>
           <td><p style="margin-bottom:0;">Student First Name:</p></td>
@@ -56,7 +56,8 @@
               <input type="checkbox"
                      <%= @registration.onk == true ? 'checked="checked"' : '' %>
                      name="onk_member"
-                     onclick="jQuery('#chaperone_form').submit()"/>
+                     value="true"
+                     onclick="jQuery('#onk_member_form').submit()"/>
             </p>
           </td>
         </tr>
