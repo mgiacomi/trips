@@ -5,10 +5,10 @@ class PaymentsController < ApplicationController
   def overview
     @registration = Registration.find_or_initialize_by(user_id: current_user.id)
 
-    if current_user.chaperone
-      @schedule = Registration.get_chaperone_pay_schedule
-    else
-      @schedule = Registration.get_student_pay_schedule
+    if @registration.grade == 5
+      @schedule = Registration.get_5th_pay_schedule
+    elsif @registration.grade == 8
+      @schedule = Registration.get_8th_pay_schedule
     end
   end
 

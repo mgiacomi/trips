@@ -5,16 +5,22 @@
     <div style="margin-bottom: 30px;" class="box_heading"><h2 style="top: 8px;">Overview</h2><span class="line"></span>
     </div>
     <div id="sponsors">
-      <p>Total student fees for the trip are <%= number_to_currency(@registration.total_amount) %> and is due in full by March 15th 2017. To help make the payments
-        less painful we break them up into monthly installments.
-        <br/><br/>
+      <p>Total fees for the trip are <%= number_to_currency(@registration.total_amount) %> and is due in full by March 14th 2017. To help make the payments
+        less painful we break them up into installments.</p>
         <span style="font-weight:bold;color:black;">Payment schedule:</span>
       <ul>
+        <li style="width:95px;">Due Date</li>
+        <li style="width:70px;">Student</li>
+        <li class="last" style="width:70px;<% unless current_user.chaperone %> opacity: 0.5;<% end %>">Chaperone</li>
         <% @schedule.each do |pmt| %>
-            <li style="width:125px;"><%= pmt[:date].strftime("%b #{pmt[:date].day.ordinalize}, %Y") %></li>
-            <li class="last" style="width:125px;"><%= number_to_currency(pmt[:amount]) %></li>
+            <li style="width:95px;"><%= pmt[:date].strftime("%m/%d/%Y") %></li>
+            <li style="width:70px;"><%= number_to_currency(pmt[:student]) %></li>
+            <li class="last" style="width:70px;<% unless current_user.chaperone %> opacity: 0.5;<% end %>"><%= number_to_currency(pmt[:chaperone]) %></li>
         <% end %>
       </ul>
+      <p>
+      If necessary, on 5/26/2017, an extra payment of <strong>#300-$500 for students</strong> and <strong>$600-$800 for chaperones</strong> may be needed.
+      This may change based on airfare (the most expensive part of the trip), exchange rates and our fund raising plus scrip credits – so buy scrip!
       </p>
     </div>
   </div>

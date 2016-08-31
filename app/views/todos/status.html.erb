@@ -3,14 +3,17 @@
     <h3>Japan Trip Overview</h3>
     <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site you
       manage your personal information,
-      your letter of intent, and make payments to the trip.</p><br/>
+      your letter of intent, and make payments to the trip.</p>
 
-    <% if current_user.chaperone == true %>
-        <p>You are Currently setup as a Chaperone.</p>
-        <%= button_to 'Switch to Student', registrations_chaperone_path, class: "button black" %>
-    <% else %>
-        <p>You are Currently setup as a Student.</p>
-        <%= button_to 'Switch to Chaperone', registrations_chaperone_path, class: "button black" %>
+    <p>If you are going to chaperone the trip then check the box below as well.  Doing so will combind
+    the student fees and chaperone fees in the payments section of the app.</p>
+
+    <%= form_tag(registrations_chaperone_path, method: :post, id: 'chaperone_form') do %>
+        I am also a chaperone
+        <input type="checkbox"
+               <%= current_user.chaperone == true ? 'checked="checked"' : '' %>
+               name="chaperone"
+               onclick="jQuery('#chaperone_form').submit()"/>
     <% end %>
   </div>
   <div id="actions">
