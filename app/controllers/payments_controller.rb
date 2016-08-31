@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_filter :authenticate_user!, :except => [:receipt, :onk_receipt]
-  skip_before_action :verify_authenticity_token, :only => :receipt
+  skip_before_action :verify_authenticity_token, :only => [:receipt, :onk_receipt]
 
   def overview
     @registration = Registration.find_or_initialize_by(user_id: current_user.id)
