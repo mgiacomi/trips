@@ -32,4 +32,18 @@ class PaymentsController < ApplicationController
       end
     end
   end
+
+  def onk_receipt
+    if params[:payment_status] == "Completed"
+      reg_id = params[:invoice].split('-')[0]
+      registration = Registration.find reg_id
+      registration.onk = true
+
+      if registration.save
+        logger.info "ONK Membership added for registration id: #{registration.id}"
+      else
+        logger.info "Failed to add ONK Membership for registration id: #{registration.id}"
+      end
+    end
+  end
 end

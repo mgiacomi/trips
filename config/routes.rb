@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  match '/todo'  => 'todos#status',  :as => :todos_home, :via => :get
-  match '/denied' => 'todos#denied',  :as => :denied,     :via => :get
-  match '/receipt' => 'payments#receipt',   :as => :payments_receipt,  :via => :post
-  match '/payments' => 'payments#overview', :as => :payments_overview, :via => :get
+  match '/todo'     => 'todos#status',         :as => :todos_home,        :via => :get
+  match '/denied'   => 'todos#denied',         :as => :denied,            :via => :get
+  match '/receipt'  => 'payments#receipt',     :as => :payments_receipt,  :via => :post
+  match '/onk'      => 'payments#onk_receipt', :as => :onk_receipt,       :via => :post
+  match '/payments' => 'payments#overview',    :as => :payments_overview, :via => :get
 
   match '/registration'           => 'registrations#edit',        :as => :registrations_edit,         :via => :get
   match '/registration'           => 'registrations#update',      :as => :registrations,              :via => [:post,:put,:patch]

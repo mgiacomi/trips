@@ -63,8 +63,48 @@
                     <input type="file" name="loi_file"/>
                     <input type="submit" value="Upload Letter of Intent" class="button black"/>
                 <% end %>
-            <% end %>                                                                    .
+            <% end %>
           </div>
+        </div>
+      </div>
+      <div class="box one_half column_last">
+        <div class="inner">
+          <div class="box_heading">
+            <h4>ONK Membership</h4></div>
+          <p>In order for students to go on the trip the family must be an ONK member.</p>
+          <div style="margin-top:10px;">Status:
+            <% if @registration == nil %>
+                <span style="margin-left:20px;font-weight:bold;color:red;">Purchase an ONK Membership</span>
+            <% else %>
+                <% if @registration.onk %>
+                    <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+                <% else %>
+                    <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                      <input type="hidden" name="cmd" value="_cart">
+                      <input type="hidden" name="upload" value="1">
+                      <input type="hidden" name="business" value="mgiacomi-facilitator@gltech.com">
+                      <input type="hidden" name="currency_code" value="USD">
+                      <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>">
+                      <input type="hidden" name="shopping_url" value="<%= todos_home_url %>">
+                      <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>">
+                      <input type="hidden" name="item_name_1" value="<%= @registration.sfname %> <%= @registration.slname %> - ONK Membership">
+                      <input type="hidden" name="item_number_1" value="<%= @registration.next_pmt_date.strftime("%m/%d/%Y") %> <%= @registration.user.chaperone ? "Chaperone" : "Student" %> Payment">
+                      <input type="hidden" name="quantity_1" value="1">
+                      $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="26"><br/>
+                      <input type="image" name="submit" style="margin-top: 10px;"
+                             src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
+                    </form>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="box one_half">
+        <div class="inner">
+          <div class="box_heading"></div>
+          <div style="margin-top:10px;"></div>
         </div>
       </div>
       <div class="box one_half column_last">
