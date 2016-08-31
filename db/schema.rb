@@ -11,23 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703031843) do
+ActiveRecord::Schema.define(version: 20160703031841) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "registration_id", limit: 4
     t.integer  "user_id",         limit: 4
     t.string   "pmtnum",          limit: 255
     t.datetime "pmtdate"
-    t.string   "amount",          limit: 255
+    t.decimal  "amount",                      precision: 6, scale: 2, default: 0.0
+    t.decimal  "fee",                         precision: 6, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "net",             limit: 4,   default: 0
   end
 
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "sfname",      limit: 45
     t.string   "slname",      limit: 45
     t.string   "sgender",     limit: 45
@@ -44,10 +42,12 @@ ActiveRecord::Schema.define(version: 20160703031843) do
     t.string   "city",        limit: 45
     t.string   "state",       limit: 45
     t.string   "zip",         limit: 45
-    t.decimal  "scholarship",             precision: 6, scale: 2, default: 0.0
-    t.string   "file_name",   limit: 255
-    t.string   "file_ext",    limit: 255
+    t.string   "file_name",   limit: 56
+    t.string   "file_ext",    limit: 56
     t.boolean  "onk",                                             default: false
+    t.decimal  "scholarship",             precision: 6, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
