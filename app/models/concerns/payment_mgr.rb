@@ -15,6 +15,8 @@ module PaymentMgr
     end
 
     def get_8th_pay_schedule
+      records = Array.new
+      records << {date: Date.strptime("5/26/2017", '%m/%d/%Y'), student: 0, chaperone: 0}
     end
   end
 
@@ -23,6 +25,8 @@ module PaymentMgr
       Registration.get_5th_pay_schedule
     elsif self.grade == 8
       Registration.get_8th_pay_schedule
+    else
+      Array.new
     end
   end
 
@@ -81,6 +85,8 @@ module PaymentMgr
         return r[:date]
       end
     end
+
+    Date.strptime("5/26/2017", '%m/%d/%Y')
   end
 
 end
