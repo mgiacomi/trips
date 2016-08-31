@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  match '/tmgr/overview' => 'tmgr/overviews#index', :as => :tmgr_overview, :via => :get
+  match '/tmgr' => 'tmgr/overviews#index', :as => :tmgr_overview, :via => :get
   match '/tmgr/overview/loi/:grade/:outstanding' => 'tmgr/overviews#loi', :as => :tmgr_overview_loi, :via => :get
   match '/tmgr/overview/registered/:grade/:type' => 'tmgr/overviews#registered', :as => :tmgr_overview_registered, :via => :get
   match '/tmgr/overview/past_due/:grade/:type' => 'tmgr/overviews#past_due', :as => :tmgr_overview_past_due, :via => :get

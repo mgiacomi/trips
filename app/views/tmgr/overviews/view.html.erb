@@ -22,129 +22,85 @@
 
 <br/>
 <div style="width:45%; float:left;">
-  <% if @registration.user.chaperone %>
-
-      <p style="color:black;margin-bottom:10px;"><strong>Chaperone Information</strong></p>
-      <table>
+  <p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
+  <table>
+    <tr>
+      <td><p style="margin-bottom:0;">Student First Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sfname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Student Last Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.slname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Gender:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sgender %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Trip:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
+    </tr>
+    <% unless @registration.file_name.nil? %>
         <tr>
-          <td><p style="margin-bottom:0;">Trip:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
+          <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
+          <td>
+            <p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p>
+          </td>
         </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">First Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1fname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Last Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1lname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Phone:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1phone %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Email:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= current_user.email %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Street:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.street %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">City:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.city %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">State:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.state %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Zip:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.zip %></p></td>
-        </tr>
-      </table>
-
-  <% else %>
-
-      <p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
-      <table>
-        <tr>
-          <td><p style="margin-bottom:0;">Student First Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sfname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Student Last Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.slname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Gender:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sgender %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Trip:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
-        </tr>
-        <% unless @registration.file_name.nil? %>
-            <tr>
-              <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
-              <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p></td>
-            </tr>
-        <% end %>
-      </table>
-      <br/>
-      <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
-      <table>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1fname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 1 Last Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1lname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 1 Phone:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1phone %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 1 Email:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1email %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2fname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 2 Last Name:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2lname %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 2 Phone:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2phone %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Parent 2 Email:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2email %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Street:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.street %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">City:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.city %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">State:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.state %></p></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Zip:</p></td>
-          <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.zip %></p></td>
-        </tr>
-      </table>
-
-  <% end %>
+    <% end %>
+  </table>
+  <br/>
+  <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
+  <table>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1fname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 1 Last Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1lname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 1 Phone:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1phone %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 1 Email:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1email %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2fname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 2 Last Name:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2lname %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 2 Phone:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2phone %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Parent 2 Email:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2email %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Street:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.street %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">City:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.city %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">State:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.state %></p></td>
+    </tr>
+    <tr>
+      <td><p style="margin-bottom:0;">Zip:</p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.zip %></p></td>
+    </tr>
+  </table>
 
 </div>
 
@@ -191,17 +147,23 @@
     <tr>
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
       <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Fee</p></td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Remove?</p></td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p>
+      </td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Fee</p>
+      </td>
+      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Remove?</p>
+      </td>
     </tr>
     <% @registration.payments.each do |pmt| %>
         <tr>
           <td><p style="margin-bottom:0;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></p></td>
           <td><p style="margin-bottom:0;"><%= pmt.pmtnum %></p></td>
-          <td style="text-align:right;"><p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
-          <td style="text-align:right;"><p style="margin-bottom:0;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></p></td>
-          <td style="text-align:right;width:50px;"><img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
+          <td style="text-align:right;">
+            <p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
+          <td style="text-align:right;">
+            <p style="margin-bottom:0;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></p></td>
+          <td style="text-align:right;width:50px;">
+            <img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
         </tr>
     <% end %>
   </table>

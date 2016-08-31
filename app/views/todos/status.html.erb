@@ -5,14 +5,12 @@
       manage your personal information,
       your letter of intent, and make payments to the trip.</p><br/>
 
-    <% if @registration == nil %>
-        <% if current_user.chaperone == true %>
-            <p>You are Currently setup as a Chaperone.</p>
-            <%= button_to 'Switch to Student', registrations_chaperone_path, class: "button black" %>
-        <% else %>
-            <p>You are Currently setup as a Student.</p>
-            <%= button_to 'Switch to Chaperone', registrations_chaperone_path, class: "button black" %>
-        <% end %>
+    <% if current_user.chaperone == true %>
+        <p>You are Currently setup as a Chaperone.</p>
+        <%= button_to 'Switch to Student', registrations_chaperone_path, class: "button black" %>
+    <% else %>
+        <p>You are Currently setup as a Student.</p>
+        <%= button_to 'Switch to Chaperone', registrations_chaperone_path, class: "button black" %>
     <% end %>
   </div>
   <div id="actions">
@@ -21,7 +19,7 @@
         <div class="inner">
           <div class="box_heading">
             <h4>Setup Account</h4></div>
-          <p>Create an account on the site and setup a password.</p>
+          <p>You can manage your authorization data here.  Change your password or update your email address.</p>
           <div style="margin-top:10px;">Status:
             <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
           <%= link_to 'Update email or password', edit_user_registration_path %>.
@@ -31,7 +29,7 @@
         <div class="inner">
           <div class="box_heading">
             <h4>Registration Information</h4></div>
-          <p>In order to prepare for the trip we need address and contact information for students and parents. </p>
+          <p>In order to prepare for the trip we need address and contact information for students and parents.</p>
           <% if @registration == nil %>
               <div style="margin-top:10px;">Status:
                 <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
@@ -47,26 +45,22 @@
         <div class="inner">
           <div class="box_heading">
             <h4>Letter Of Intent</h4></div>
-          <p>Your LOI curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus..</p>
+          <p>Upload your LOI so that we can track weather it has been completed and keep them organized.</p>
           <div style="margin-top:10px;">Status:
-            <% if current_user.chaperone %>
-                <span style="margin-left:20px;font-weight:bold;">Not Required</span>
+            <% if @registration == nil %>
+                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
             <% else %>
-                <% if @registration == nil %>
-                    <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
+                <% if @registration.file_ext != nil %>
+                    <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+                    <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
                 <% else %>
-                    <% if @registration.file_ext != nil %>
-                        <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-                        <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
-                    <% else %>
-                        <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
-                    <% end %>
-                    <%= form_tag registrations_upload_loi_path, multipart: true do %>
-                        <input type="file" name="loi_file"/>
-                        <input type="submit" value="Upload Letter of Intent" class="button black"/>
-                    <% end %>
-                <% end %>                                                                    .
-            <% end %>
+                    <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                <% end %>
+                <%= form_tag registrations_upload_loi_path, multipart: true do %>
+                    <input type="file" name="loi_file"/>
+                    <input type="submit" value="Upload Letter of Intent" class="button black"/>
+                <% end %>
+            <% end %>                                                                    .
           </div>
         </div>
       </div>

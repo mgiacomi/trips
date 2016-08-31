@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20160703031842) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "net",             limit: 4,   default: 0
-    t.integer  "fee",             limit: 4,   default: 0
   end
 
   create_table "registrations", force: :cascade do |t|
