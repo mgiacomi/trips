@@ -47,29 +47,6 @@
       <div class="box one_half">
         <div class="inner">
           <div class="box_heading">
-            <h4>Letter Of Intent</h4></div>
-          <p>Upload your LOI so that we can track weather it has been completed and keep them organized.</p>
-          <div style="margin-top:10px;">Status:
-            <% if @registration == nil %>
-                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
-            <% else %>
-                <% if @registration.file_ext != nil %>
-                    <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-                    <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
-                <% else %>
-                    <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
-                <% end %>
-                <%= form_tag registrations_upload_loi_path, multipart: true do %>
-                    <input type="file" name="loi_file"/>
-                    <input type="submit" value="Upload Letter of Intent" class="button black"/>
-                <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="box one_half column_last">
-        <div class="inner">
-          <div class="box_heading">
             <h4>ONK Membership</h4></div>
           <p>In order for students to go on the trip the family must be an ONK member.</p>
           <div style="margin-top:10px;">Status:
@@ -95,6 +72,29 @@
                       <input type="image" name="submit" style="margin-top: 10px;"
                              src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
                     </form>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="box one_half column_last">
+        <div class="inner">
+          <div class="box_heading">
+            <h4>Letter Of Intent</h4></div>
+          <p>Upload your LOI so that we can track weather it has been completed and keep them organized.</p>
+          <div style="margin-top:10px;">Status:
+            <% if @registration == nil %>
+                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
+            <% else %>
+                <% if @registration.file_ext != nil %>
+                    <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+                    <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
+                <% else %>
+                    <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                <% end %>
+                <%= form_tag registrations_upload_loi_path, multipart: true do %>
+                    <input type="file" name="loi_file"/>
+                    <input type="submit" value="Upload Letter of Intent" class="button black"/>
                 <% end %>
             <% end %>
           </div>
