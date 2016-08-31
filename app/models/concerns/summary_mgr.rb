@@ -15,10 +15,10 @@ module SummaryMgr
 
     def registered all
       s_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.user.chaperone
+        reg.grade == 5
       end
       s_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.user.chaperone
+        reg.grade == 8
       end
       c_fifth = all.select do |reg|
         reg.grade == 5 && reg.user.chaperone
@@ -32,10 +32,10 @@ module SummaryMgr
 
     def outstanding_loi all
       s_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.user.chaperone && reg.file_name.nil?
+        reg.grade == 5 && reg.file_name.nil?
       end
       s_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.user.chaperone && reg.file_name.nil?
+        reg.grade == 8 && reg.file_name.nil?
       end
       total = s_fifth.length + s_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
@@ -43,10 +43,10 @@ module SummaryMgr
 
     def uploaded_loi all
       s_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.user.chaperone && !reg.file_name.nil?
+        reg.grade == 5 && !reg.file_name.nil?
       end
       s_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.user.chaperone && !reg.file_name.nil?
+        reg.grade == 8 && !reg.file_name.nil?
       end
       total = s_fifth.length + s_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
