@@ -57,10 +57,10 @@
                     <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
                 <% else %>
                     <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                       <input type="hidden" name="cmd" value="_cart">
                       <input type="hidden" name="upload" value="1">
-                      <input type="hidden" name="business" value="mgiacomi-facilitator@gltech.com">
+                      <input type="hidden" name="business" value="kathy.black@pdx.edu">
                       <input type="hidden" name="currency_code" value="USD">
                       <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>">
                       <input type="hidden" name="shopping_url" value="<%= todos_home_url %>">
