@@ -51,24 +51,24 @@
           <p>In order for students to go on the trip the family must be an ONK member.</p>
           <div style="margin-top:10px;">Status:
             <% if @registration == nil %>
-                <span style="margin-left:20px;font-weight:bold;color:red;">Purchase an ONK Membership</span>
+                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
             <% else %>
                 <% if @registration.onk %>
                     <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
                 <% else %>
                     <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                      <input type="hidden" name="cmd" value="_cart">
-                      <input type="hidden" name="upload" value="1">
-                      <input type="hidden" name="business" value="kathy.black@pdx.edu">
-                      <input type="hidden" name="currency_code" value="USD">
-                      <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>">
-                      <input type="hidden" name="shopping_url" value="<%= todos_home_url %>">
-                      <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>">
-                      <input type="hidden" name="item_name_1" value="ONK Membership">
-                      <input type="hidden" name="item_number_1" value="<%= @registration.sfname %> <%= @registration.slname %>">
-                      <input type="hidden" name="quantity_1" value="1">
-                      $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="26"><br/>
+                      <input type="hidden" name="cmd" value="_cart"/>
+                      <input type="hidden" name="upload" value="1"/>
+                      <input type="hidden" name="business" value="kathy.black@pdx.edu"/>
+                      <input type="hidden" name="currency_code" value="USD"/>
+                      <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>"/>
+                      <input type="hidden" name="shopping_url" value="<%= todos_home_url %>"/>
+                      <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>"/>
+                      <input type="hidden" name="item_name_1" value="ONK Membership"/>
+                      <input type="hidden" name="item_number_1" value="<%= @registration.sfname %> <%= @registration.slname %>"/>
+                      <input type="hidden" name="quantity_1" value="1"/>
+                      <input type="hidden" name="amount_1" value="26"/>
                       <input type="image" name="submit" style="margin-top: 10px;"
                              src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
                     </form>
