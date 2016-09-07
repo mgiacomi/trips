@@ -64,10 +64,10 @@
   </tr>
   <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Collected</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:s_fifth_r]) %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:c_fifth_r]) %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:s_eighth_r]) %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= number_to_currency(@summary[:collected][:c_eighth_r]) %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_fifth_r]), tmgr_overview_collected_path('5th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_fifth_r]), tmgr_overview_collected_path('5th', 'Chaperones') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_eighth_r]), tmgr_overview_collected_path('8th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_eighth_r]), tmgr_overview_collected_path('8th', 'Chaperones') %></p></td>
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:collected][:total]) %></p></td>
   </tr>
   <tr>

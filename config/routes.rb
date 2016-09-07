@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   match '/tmgr/overview/loi/:grade/:outstanding' => 'tmgr/overviews#loi',        :as => :tmgr_overview_loi,        :via => :get
   match '/tmgr/overview/onk/:grade/:member'      => 'tmgr/overviews#onk_member', :as => :tmgr_overview_onk_member, :via => :get
   match '/tmgr/overview/registered/:grade/:type' => 'tmgr/overviews#registered', :as => :tmgr_overview_registered, :via => :get
+  match '/tmgr/overview/collected/:grade/:type'  => 'tmgr/overviews#collected',  :as => :tmgr_overview_collected,  :via => :get
   match '/tmgr/overview/past_due/:grade/:type'   => 'tmgr/overviews#past_due',   :as => :tmgr_overview_past_due,   :via => :get
 
   match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]

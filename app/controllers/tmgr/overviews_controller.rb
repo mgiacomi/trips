@@ -48,6 +48,18 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
+  def collected
+    all = Registration.all.order(:slname, :sfname)
+    registrations = Registration.collected all
+    if params[:type] == "Students"
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+    else
+      @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
+    end
+    @title = "Collected"
+    render :past_due
+  end
+
   def past_due
     all = Registration.all.order(:slname, :sfname)
     registrations = Registration.past_due all
@@ -56,6 +68,7 @@ class Tmgr::OverviewsController < ApplicationController
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
+    @title = "Past Due"
   end
 
   def view
