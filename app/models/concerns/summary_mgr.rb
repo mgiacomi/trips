@@ -99,10 +99,10 @@ module SummaryMgr
     end
 
     def past_due all
-      s_fifth = all.select { |reg| reg.grade == 5 && !reg.user.chaperone }
-      s_eighth = all.select { |reg| reg.grade == 8 && !reg.user.chaperone }
-      c_fifth = all.select { |reg| reg.grade == 5 && reg.user.chaperone }
-      c_eighth = all.select { |reg| reg.grade == 8 && reg.user.chaperone }
+      s_fifth = all.select { |reg| reg.grade == 5 && !reg.user.chaperone && reg.total_due > 0 }
+      s_eighth = all.select { |reg| reg.grade == 8 && !reg.user.chaperone && reg.total_due > 0 }
+      c_fifth = all.select { |reg| reg.grade == 5 && reg.user.chaperone && reg.total_due > 0 }
+      c_eighth = all.select { |reg| reg.grade == 8 && reg.user.chaperone && reg.total_due > 0 }
 
       s_fifth_r = s_fifth.map{|r| r.total_due}.reduce {|sum, n| sum + n}
       s_eighth_r = s_eighth.map{|r| r.total_due}.reduce {|sum, n| sum + n}
