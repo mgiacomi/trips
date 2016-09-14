@@ -19,8 +19,13 @@
         <% end %>
       </ul>
       <p>
-      If necessary, on 5/26/2017, an extra payment of <strong>#300-$500 for students</strong> and <strong>$600-$800 for chaperones</strong> may be needed.
-      This may change based on airfare (the most expensive part of the trip), exchange rates and our fund raising plus scrip credits – so buy scrip!
+        <% if @registration.grade == 5 %>
+            If necessary, on 5/26/2017, an extra payment of <strong>#300-$500 for students</strong> and <strong>$600-$800 for chaperones</strong> may be needed.
+        <% end %>
+        <% if @registration.grade == 8 %>
+            If necessary, on 4/6/2017, an extra payment of <strong>#200-$500 for students</strong> and <strong>$400-$800 for chaperones</strong> may be needed.
+        <% end %>
+        This may change based on airfare (the most expensive part of the trip), exchange rates and our fund raising plus scrip credits – so buy scrip!
       </p>
     </div>
   </div>
