@@ -19,9 +19,9 @@ module PaymentMgr
       records << {date: Date.strptime("6/11/2016", '%m/%d/%Y'), student: 100, chaperone: 0}
       records << {date: Date.strptime("10/6/2016", '%m/%d/%Y'), student: 500, chaperone: 0}
       records << {date: Date.strptime("11/17/2016", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("1/5/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("2/2/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("3/2/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
+      records << {date: Date.strptime("1/5/2017", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("2/2/2017", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("3/2/2017", '%m/%d/%Y'), student: 500, chaperone: 500}
     end
   end
 

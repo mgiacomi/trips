@@ -5,8 +5,8 @@
       manage your personal information,
       your letter of intent, and make payments to the trip.</p>
 
-    <p>If you are going to chaperone the trip then check the box below as well.  Doing so will combind
-    the student fees and chaperone fees in the payments section of the app.</p>
+    <p>If you are going to chaperone the trip then check the box below as well. Doing so will combind
+      the student fees and chaperone fees in the payments section of the app.</p>
 
     <%= form_tag(registrations_chaperone_path, method: :post, id: 'chaperone_form') do %>
         I am also a chaperone
@@ -22,7 +22,7 @@
         <div class="inner">
           <div class="box_heading">
             <h4>Setup Account</h4></div>
-          <p>You can manage your authorization data here.  Change your password or update your email address.</p>
+          <p>You can manage your authorization data here. Change your password or update your email address.</p>
           <div style="margin-top:10px;">Status:
             <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
           <%= link_to 'Update email or password', edit_user_registration_path %>.
@@ -77,36 +77,38 @@
           </div>
         </div>
       </div>
-      <div class="box one_half column_last">
-        <div class="inner">
-          <div class="box_heading">
-            <h4>Letter Of Intent</h4></div>
-          <p>Upload your LOI so that we can track weather it has been completed and keep them organized.</p>
-          <div style="margin-top:10px;">Status:
-            <% if @registration == nil %>
-                <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
-            <% else %>
-                <% if @registration.file_ext != nil %>
-                    <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-                    <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
+      <% if @registration.grade == 5 %>
+          <div class="box one_half column_last">
+            <div class="inner">
+              <div class="box_heading">
+                <h4>Letter Of Intent</h4></div>
+              <p>Upload your LOI so that we can track weather it has been completed and keep them organized.</p>
+              <div style="margin-top:10px;">Status:
+                <% if @registration == nil %>
+                    <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
                 <% else %>
-                    <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                    <% if @registration.file_ext != nil %>
+                        <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+                        <%= link_to 'Download LOI', registrations_download_loi_path(@registration.file_url) %><br/>
+                    <% else %>
+                        <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                    <% end %>
+                    <%= form_tag registrations_upload_loi_path, multipart: true do %>
+                        <input type="file" name="loi_file"/>
+                        <input type="submit" value="Upload Letter of Intent" class="button black"/>
+                    <% end %>
                 <% end %>
-                <%= form_tag registrations_upload_loi_path, multipart: true do %>
-                    <input type="file" name="loi_file"/>
-                    <input type="submit" value="Upload Letter of Intent" class="button black"/>
-                <% end %>
-            <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+          <div class="box one_half">
+            <div class="inner">
+              <div class="box_heading"></div>
+              <div style="margin-top:10px;"></div>
+            </div>
+          </div>
+      <% end %>
 
-      <div class="box one_half">
-        <div class="inner">
-          <div class="box_heading"></div>
-          <div style="margin-top:10px;"></div>
-        </div>
-      </div>
       <div class="box one_half column_last">
         <div class="inner">
           <div class="box_heading">
