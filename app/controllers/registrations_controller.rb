@@ -37,16 +37,6 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def chaperone
-    if current_user.chaperone
-      current_user.update_attribute(:chaperone, false)
-      redirect_to todos_home_path, notice: 'You have been switched to a Student only.'
-    else
-      current_user.update_attribute(:chaperone, true)
-      redirect_to todos_home_path, notice: 'You have been switched to a Chaperone.'
-    end
-  end
-
   def denied
   end
 

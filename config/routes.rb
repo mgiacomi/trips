@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   match '/registration'           => 'registrations#edit',        :as => :registrations_edit,         :via => :get
   match '/registration'           => 'registrations#update',      :as => :registrations,              :via => [:post,:put,:patch]
-  match '/registration/chaperone' => 'registrations#chaperone',   :as => :registrations_chaperone,    :via => [:post]
   match '/registration/loi'       => 'registrations#upload_loi',  :as => :registrations_upload_loi,   :via => :post
   match '/registration/loi/:file_name' => 'registrations#download_loi', :as => :registrations_download_loi, :via => :get
 
@@ -23,9 +22,10 @@ Rails.application.routes.draw do
 
   match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]
 
-  match '/tmgr/forms/view/:id' => 'tmgr/overviews#view',         :as => :tmgr_form_view, :via => :get
-  match '/tmgr/forms/loi/:id'  => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi,  :via => :get
-  match '/tmgr/forms/onk/:id'  => 'tmgr/overviews#update_onk',   :as => :tmgr_form_onk,  :via => :post
+  match '/tmgr/forms/view/:id'      => 'tmgr/overviews#view',         :as => :tmgr_form_view,      :via => :get
+  match '/tmgr/forms/loi/:id'       => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi,       :via => :get
+  match '/tmgr/forms/onk/:id'       => 'tmgr/overviews#update_onk',   :as => :tmgr_form_onk,       :via => :post
+  match '/tmgr/forms/chaperone/:id' => 'tmgr/overviews#update_chap',  :as => :tmgr_form_chaperone, :via => [:post]
 
   match '/tmgr/payment/:id'    => 'tmgr/overviews#payment',        :as => :tmgr_payment,        :via => [:post,:put]
   match '/tmgr/delete/payment' => 'tmgr/overviews#payment_delete', :as => :tmgr_payment_delete, :via => :post

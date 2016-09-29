@@ -42,6 +42,7 @@
     </table>
     <br/><br/>
     <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
+    <p>If you are planning to be a chaperone, enter the chaperone as Parent 1.</p>
     <table>
       <tr>
         <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
@@ -60,6 +61,25 @@
         <td><%= f.text_field :p1email %></td>
       </tr>
       <tr>
+        <td><p style="margin-bottom:0;">Parent 1 Street:</p></td>
+        <td><%= f.text_field :street %></td>
+      </tr>
+      <tr>
+        <td><p style="margin-bottom:0;">Parent 1 City:</p></td>
+        <td><%= f.text_field :city %></td>
+      </tr>
+      <tr>
+        <td><p style="margin-bottom:0;">Parent 1 State:</p></td>
+        <td><%= f.text_field :state, style: 'width:150px;' %></td>
+      </tr>
+      <tr>
+        <td><p style="margin-bottom:0;">Parent 1 Zip:</p></td>
+        <td><%= f.text_field :zip, style: 'width:150px;' %></td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
         <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
         <td><%= f.text_field :p2fname %></td>
       </tr>
@@ -76,21 +96,45 @@
         <td><%= f.text_field :p2email %></td>
       </tr>
       <tr>
-        <td><p style="margin-bottom:0;">Street:</p></td>
-        <td><%= f.text_field :street %></td>
+        <td><p style="margin-bottom:0;">Parent 2 Street:</p></td>
+        <td><%= f.text_field :street2 %></td>
       </tr>
       <tr>
-        <td><p style="margin-bottom:0;">City:</p></td>
-        <td><%= f.text_field :city %></td>
+        <td><p style="margin-bottom:0;">Parent 2 City:</p></td>
+        <td><%= f.text_field :city2 %></td>
       </tr>
       <tr>
-        <td><p style="margin-bottom:0;">State:</p></td>
-        <td><%= f.text_field :state, style: 'width:150px;' %></td>
+        <td><p style="margin-bottom:0;">Parent 2 State:</p></td>
+        <td><%= f.text_field :state2, style: 'width:150px;' %></td>
       </tr>
       <tr>
-        <td><p style="margin-bottom:0;">Zip:</p></td>
-        <td><%= f.text_field :zip, style: 'width:150px;' %></td>
+        <td><p style="margin-bottom:0;">Parent 2 Zip:</p></td>
+        <td><%= f.text_field :zip2, style: 'width:150px;' %></td>
       </tr>
+    </table>
+
+    <p style="color:black;margin-bottom:10px;margin-top:20px;"><strong>Trip Refunds</strong></p>
+    <table>
+      <% if @registration.grade == 8 %>
+          <tr>
+            <td colspan="2"><p style="margin-bottom:0;">
+              Donate my trip refund to Oya No Kai:
+              <%= f.radio_button :refund_to, 'Donate' %>
+            </p></td>
+          </tr>
+          <tr>
+            <td colspan="2"><p style="margin-bottom:0;">
+              Parent 1 should receive any trip refunds:
+              <%= f.radio_button :refund_to, 'Parent 1' %>
+            </p></td>
+          </tr>
+          <tr>
+            <td colspan="2"><p style="margin-bottom:0;">
+              Parent 2 should receive any trip refunds:
+              <%= f.radio_button :refund_to, 'Parent 2' %>
+            </p></td>
+          </tr>
+      <% end %>
     </table>
 
     <br/>

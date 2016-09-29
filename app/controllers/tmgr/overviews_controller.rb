@@ -112,4 +112,11 @@ class Tmgr::OverviewsController < ApplicationController
     registration.update_attribute(:onk, params[:onk_member])
     redirect_to tmgr_form_view_path, notice: 'ONK status has bee updated.'
   end
+
+  def update_chap
+    registration = Registration.find(params[:id])
+    registration.user.update_attribute(:chaperone, params[:chaperone])
+    redirect_to tmgr_form_view_path, notice: 'Chaperone status has bee updated.'
+  end
+
 end

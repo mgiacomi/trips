@@ -4,17 +4,6 @@
     <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site you
       manage your personal information,
       your letter of intent, and make payments to the trip.</p>
-
-    <p>If you are going to chaperone the trip then check the box below as well. Doing so will combind
-      the student fees and chaperone fees in the payments section of the app.</p>
-
-    <%= form_tag(registrations_chaperone_path, method: :post, id: 'chaperone_form') do %>
-        I am also a chaperone
-        <input type="checkbox"
-               <%= current_user.chaperone == true ? 'checked="checked"' : '' %>
-               name="chaperone"
-               onclick="jQuery('#chaperone_form').submit()"/>
-    <% end %>
   </div>
   <div id="actions">
     <ul>
@@ -48,7 +37,7 @@
         <div class="inner">
           <div class="box_heading">
             <h4>ONK Membership</h4></div>
-          <p>In order for students to go on the trip the family must be an ONK member.</p>
+          <p>In order for students to go on the trip the family must be an ONK member. This covers your <strong>2016-2017 school year</strong>.</p>
           <div style="margin-top:10px;">Status:
             <% if @registration == nil %>
                 <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
