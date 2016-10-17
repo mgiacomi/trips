@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   match '/tmgr/overview/collected/:grade/:type'  => 'tmgr/overviews#collected',  :as => :tmgr_overview_collected,  :via => :get
   match '/tmgr/overview/past_due/:grade/:type'   => 'tmgr/overviews#past_due',   :as => :tmgr_overview_past_due,   :via => :get
 
-  match '/tmgr/search' => 'tmgr/overviews#search', :as => :tmgr_search, :via => [:post,:put]
+  match '/tmgr/search'               => 'tmgr/overviews#search',               :as => :tmgr_search,        :via => [:post,:put]
+  match '/tmgr/recent/registrations' => 'tmgr/overviews#recent_registrations', :as => :tmgr_registrations, :via => [:post,:put]
+  match '/tmgr/recent/payments'      => 'tmgr/overviews#recent_payments',      :as => :tmgr_payments,      :via => [:post,:put]
 
   match '/tmgr/forms/view/:id'      => 'tmgr/overviews#view',         :as => :tmgr_form_view,      :via => :get
   match '/tmgr/forms/loi/:id'       => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi,       :via => :get

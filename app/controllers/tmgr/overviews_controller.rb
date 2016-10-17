@@ -12,6 +12,19 @@ class Tmgr::OverviewsController < ApplicationController
     @results = Registration.search params[:term]
   end
 
+  def recent_registrations
+    date = Date.today - params[:days].to_i
+    @registrations = Registration.where("created_at > ?", date)
+    params[:type] = "in the last #{params[:days]} days"
+    render :registered
+  end
+
+  def recent_payments
+    date = Date.today - params[:days].to_i
+    @payments = Payment.unscoped.where("created_at > ?", date).order(created_at: :desc)
+    params[:type] = "in the last #{params[:days]} days"
+  end
+
   def loi
     all = Registration.all.order(:slname, :sfname)
     if params[:outstanding] == 'true'
