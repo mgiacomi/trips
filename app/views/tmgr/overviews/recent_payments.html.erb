@@ -1,0 +1,47 @@
+<script>
+  jQuery(document).ready(function () {
+    jQuery("tr:odd").css("background-color", "#CEF5FF");
+    jQuery("td").css("padding-left", "10px");
+    jQuery("td").css("padding-right", "10px");
+  });
+</script>
+
+<h3><%= params[:grade] %> Grade Trip Administration - Payments <%= params['type'] %></h3>
+
+<br/><br/>
+
+<table style="border-bottom: 1px;">
+  <tr>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Id</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student First</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student Last</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Grade</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Created</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Fee</p></td>
+  </tr>
+  <% @payments.each do |payment| %>
+      <tr>
+        <td>
+          <p style="margin-bottom:0;">
+            <%= link_to payment.registration.id, tmgr_form_view_path(payment.registration) %>
+
+          </p>
+        </td>
+        <td><p style="margin-bottom:0;"><%= payment.registration.sfname %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.registration.slname %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.registration.grade %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.created_at.strftime('%m/%d/%Y') %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.pmtdate.strftime('%m/%d/%Y') %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.pmtnum %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.amount.present? ? number_to_currency(payment.amount) : "" %></p></td>
+        <td><p style="margin-bottom:0;"><%= payment.fee.present? ? number_to_currency(payment.fee) : "" %></p></td>
+      </tr>
+  <% end %>
+</table>
+
+
+<br/><br/>
+

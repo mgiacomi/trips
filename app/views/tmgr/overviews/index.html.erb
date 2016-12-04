@@ -90,3 +90,14 @@
 
 <br/><br/>
 
+<%= form_tag(tmgr_registrations_path, method: :post, style: 'margin-left:50px;') do %>
+    Registrations created in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
+    <%= submit_tag 'Search Registrations', class: "button black" %>
+<% end %>
+
+<br/>
+
+<%= form_tag(tmgr_payments_path, method: :post, style: 'margin-left:50px;') do %>
+    Payments made in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
+    <%= submit_tag 'Search Payments', class: "button black" %>
+<% end %>
