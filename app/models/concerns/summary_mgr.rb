@@ -10,6 +10,7 @@ module SummaryMgr
           not_onk_members: not_onk_members(all),
           outstanding_loi: outstanding_loi(all),
           uploaded_loi: uploaded_loi(all),
+          scholarships: scholarships(all),
           collected: collected(all),
           past_due: past_due(all)
       }
@@ -73,6 +74,24 @@ module SummaryMgr
         reg.grade == 8 && !reg.file_name.nil?
       end
       total = s_fifth.length + s_eighth.length
+      {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
+    end
+
+    def scholarships all
+      s_fifth = all.select do |reg|
+        reg.grade == 5 && !reg.scholarship.nil? && reg.scholarship > 0
+      end
+      s_eighth = all.select do |reg|
+        reg.grade == 8 && !reg.scholarship.nil? && reg.scholarship > 0
+      end
+
+      s_fifth_r = s_fifth.map{|r| r.scholarship}.reduce {|sum, n| sum + n}
+      s_eighth_r = s_eighth.map{|r| r.scholarship}.reduce {|sum, n| sum + n}
+
+      s_fifth_r = s_fifth_r.nil? ? 0 : s_fifth_r
+      s_eighth_r = s_eighth_r.nil? ? 0 : s_eighth_r
+
+      total = s_fifth_r + s_eighth_r
       {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
     end
 

@@ -67,6 +67,9 @@
       </ul>
       <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payment Due:</span>  <%= number_to_currency(@registration.total_due) %></p>
       <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payments Made:</span> <%= number_to_currency(@registration.total_paid) %></p>
+      <% if @registration.scholarship > 0 %>
+        <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Scholarships:</span> <%= number_to_currency(@registration.scholarship) %></p>
+      <% end %>
       <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payoff Amount:</span> <%= number_to_currency(@registration.payoff_amount) %></p>
       <p style="margin-bottom:10px;"><span style="font-weight:bold;color:black;">Total Amount:</span> <%= number_to_currency(@registration.total_amount) %></p>
       <p>

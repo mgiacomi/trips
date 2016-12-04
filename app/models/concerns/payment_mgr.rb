@@ -67,7 +67,7 @@ module PaymentMgr
       }.reduce { |map, n| map + n }
     end
 
-    due = due - total_paid
+    due = due - total_paid - self.scholarship
     due > 0 ? due : 0
   end
 

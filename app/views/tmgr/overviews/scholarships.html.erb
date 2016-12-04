@@ -1,0 +1,45 @@
+<script>
+  jQuery(document).ready(function () {
+    jQuery("tr:odd").css("background-color", "#CEF5FF");
+    jQuery("td").css("padding-left", "10px");
+    jQuery("td").css("padding-right", "10px");
+  });
+</script>
+
+<h3><%= params[:grade] %> Grade Trip Administration - Scholarships <%= params['grade'] %></h3>
+
+<br/><br/>
+
+<table style="border-bottom: 1px;">
+  <tr>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Id</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student First</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student Last</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Grade</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent First</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent Last</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent Phone</p></td>
+    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Scholarship</p></td>
+  </tr>
+  <% @registrations.each do |reg| %>
+      <tr>
+        <td>
+          <p style="margin-bottom:0;">
+            <%= link_to reg.id, tmgr_form_view_path(reg) %>
+
+          </p>
+        </td>
+        <td><p style="margin-bottom:0;"><%= reg.sfname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.slname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.grade %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.p1fname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.p1lname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.p1phone %></p></td>
+        <td><p style="margin-bottom:0;"><%= number_to_currency(reg.scholarship) %></p></td>
+      </tr>
+  <% end %>
+</table>
+
+
+<br/><br/>
+

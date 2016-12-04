@@ -87,9 +87,21 @@
       </tr>
       <% end %>
 
+      <%= form_for @registration, :url => tmgr_form_scholarship_path(@registration) do |f| %>
+        <tr>
+          <td><p style="margin-bottom:0;">Scholarship:</p></td>
+          <td>
+            <p style="margin-bottom:0;color:black;margin-left:10px;">
+              $<%= f.text_field :scholarship, style: "height:25px;width:80px;" %>
+              <%= f.submit "Update", class: "button black" %>
+            </p>
+          </td>
+        </tr>
       </table>
+      <% end %>
 
-  <br/>
+      <br/>
+
   <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
   <table>
     <tr>

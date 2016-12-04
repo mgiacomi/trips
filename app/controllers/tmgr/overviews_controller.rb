@@ -48,6 +48,12 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
+  def scholarships
+    all = Registration.all.order(:slname, :sfname)
+    registrations = Registration.scholarships all
+    @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+  end
+
   def collected
     all = Registration.all.order(:slname, :sfname)
     registrations = Registration.collected all
@@ -117,6 +123,12 @@ class Tmgr::OverviewsController < ApplicationController
     registration = Registration.find(params[:id])
     registration.user.update_attribute(:chaperone, params[:chaperone])
     redirect_to tmgr_form_view_path, notice: 'Chaperone status has bee updated.'
+  end
+
+  def scholarship
+    registration = Registration.find(params[:id])
+    registration.update_attribute(:scholarship, params[:registration]['scholarship'])
+    redirect_to tmgr_form_view_path(params[:id]), notice: 'Scholarship has been updated.'
   end
 
 end
