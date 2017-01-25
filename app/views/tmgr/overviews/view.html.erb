@@ -97,8 +97,22 @@
             </p>
           </td>
         </tr>
-      </table>
       <% end %>
+
+      <%= form_tag(tmgr_form_withdrawn_path, method: :post, id: 'withdrawn_form') do %>
+          <tr>
+            <td><p style="margin-bottom:0;">Withdrawn:</p></td>
+            <td>
+              <p style="margin-bottom:0;color:black;margin-left:10px;">
+                <input type="checkbox"
+                       <%= @registration.withdrawn == true ? 'checked="checked"' : '' %>
+                       name="withdrawn"
+                       onclick="jQuery('#withdrawn_form').submit()"/>
+              </p>
+            </td>
+          </tr>
+      <% end %>
+      </table>
 
       <br/>
 

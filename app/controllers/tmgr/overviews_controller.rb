@@ -61,6 +61,16 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
+  def withdrawn
+    all = Registration.all.order(:slname, :sfname)
+    registrations = Registration.withdrawn all
+    if params[:type] == "Students"
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+    else
+      @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
+    end
+  end
+
   def scholarships
     all = Registration.all.order(:slname, :sfname)
     registrations = Registration.scholarships all
@@ -136,6 +146,12 @@ class Tmgr::OverviewsController < ApplicationController
     registration = Registration.find(params[:id])
     registration.user.update_attribute(:chaperone, params[:chaperone])
     redirect_to tmgr_form_view_path, notice: 'Chaperone status has bee updated.'
+  end
+
+  def update_with
+    registration = Registration.find(params[:id])
+    registration.update_attribute(:withdrawn, params[:withdrawn])
+    redirect_to tmgr_form_view_path, notice: 'Withdrawn status has bee updated.'
   end
 
   def scholarship

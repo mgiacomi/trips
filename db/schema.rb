@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703031843) do
+ActiveRecord::Schema.define(version: 20160703031844) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "registration_id", limit: 4
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160703031843) do
     t.string   "state2",      limit: 45
     t.string   "zip2",        limit: 45
     t.string   "refund_to",   limit: 48
+    t.boolean  "withdrawn",                                       default: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -31,6 +31,14 @@
     <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:registered][:total] %></p></td>
   </tr>
   <tr>
+    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Withdrawn</p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:s_fifth].length, tmgr_overview_withdrawn_path('5th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:c_fifth].length, tmgr_overview_withdrawn_path('5th', 'Chaperones') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:s_eighth].length, tmgr_overview_withdrawn_path('8th', 'Students') %></p></td>
+    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:c_eighth].length, tmgr_overview_withdrawn_path('8th', 'Chaperones') %></p></td>
+    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:withdrawn][:total] %></p></td>
+  </tr>
+  <tr>
     <td><p style="margin-bottom:0;color:black;font-weight:bold;">ONK Members</p></td>
     <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'true') %></p></td>
     <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
