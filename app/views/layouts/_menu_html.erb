@@ -1,28 +1,30 @@
-<nav>
-  <ul id="nav" class="menu">
-    <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923">
-      <% if current_user != nil %>
-          <% if current_user.admin %>
+<nav class="menu">
+  <ul id="menu-primary" class="menu">
+    <% if current_user != nil %>
+        <% if current_user.admin %>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Admin Overview', tmgr_overview_path %>
+            </li>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Change Password', edit_user_registration_path %>
-          <% else %>
+            </li>
+        <% else %>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Overview', todos_home_path %>
+            </li>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Account', edit_user_registration_path %>
+            </li>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Registration', registrations_edit_path %>
+            </li>
+            <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
               <%= link_to 'Payments', payments_overview_path %>
-          <% end %>
-      <% end %>
-    </li>
-  </ul>
-</nav>
-
-<% if current_user != nil %>
-    <nav style="float:right;">
-      <ul id="nav" class="menu">
-        <li id="menu-item-923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-923" style="float:right;color:white;">
-          <%= current_user.email %> &nbsp;&nbsp;&nbsp;-
+            </li>
+        <% end %>
+        <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-8">
           <%= link_to "Logout", destroy_user_session_path %>
         </li>
-      </ul>
-    </nav>
-<% end %>
+    <% end %>
+  </ul>
+</nav>
