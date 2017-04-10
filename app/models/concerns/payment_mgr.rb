@@ -10,7 +10,7 @@ module PaymentMgr
       records << {date: Date.strptime("11/15/2016", '%m/%d/%Y'), student: 500, chaperone: 700}
       records << {date: Date.strptime("1/13/2017", '%m/%d/%Y'), student: 500, chaperone: 700}
       records << {date: Date.strptime("3/10/2017", '%m/%d/%Y'), student: 500, chaperone: 700}
-      records << {date: Date.strptime("4/14/2017", '%m/%d/%Y'), student: 500, chaperone: 700}
+      records << {date: Date.strptime("4/9/2017", '%m/%d/%Y'), student: 500, chaperone: 700}
     end
 
     def get_8th_pay_schedule
