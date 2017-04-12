@@ -19,7 +19,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-      :address              => "mail.oyanokai.org",
+      :address              => "trips.oyanokai.org",
       :port                 => 587,
       :domain               => "oyanokai.org",
       :user_name            => "no-reply@oyanokai.org",
