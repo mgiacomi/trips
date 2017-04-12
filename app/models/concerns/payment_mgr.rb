@@ -49,7 +49,7 @@ module PaymentMgr
   def total_paid
     total = 0
     self.payments.each do |pmt|
-      total += pmt.amount.to_i
+      total += pmt.amount.to_f
     end
     total
   end
