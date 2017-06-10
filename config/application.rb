@@ -24,8 +24,5 @@ module Trips
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
-    ENV['SSL_CERT_FILE'] = File.expand_path(File.dirname(__FILE__)) + "/cacert.pem"
-    ENV['GOOGLE_APPLICATION_CREDENTIALS'] = File.expand_path(File.dirname(__FILE__)) + '/trips_key.json'
   end
 end
