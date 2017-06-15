@@ -1704,6 +1704,23 @@
 
 
 /*Input and text fields*/
+.login-wrapper #error_explanation h2{
+    display:none;
+ }
+
+.login-wrapper #error_explanation li{
+    margin-bottom:20px;
+    color:red;
+    font-weight:bold;
+    list-style:none;
+    text-align:center;
+}
+
+#error_explanation h2{
+    color:red;
+    font-size:14px!important;
+}
+
 .error{
 	color:red;
 	font-weight:bold;

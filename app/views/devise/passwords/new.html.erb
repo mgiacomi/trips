@@ -1,16 +1,39 @@
-<h2>Forgot your password?</h2>
-<br/>
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
-    <%= devise_error_messages! %>
+<div class="content">
 
-    <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field :email, autofocus: true %>
+  <div class="login-box-one one-third-responsive">
+    <div style="display: none; width: 270px;margin: 0 auto;">
     </div>
-
-    <div class="actions" style="margin-top:20px;">
-      <%= f.submit "Send me reset password instructions", :class => 'button black', :style => "float:left; margin-right:10px;" %>
-      <%= render "devise/shared/links" %>
+    <div style="width: 270px;margin: 0 auto;">
+      &nbsp;
     </div>
-<% end %>
+  </div>
 
+  <%= form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :post, style: 'overflow:visible;'} do |f| %>
+      <div class="login-box-one one-third-responsive full-bottom">
+        <div class="login-wrapper half-bottom">
+          <img src="/images/general/mtfuji.jpg" alt="img">
+          <p class="half-bottom" style="margin-top:50px;">Enter your email address and we will send you a password reset link.</p>
+
+          <% if resource.errors.any? %>
+              <div class="small-notification red-notification" style="margin-bottom:20px;">
+                <p class="center-text uppercase" style="margin-top:0;">
+                  <i class="fa fa-warning"></i>
+                  <% resource.errors.full_messages.each do |msg| %>
+                      <%= msg %><br/>
+                  <% end %>
+                  <a href="#" class="close-small-notification">x</a>
+                </p>
+              </div>
+          <% end %>
+
+          <em><i class="fa fa-envelope"></i>Email</em>
+          <input name="user[email]" onfocus="if (this.value=='') this.value = ''" onblur="if (this.value=='') this.value = ''" type="text" value="<%= resource.email %>" class="green-focus login-box-one-pwd half-bottom">
+          <%= f.submit "Reset Password", class: "button button-blue center-button half-bottom" %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+  <% end %>
+
+  <div class="clear"></div>
+
+</div>
