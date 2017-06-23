@@ -24,15 +24,20 @@ en:
 
   activerecord:
       attributes:
+        parent:
+          p1fname: "Parent 1 First Name"
+          p1lname: "Parent 1 Last Name"
+          p1phone: "Parent 1 Phone"
+          p1email: "Parent 1 Email"
+          p1street: "Parent 1 Street"
+          p1city: "Parent 1 City"
+          p1state: "Parent 1 State"
+          p1zip: "Parent 1 Zip"
         registration:
           sfname: "Student's First Name"
           slname: "Student's Last Name"
           sgender: "Student's Gender"
           sgrade: "Trip"
-          p1fname: "Parent #1 First Name"
-          p1lname: "Parent #1 Last Name"
-          p1phone: "Parent #1 Phone"
-          p1email: "Parent #1 Email"
         payment:
           pmtdate: "Payment Date"
 

@@ -1,34 +1,22 @@
 class CreateRegistrations < ActiveRecord::Migration
   def change
     create_table "registrations", force: :cascade do |t|
-      t.integer  "user_id",             limit: 4
-
-      t.string "sfname",                limit: 45
-      t.string "slname",                limit: 45
-      t.string "sgender",               limit: 45
-      t.integer  "grade",               limit: 4,   default: 0
-
-      t.string "p1fname",               limit: 45
-      t.string "p1lname",               limit: 45
-      t.string "p1phone",               limit: 45
-      t.string "p1email",               limit: 45
-
-      t.string "p2fname",               limit: 45
-      t.string "p2lname",               limit: 45
-      t.string "p2phone",               limit: 45
-      t.string "p2email",               limit: 45
-
-      t.string "street",                limit: 255
-      t.string "city",                  limit: 45
-      t.string "state",                 limit: 45
-      t.string "zip",                   limit: 45
-
-      t.string "file_name",             limit: 56
-      t.string "file_ext",              limit: 56
-
-      t.boolean "onk",                  default: false
-
-      t.decimal   "scholarship",        precision: 6, scale: 2, default: 0
+      t.integer  "user_id",               limit: 4
+      t.string   "gender_pronoun",        limit: 45
+      t.string   "sfname",                limit: 45
+      t.string   "smname",                limit: 45
+      t.string   "slname",                limit: 45
+      t.string   "sgender",               limit: 45
+      t.integer  "grade",                 limit: 4,   default: 0
+      t.datetime "date_of_birth"
+      t.decimal  "scholarship",           precision: 6, scale: 2, default: 0
+      t.string   "econtact_name",         limit: 45
+      t.string   "econtact_relationship", limit: 45
+      t.string   "econtact_phone",        limit: 45
+      t.string   "econtact_address",      limit: 256
+      t.string   "chaperone_parent",      limit: 48
+      t.string   "refund_to",             limit: 48
+      t.boolean  "withdrawn",             default: false
 
       t.timestamps
     end

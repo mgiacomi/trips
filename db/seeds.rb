@@ -15,9 +15,5 @@ user = User.create(email: 'kblack@pdx.edu', password: password, admin: true)
 puts "#{user.email} #{password}"
 
 password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'matsumuraanl@gmail.com', password: password, admin: true)
-puts "#{user.email} #{password}"
-
-password = SecureRandom.urlsafe_base64(6)
 user = User.create(email: 'walcottma@msn.com', password: password, admin: true)
 puts "#{user.email} #{password}"

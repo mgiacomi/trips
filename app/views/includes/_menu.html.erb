@@ -1,12 +1,13 @@
 <script>
-  jQuery(document).ready(function () {
-    jQuery("#logout1").click(function () {
-      jQuery("#logout_form1").submit();
+    jQuery(document).ready(function () {
+        jQuery("#logout1").click(function () {
+            jQuery("#logout_form1").submit();
+        });
     });
-  });
 </script>
 
-<%= form_tag(destroy_user_session_path, id: 'logout_form1', method: 'delete') do %><% end %>
+<%= form_tag(destroy_user_session_path, id: 'logout_form1', method: 'delete') do %>
+<% end %>
 
 <ul class="navigation">
   <li class="mobile-navigation-breadcrumb">
@@ -15,47 +16,47 @@
 
   <% if current_user != nil %>
 
-    <li style="margin-right:0;margin-left:30px;">
-      <p id="logout1" style="margin-top:15px;">
-        <i class="fa fa-user"></i>
-        <i class="fa fa-circle"></i>
-        Admin Logout
-        <!--em><%= current_user.email %></em-->
-      </p>
-    </li>
-    <li style="margin-right:0;">
-      <p id="admbyweek" style="margin-top:15px;">
-        <a href="<%= todos_home_path %>">
+      <li style="margin-right:0;margin-left:30px;">
+        <p id="logout1" style="margin-top:15px;">
           <i class="fa fa-user"></i>
           <i class="fa fa-circle"></i>
-          Weekly View
-          <em>admin by week</em>
-        </a>
-      </p>
-    </li>
-    <li style="margin-right:0;">
-      <p id="overview" style="margin-top:15px;">
-        <a href="<%= todos_home_path %>">
-          <i class="fa fa-user"></i>
-          <i class="fa fa-circle"></i>
-          Overview
-          <em>admin overview</em>
-        </a>
-      </p>
-    </li>
+          Logout
+          <em>exit session</em>
+        </p>
+      </li>
+      <li style="margin-right:0;">
+        <p id="editaccount" style="margin-top:15px;">
+          <a href="<%= edit_user_registration_path %>">
+            <i class="fa fa-user"></i>
+            <i class="fa fa-circle"></i>
+            Edit Profile
+            <em><%= current_user.email %></em>
+          </a>
+        </p>
+      </li>
+      <li style="margin-right:0;">
+        <p id="overview" style="margin-top:15px;">
+          <a href="<%= todos_home_path %>">
+            <i class="fa fa-user"></i>
+            <i class="fa fa-circle"></i>
+            Overview
+            <em>outstanding items</em>
+          </a>
+        </p>
+      </li>
 
   <% else %>
 
-    <li>
-      <p style="margin-top:15px;">
-        <a href="#">
-          <i class="fa fa-home"></i>
-          <i class="fa fa-circle"></i>
-          Lost Login
-          <em>get your code via email</em>
-        </a>
-      </p>
-    </li>
+      <li>
+        <p style="margin-top:15px;">
+          <a href="#">
+            <i class="fa fa-home"></i>
+            <i class="fa fa-circle"></i>
+            Lost Login
+            <em>get your code via email</em>
+          </a>
+        </p>
+      </li>
   <% end %>
   <li class="mobile-navigation-breadcrumb">
     <em>Copyright 2016. All rights reserved.</em>

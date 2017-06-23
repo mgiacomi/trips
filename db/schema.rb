@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703031844) do
+ActiveRecord::Schema.define(version: 20160703031845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "parents", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "p1fname",    limit: 45
+    t.string   "p1lname",    limit: 45
+    t.string   "p1phone",    limit: 45
+    t.string   "p1email",    limit: 45
+    t.string   "p1street",   limit: 255
+    t.string   "p1city",     limit: 45
+    t.string   "p1state",    limit: 45
+    t.string   "p1zip",      limit: 45
+    t.string   "p2fname",    limit: 45
+    t.string   "p2lname",    limit: 45
+    t.string   "p2phone",    limit: 45
+    t.string   "p2email",    limit: 45
+    t.string   "p2street",   limit: 255
+    t.string   "p2city",     limit: 45
+    t.string   "p2state",    limit: 45
+    t.string   "p2zip",      limit: 45
+    t.string   "refund_to",  limit: 48
+    t.boolean  "onk",                    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "payments", force: :cascade do |t|
     t.integer  "registration_id"

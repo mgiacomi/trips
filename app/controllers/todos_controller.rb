@@ -3,7 +3,10 @@ class TodosController < ApplicationController
 
   def status
     redirect_to tmgr_overview_path if current_user.admin
-    @registration = Registration.find_by(user_id: current_user.id)
+    @parent = current_user.parent.nil? ? Parent.new(user_id: current_user.id) : Parent.find_by_user_id(current_user.id)
+  end
+
+  def parents
   end
 
   def denied
