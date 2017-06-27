@@ -1,5 +1,5 @@
 <div class="content">
-  <%= render '/includes/breadcrumb', page_name: 'Registration' %>
+  <%= render '/includes/breadcrumb', page_name: 'Parent Information' %>
 
   <div class="header-strip box-960 content">
     <div class="half-bottom">
@@ -14,6 +14,7 @@
   </div>
 
   <div class="content box-960 container">
+
     <% if @parent.errors.any? %>
         <div class="red-notification" style="margin-bottom:20px;">
           <p class="left-text uppercase" style="margin-top:0; margin-bottom:0; padding:10px;">
@@ -28,10 +29,9 @@
           <br/>
         </div>
     <% end %>
+
     <%= form_for @parent, url: parents_update_path do |f| %>
-
         <div class="one-half-responsive half-bottom">
-
           <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
             <h1>Parent #1</h1>
             <ul>

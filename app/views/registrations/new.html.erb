@@ -1,15 +1,7 @@
 <div class="content">
   <%= render '/includes/breadcrumb', page_name: 'Registration' %>
 
-  <div class="one-half-responsive half-bottom">
-    <h3>Japan Trip Registration</h3>
-    <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site to
-      manage your personal information and make payments to the trip.</p>
-  </div>
-
-  <div class="one-half-responsive last half-bottom">
-    <%= form_for @registration, url: registrations_new_path do |f| %>
-        <%= render 'form', f: f %>
-    <% end %>
-  </div>
+  <%= form_for @registration, url: registrations_new_path do |f| %>
+      <%= render 'form', f: f %>
+  <% end %>
 </div>
