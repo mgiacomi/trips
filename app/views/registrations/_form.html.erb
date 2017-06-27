@@ -1,0 +1,62 @@
+<% if @registration.errors.any? %>
+    <div class="red-notification" style="margin-bottom:20px;">
+      <p class="left-text uppercase" style="margin-top:10px; margin-left:10px;">
+        <i class="fa fa-warning"></i>
+        <%= pluralize(@registration.errors.count, "error") %> need to be resolved.<br/>
+        <ul style="margin-left:30px;">
+        <% @registration.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </p>
+    </div>
+<% end %>
+
+<div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+  <h1>Student Registration</h1>
+  <ul>
+    <li style="text-align: left;padding-left:60px;">
+      First Name <%= f.text_field :fname, class: "text-input-one", style: 'margin-left:23px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Middle Name <%= f.text_field :mname, class: "text-input-one", style: 'margin-left:12px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Last Name <%= f.text_field :lname, class: "text-input-one", style: 'margin-left:27px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Gender
+      <%= f.select :gender,
+                   options_for_select([['', ''], ['Male', 'Male'], ['Female', 'Female']], @registration.gender),
+                   {}, {class: 'text-input-one', style: 'margin-left:50px;width:180px;height:25px;display:inline;padding-left:7px;color:black;'} %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Trip
+      <%= f.select :grade,
+                   options_for_select([['', ''], ['5th Grade', '5'], ['8th Grade', '8'], ['High School', 'H']], @registration.grade),
+                   {}, {class: 'text-input-one', style: 'margin-left:75px;width:180px;height:25px;display:inline;padding-left:7px;color:black;'} %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Date Of Birth <%= f.text_field :date_of_birth, class: "text-input-one", style: 'margin-left:10px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+  </ul>
+  <h1>Emergency Contact</h1>
+  <ul>
+    <li style="text-align: left;padding-left:60px;">
+      Name <%= f.text_field :ec_name, class: "text-input-one", style: 'margin-left:55px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Relationship <%= f.text_field :ec_relationship, class: "text-input-one", style: 'margin-left:10px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Phone <%= f.text_field :ec_phone, class: "text-input-one", style: 'margin-left:50px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+    <li style="text-align: left;padding-left:60px;">
+      Address <%= f.text_field :ec_address, class: "text-input-one", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+    </li>
+
+  </ul>
+  <input type="submit" class="button center-button button-blue" value="Save Registration"/>
+</div>
+
+

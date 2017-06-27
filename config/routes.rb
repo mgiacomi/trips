@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   match '/onk'      => 'payments#onk_receipt', :as => :onk_receipt,       :via => :post
   match '/payments' => 'payments#overview',    :as => :payments_overview, :via => :get
 
-  match '/registration'           => 'registrations#edit',        :as => :registrations_edit,         :via => :get
-  match '/registration'           => 'registrations#update',      :as => :registrations,              :via => [:post,:put,:patch]
-  match '/registration/loi'       => 'registrations#upload_loi',  :as => :registrations_upload_loi,   :via => :post
-  match '/registration/loi/:file_name' => 'registrations#download_loi', :as => :registrations_download_loi, :via => :get
+  match '/registration'           => 'registrations#index',       :as => :registrations_index,        :via => :post
+  match '/registration/new'       => 'registrations#new',         :as => :registrations_new,          :via => :get
+  match '/registration/new'       => 'registrations#create',      :as => :registrations_create,       :via => :post
+  match '/registration/:id'       => 'registrations#edit',        :as => :registrations_edit,         :via => :get
+  match '/registration/:id'       => 'registrations#update',      :as => :registrations_update,       :via => [:put,:patch]
 
   devise_for :users
 

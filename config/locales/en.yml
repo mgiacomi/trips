@@ -34,10 +34,11 @@ en:
           p1state: "Parent 1 State"
           p1zip: "Parent 1 Zip"
         registration:
-          sfname: "Student's First Name"
-          slname: "Student's Last Name"
-          sgender: "Student's Gender"
-          sgrade: "Trip"
+          fname: "Student's First Name"
+          lname: "Student's Last Name"
+          gender: "Student's Gender"
+          grade: "Trip"
+          date_of_birth: "Date of Birth"
         payment:
           pmtdate: "Payment Date"
 

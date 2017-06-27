@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160703031845) do
     t.string   "p2city",     limit: 45
     t.string   "p2state",    limit: 45
     t.string   "p2zip",      limit: 45
-    t.string   "refund_to",  limit: 48
     t.boolean  "onk",                    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -53,34 +52,23 @@ ActiveRecord::Schema.define(version: 20160703031845) do
 
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "sfname",      limit: 45
-    t.string   "slname",      limit: 45
-    t.string   "sgender",     limit: 45
-    t.integer  "grade",                                           default: 0
-    t.string   "p1fname",     limit: 45
-    t.string   "p1lname",     limit: 45
-    t.string   "p1phone",     limit: 45
-    t.string   "p1email",     limit: 45
-    t.string   "p2fname",     limit: 45
-    t.string   "p2lname",     limit: 45
-    t.string   "p2phone",     limit: 45
-    t.string   "p2email",     limit: 45
-    t.string   "street",      limit: 255
-    t.string   "city",        limit: 45
-    t.string   "state",       limit: 45
-    t.string   "zip",         limit: 45
-    t.string   "file_name",   limit: 56
-    t.string   "file_ext",    limit: 56
-    t.boolean  "onk",                                             default: false
-    t.decimal  "scholarship",             precision: 6, scale: 2, default: 0.0
+    t.string   "gender_pronoun",   limit: 45
+    t.string   "fname",            limit: 45
+    t.string   "mname",            limit: 45
+    t.string   "lname",            limit: 45
+    t.string   "gender",           limit: 45
+    t.integer  "grade",                                                default: 0
+    t.datetime "date_of_birth"
+    t.decimal  "scholarship",                  precision: 6, scale: 2, default: 0.0
+    t.string   "ec_name",          limit: 45
+    t.string   "ec_relationship",  limit: 45
+    t.string   "ec_phone",         limit: 45
+    t.string   "ec_address",       limit: 256
+    t.string   "chaperone_parent", limit: 48
+    t.string   "refund_to",        limit: 48
+    t.boolean  "withdrawn",                                            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "street2",     limit: 255
-    t.string   "city2",       limit: 45
-    t.string   "state2",      limit: 45
-    t.string   "zip2",        limit: 45
-    t.string   "refund_to",   limit: 48
-    t.boolean  "withdrawn",                                       default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,7 +85,6 @@ ActiveRecord::Schema.define(version: 20160703031845) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
-    t.boolean  "chaperone",              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

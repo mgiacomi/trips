@@ -9,6 +9,7 @@ gem 'raygun4ruby'
 gem 'request_store'
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'validates_timeliness'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'

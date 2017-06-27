@@ -15,7 +15,7 @@
 
     <% if @parent.errors.any? %>
         <div class="red-notification" style="margin-bottom:20px;">
-          <p class="center-text uppercase" style="text-align:left; margin-top:0; margin-bottom:0; padding:10px;">
+          <p class="left-text uppercase" style="margin-top:0; margin-bottom:0; padding:10px;">
             <i class="fa fa-warning"></i>
             <%= pluralize(@parent.errors.count, "error") %> prohibited this registration from being saved:
           </p>
@@ -113,8 +113,7 @@
       <ul>
         <div class="box one_half">
           <div class="inner">
-            <div class="box_heading">
-              <h4>Setup Account</h4></div>
+            <div class="box_heading"><h4>Setup Account</h4></div>
             <p>You can manage your authorization data here. Change your password or update your email address.</p>
             <div style="margin-top:10px;">Status:
               <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
@@ -124,17 +123,16 @@
         <hr/>
         <div class="box one_half column_last">
           <div class="inner">
-            <div class="box_heading">
-              <h4>Registration Information</h4></div>
+            <div class="box_heading"><h4>Registration Information</h4></div>
             <p>In order to prepare for the trip we need address and contact information for students and parents.</p>
             <% if @registration == nil %>
                 <div style="margin-top:10px;">Status:
                   <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
-                <%= link_to 'Fill out registration', registrations_edit_path %>
+                <%= link_to 'Fill out registration', registrations_new_path %>
             <% else %>
                 <div style="margin-top:10px;">Status:
                   <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
-                <%= link_to 'Edit your registration', registrations_edit_path %>
+                <%= link_to 'Edit your registration', registrations_new_path %>
             <% end %>
           </div>
         </div>
