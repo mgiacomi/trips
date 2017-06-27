@@ -7,9 +7,6 @@ class TodosController < ApplicationController
     @registrations = Registration.where(user_id: current_user.id).order(:grade)
   end
 
-  def parents
-  end
-
   def denied
   end
 

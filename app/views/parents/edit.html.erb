@@ -1,0 +1,105 @@
+<div class="content">
+  <%= render '/includes/breadcrumb', page_name: 'Registration' %>
+
+  <div class="header-strip box-960 content">
+    <div class="half-bottom">
+      <div class="left-header-strip">
+        <h3>Japan Trip Registration</h3>
+        <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site to
+          manage your personal information and make payments to the trip.</p>
+      </div>
+      <div class="right-header-strip">
+      </div>
+    </div>
+  </div>
+
+  <div class="content box-960 container">
+    <% if @parent.errors.any? %>
+        <div class="red-notification" style="margin-bottom:20px;">
+          <p class="left-text uppercase" style="margin-top:0; margin-bottom:0; padding:10px;">
+            <i class="fa fa-warning"></i>
+            <%= pluralize(@parent.errors.count, "error") %> prohibited this registration from being saved:
+          </p>
+          <ul style="margin-left: 20px;">
+            <% @parent.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+          <br/>
+        </div>
+    <% end %>
+    <%= form_for @parent, url: parents_update_path do |f| %>
+
+        <div class="one-half-responsive half-bottom">
+
+          <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+            <h1>Parent #1</h1>
+            <ul>
+              <li style="text-align: left;padding-left:60px;">
+                First Name
+                <%= f.text_field :p1fname, class: "text-input-one", style: 'margin-left:23px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Last Name
+                <%= f.text_field :p1lname, class: "text-input-one", style: 'margin-left:23px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Phone <%= f.text_field :p1phone, class: "text-input-one", style: 'margin-left:53px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Email <%= f.text_field :p1email, class: "text-input-one", style: 'margin-left:60px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Street <%= f.text_field :p1street, class: "text-input-one", style: 'margin-left:52px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                City <%= f.text_field :p1city, class: "text-input-one", style: 'margin-left:68px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                State <%= f.text_field :p1state, class: "text-input-one", style: 'margin-left:57px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Zip <%= f.text_field :p1zip, class: "text-input-one", style: 'margin-left:72px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+            </ul>
+            <%= f.submit "Update Parent Data", class: "button center-button button-blue", style: "width:170px;" %>
+          </div>
+        </div>
+
+        <div class="one-half-responsive last half-bottom">
+          <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+            <h1>Parent #2</h1>
+            <ul>
+              <li style="text-align: left;padding-left:60px;">
+                First Name
+                <%= f.text_field :p2fname, class: "text-input-one", style: 'margin-left:23px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Last Name
+                <%= f.text_field :p2lname, class: "text-input-one", style: 'margin-left:23px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Phone <%= f.text_field :p2phone, class: "text-input-one", style: 'margin-left:53px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Email <%= f.text_field :p2email, class: "text-input-one", style: 'margin-left:60px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Street <%= f.text_field :p2street, class: "text-input-one", style: 'margin-left:52px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                City <%= f.text_field :p2city, class: "text-input-one", style: 'margin-left:68px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                State <%= f.text_field :p2state, class: "text-input-one", style: 'margin-left:57px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Zip <%= f.text_field :p2zip, class: "text-input-one", style: 'margin-left:72px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+            </ul>
+            <%= f.submit "Update Parent Data", class: "button center-button button-blue", style: "width:170px;" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
