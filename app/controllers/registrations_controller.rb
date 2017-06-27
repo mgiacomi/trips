@@ -1,16 +1,12 @@
 class RegistrationsController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
-    @registrations = Registration.where user_id: current_user.id
-  end
-
   def new
     @registration = Registration.new
   end
 
   def edit
-    @registration = Registration.query('user_id=? and id=?', current_user.id, params[:id])
+    @registration = Registration.where("user_id=? and id=?", current_user.id, params[:id]).first
   end
 
   def create
@@ -24,7 +20,7 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    @registration = Registration.query('user_id=? and id=?', current_user.id, params[:id])
+    @registration = Registration.where('user_id=? and id=?', current_user.id, params[:id]).first
 
     if @registration.update_attributes(params[:registration])
       redirect_to todos_home_path, notice: 'Registration was successfully updated.'

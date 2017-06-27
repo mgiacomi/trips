@@ -1,5 +1,5 @@
 class Registration < ActiveRecord::Base
-  include LoiFileMgr, SummaryMgr, PaymentMgr
+  include SummaryMgr, PaymentMgr
 
   belongs_to :user
   has_many :payments

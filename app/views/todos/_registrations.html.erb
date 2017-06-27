@@ -1,53 +1,42 @@
 <div id="accordion-container">
-  <h5 class="accordion-header active-header inactive-header">5th Grade Student</h5>
-  <div class="accordion-content" style="display: block;">
-    <h6 class="half-bottom">Your content title</h6>
-    <p class="half-bottom">
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-    </p>
-  </div>
-  <h5 class="accordion-header">5th Grade Chaperone</h5>
+  <% @registrations.each_with_index do |reg, idx| %>
+      <h5 class="accordion-header
+        <% if idx==0 %>active-header inactive-header
+        <% end %>"><%= reg.grade %>th Grade Student</h5>
+      <div class="accordion-content"
+           <% if idx==0 %>style="display: block;"
+      <% end %>>
+        <h5 style="margin-bottom:10px;"><%= reg.fname %> <%= reg.lname %></h5>
+        <p class="half-bottom">
+          Trip: <%= reg.grade %><br/>
+          Gender: <%= reg.gender %><br/>
+          DOB: <%= reg.date_of_birth.strftime "%m/%d/%Y" %><br/>
+          <%= link_to "edit registration", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %>
+          <br/><br/>
+
+          Payment Status: <span style="font-weight: bold; color:green;">Current</span><br/>
+          <%= link_to "payment details", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %>
+
+        </p>
+      </div>
+  <% end %>
+
+  <h5 class="accordion-header">Parent Information</h5>
   <div class="accordion-content">
-    <h6 class="half-bottom">Your content title</h6>
+    <h5 style="margin-bottom:10px;"><%= @parent.p1fname %> <%= @parent.p1lname %></h5>
     <p class="half-bottom">
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
+      Email: <%= @parent.p1email %><br/>
+      Phone: <%= @parent.p1phone %><br/>
+      Address: <%= @parent.p1street %>, <%= @parent.p1city %>, <%= @parent.p1state %> <%= @parent.p1zip %><br/>
     </p>
-  </div>
-  <h5 class="accordion-header">8th Grade Student</h5>
-  <div class="accordion-content">
-    <h6 class="half-bottom">Your content title</h6>
-    <p class="half-bottom">
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-    </p>
-  </div>
-  <h5 class="accordion-header">High School Student</h5>
-  <div class="accordion-content">
-    <h6 class="half-bottom">Your content title</h6>
-    <p class="half-bottom">
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-    </p>
-  </div>
-  <h5 class="accordion-header">Parents</h5>
-  <div class="accordion-content">
-    <h6 class="half-bottom">Your content title</h6>
-    <p class="half-bottom">
-      You can add any content you want, anything you want
-      any elements from our framework you want into this
-      accordion! Pretty awesome! Plus, it's fully responsive!
-    </p>
+    <% unless @parent.p2fname.blank? && @parent.p2lname.blank? %>
+        <h5 style="margin-bottom:10px;"><%= @parent.p2fname %> <%= @parent.p2lname %></h5>
+        <p style="margin-bottom:10px">
+          Email: <%= @parent.p2email %><br/>
+          Phone: <%= @parent.p2phone %><br/>
+          Address: <%= @parent.p2street %>, <%= @parent.p2city %>, <%= @parent.p2state %> <%= @parent.p2zip %><br/>
+        </p>
+        <%= link_to "edit parent info", parents_edit_path, style: 'text-decoration:underline;' %><br/>
+    <% end %>
   </div>
 </div>

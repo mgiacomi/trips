@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   match '/support'  => 'todos#support',        :as => :support,           :via => :get
   match '/privacy'  => 'todos#privacy',        :as => :privacy,           :via => :get
 
-  match '/parents'  => 'parents#update',       :as => :parents_update,           :via => [:post,:put,:patch]
-
   match '/receipt'  => 'payments#receipt',     :as => :payments_receipt,  :via => :post
   match '/onk'      => 'payments#onk_receipt', :as => :onk_receipt,       :via => :post
   match '/payments' => 'payments#overview',    :as => :payments_overview, :via => :get
 
-  match '/registration'           => 'registrations#index',       :as => :registrations_index,        :via => :post
+  match '/parents'  => 'parents#edit',         :as => :parents_edit,      :via => :get
+  match '/parents'  => 'parents#update',       :as => :parents_update,    :via => [:post,:put,:patch]
+
   match '/registration/new'       => 'registrations#new',         :as => :registrations_new,          :via => :get
   match '/registration/new'       => 'registrations#create',      :as => :registrations_create,       :via => :post
   match '/registration/:id'       => 'registrations#edit',        :as => :registrations_edit,         :via => :get
