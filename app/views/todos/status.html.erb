@@ -8,93 +8,92 @@
 <div class="content">
   <%= render '/includes/breadcrumb', page_name: 'Status' %>
 
-  <div class="one-half-responsive">
-    <h3>Japan Trip Overview</h3>
-    <p>This app will help you, ONK, and trip volunteers keep the trip to Japan organized. You can use this site to
-      manage your personal information and make payments to the trip.</p>
-
-
-    <br/><br/>
+  <div class="one-half-responsive half-bottom">
+    <h3>JRR & Japan Trip Overview</h3>
+    <p>This app will help you manage your ONK Membership, registrations, and payments for your upcoming 5th, 8th, or
+      High School trip to Japan.</p>
 
     <div id="actions">
       <ul>
+        <div class="decoration"></div>
         <div class="box one_half">
           <div class="inner">
-            <div class="box_heading"><h4>Setup Account</h4></div>
-            <p>You can manage your authorization data here. Change your password or update your email address.</p>
-            <div style="margin-top:10px;">Status:
-              <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
-            <%= link_to 'Update email or password', edit_user_registration_path %>.
-          </div>
-        </div>
-        <hr/>
-        <div class="box one_half column_last">
-          <div class="inner">
-            <div class="box_heading"><h4>Registration Information</h4></div>
-            <p>In order to prepare for the trip we need address and contact information for students and parents.</p>
-            <% if @registration == nil %>
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 1: Parent Info</div>
+            <p>Before registering for a trip provide us with your contact information
+              <%= link_to 'contact information', parents_edit_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
+            <% if @registrations.length == 0 %>
                 <div style="margin-top:10px;">Status:
                   <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
-                <%= link_to 'Fill out registration', registrations_new_path %>
             <% else %>
                 <div style="margin-top:10px;">Status:
                   <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
-                <%= link_to 'Edit your registration', registrations_new_path %>
             <% end %>
           </div>
         </div>
-        <hr/>
+        <div class="decoration"></div>
         <div class="box one_half">
           <div class="inner">
-            <div class="box_heading">
-              <h4>ONK Membership</h4></div>
-            <p>In order for students to go on the trip the family must be an ONK member. This covers your
-              <strong>2016-2017 school year</strong>.</p>
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 2: Registrations</div>
+            <p>You need to sign up your kid(s) for a trip. Edit an existing registartion or
+              <%= link_to 'add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
+            <% if @registrations.length == 0 %>
+                <div style="margin-top:10px;">Status:
+                  <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
+            <% else %>
+                <div style="margin-top:10px;">Status:
+                  <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="decoration"></div>
+        <div class="box one_half">
+          <div class="inner">
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 3: ONK Membership</div>
+            <p>In order for students to go on the trip the family must be an ONK member. This covers your school
+              year.</p>
             <div style="margin-top:10px;">Status:
-              <% if @registration == nil %>
-                  <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
+              <% if @parent.onk %>
+                  <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
               <% else %>
-                  <% if @registration.onk %>
-                      <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-                  <% else %>
-                      <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
-                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                        <input type="hidden" name="cmd" value="_cart"/>
-                        <input type="hidden" name="upload" value="1"/>
-                        <input type="hidden" name="business" value="kathy.black@pdx.edu"/>
-                        <input type="hidden" name="currency_code" value="USD"/>
-                        <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>"/>
-                        <input type="hidden" name="shopping_url" value="<%= todos_home_url %>"/>
-                        <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>"/>
-                        <input type="hidden" name="item_name_1" value="ONK Membership"/>
-                        <input type="hidden" name="item_number_1" value="<%= @registration.sfname %> <%= @registration.slname %>"/>
-                        <input type="hidden" name="quantity_1" value="1"/>
-                        <input type="hidden" name="amount_1" value="26"/>
-                        <input type="image" name="submit" style="margin-top: 10px;"
-                               src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
-                      </form>
-                  <% end %>
+                  <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span><br/>
+                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_cart"/>
+                    <input type="hidden" name="upload" value="1"/>
+                    <input type="hidden" name="business" value="kathy.black@pdx.edu"/>
+                    <input type="hidden" name="currency_code" value="USD"/>
+                    <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>"/>
+                    <input type="hidden" name="shopping_url" value="<%= todos_home_url %>"/>
+                    <input type="hidden" name="invoice" value="<%= @parent.id %>-onk-<%= Time.now.to_i %>"/>
+                    <input type="hidden" name="item_name_1" value="ONK Membership"/>
+                    <input type="hidden" name="item_number_1" value="<%= @parent.p1fname %> <%= @parent.p1lname %>"/>
+                    <input type="hidden" name="quantity_1" value="1"/>
+                    <input type="hidden" name="amount_1" value="26"/>
+                    <input type="image" name="submit" style="margin-top: 10px;"
+                           src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
+                  </form>
               <% end %>
             </div>
           </div>
         </div>
-        <hr/>
-        <div class="box one_half column_last">
+        <div class="decoration"></div>
+        <div class="box one_half">
           <div class="inner">
-            <div class="box_heading">
-              <h4>Payments</h4></div>
-            <p>Every month you have a portion of your payment due for your trip.</p>
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 4: Payments</div>
+            <p>Here are the totals for all registrations. View payment details by clicking on a registration.</p>
             <div style="margin-top:10px;">Status:
-              <% if @registration == nil %>
+              <% if @registrations.length == 0 %>
                   <span style="margin-left:20px;font-weight:bold;color:red;">Complete Registration First</span>
               <% else %>
-                  <% if @registration.total_due > 0 %>
+                  <% if @parent.total_due > 0 %>
                       <span style="margin-left:20px;font-weight:bold; color:red;">Payment Due</span>
                   <% else %>
                       <span style="margin-left:20px;font-weight:bold; color:green;">Current</span>
                   <% end %>
                   </div>
-                  <%= link_to 'View payment history', payments_overview_path %>
+                  Total Due: <%= number_to_currency(@parent.total_due) %><br/>
+                  <% unless @parent.total_due <= 0 %>
+                      Next Pmt Date: <%= @parent.next_pmt_date.strftime("%m/%d/%Y") %><br/>
+                  <% end %>
               <% end %>
               </div>
         </div>
@@ -103,7 +102,7 @@
 
   </div>
 
-  <div class="one-half-responsive last">
+  <div class="one-half-responsive last half-bottom">
     <span style="font-weight:bold;">Outstanding Action Items:</span>
     <blockquote class="quote-one red-quote">
       <a style="text-decoration: underline;" href="<%= todos_home_path %>">Create a Registration</a>

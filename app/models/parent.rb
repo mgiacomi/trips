@@ -1,6 +1,8 @@
 class Parent < ActiveRecord::Base
+  include PaymentSummary
 
   belongs_to :user
+  has_many :registrations
 
   validates :p1fname, :p1lname, :p1street, :p1city, :p1state, :p1zip, :p1email, :p1phone, presence: {message: " is required"}
 

@@ -2,6 +2,7 @@ class Registration < ActiveRecord::Base
   include SummaryMgr, PaymentMgr
 
   belongs_to :user
+  belongs_to :parent
   has_many :payments
 
   validates :fname, :lname, :gender, :grade, presence: {message: " is required"}
@@ -12,6 +13,13 @@ class Registration < ActiveRecord::Base
     term = "%#{term}%"
     where('fname like ? or lname like ?', term, term).order(:lname, :fname)
   }
+
+  # Needs to move to a helper
+  def date_of_birth_formatted
+    unless date_of_birth.nil?
+      date_of_birth.strftime("%m/%d/%Y")
+    end
+  end
 
   private
 

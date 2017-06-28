@@ -78,8 +78,8 @@ display:inline-block;
 }
 
 p{
-	line-height: 24px;
-	margin-bottom:15px;
+	line-height: 20px;
+	margin-bottom:10px;
 	font-size:14px;
 	letter-spacing:0px;
 }
@@ -181,6 +181,8 @@ h1, h2, h3, h4, h5, h6{	font-family:'Source Sans Pro', sans-serif;	color:#1f1f1f
 }
 
 .decoration{
+    margin-top:10px;
+    margin-bottom:20px;
 	display:block;
 	height:1px;
 	background-color:rgba(0,0,0,0.1);
