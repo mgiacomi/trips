@@ -2,13 +2,13 @@
   <% @registrations.each_with_index do |reg, idx| %>
       <h5 class="accordion-header
         <% if idx==0 %>active-header inactive-header
-        <% end %>"><%= reg.grade %>th Grade Student</h5>
+        <% end %>"><%= textByGrade(reg.grade) %> Student</h5>
       <div class="accordion-content"
            <% if idx==0 %>style="display: block;"
       <% end %>>
         <h5 style="margin-bottom:10px;"><%= reg.fname %> <%= reg.lname %></h5>
         <p class="half-bottom">
-          Trip: <%= reg.grade %><br/>
+          Trip: <%= textByGrade(reg.grade) %><br/>
           Gender: <%= reg.gender %><br/>
           DOB: <%= reg.date_of_birth.strftime "%m/%d/%Y" %><br/>
           <%= link_to "edit registration", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %>
