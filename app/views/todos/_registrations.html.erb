@@ -13,8 +13,14 @@
           DOB: <%= reg.date_of_birth.strftime "%m/%d/%Y" %><br/>
           <%= link_to "edit registration", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %>
           <br/><br/>
-          Payment Status: <span style="font-weight: bold; color:green;">Current</span><br/>
-          Amount Due: $123.34<br/>
+          Payment Status:
+          <% if reg.total_due > 0 %>
+              <span style="color:red;">Payment Due</span>
+          <% else %>
+              <span style="color:green;">Current</span>
+          <% end %>
+          <br/>
+          Amount Due: <%= number_to_currency(reg.total_due) %><br/>
           <%= link_to "payment details", payments_overview_path(reg.id), style: 'text-decoration:underline;' %>
         </p>
       </div>
