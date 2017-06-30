@@ -5,19 +5,19 @@ module PaymentSummary
   end
 
   def total_amount
-    500
+    self.user.registrations.map { |r| r.total_amount }.reduce { |map, n| map + n }
   end
 
   def total_due
-    100
+    self.user.registrations.map { |r| r.total_due }.reduce { |map, n| map + n }
   end
 
   def total_paid
-    400
+    self.user.registrations.map { |r| r.total_paid }.reduce { |map, n| map + n }
   end
 
   def payoff_amount
-    total_amount - total_paid
+    self.user.registrations.map { |r| r.payoff_amount }.reduce { |map, n| map + n }
   end
 
   def next_pmt_date
