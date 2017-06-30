@@ -7,7 +7,7 @@ gem 'devise'
 gem 'pg'
 gem 'raygun4ruby'
 gem 'request_store'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
 gem 'puma'
 gem 'validates_timeliness'
 
