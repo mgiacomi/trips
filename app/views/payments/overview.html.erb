@@ -1,94 +1,118 @@
-<h2>Payments</h2>
-<div id="items">
-  <table width="100%">
-    <tr valign="top">
-      <td width="33%">
-        <div style="margin-bottom: 10px;" class="box_heading"><h3 style="top: 8px;">Overview</h3><span class="line"></span>
-        </div>
-        <div id="sponsors">
-          <p>Total fees for the trip are <%= number_to_currency(@registration.total_amount) %> and is due in full by March 14th 2017. To help make the payments
+<div class="content">
+  <%= render '/includes/breadcrumb', page_name: 'Payments' %>
+
+  <div class="content container">
+
+    <div class="one-third-responsive half-bottom">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+        <h1 style="font-size:20px;">Overview</h1>
+        <div style="padding:5px; margin-top: 10px;">
+          <p>Total fees for the trip are <%= number_to_currency(@registration.total_amount) %> and is due in full by
+            March 14th 2017. To help make the payments
             less painful we break them up into installments.</p>
           <span style="font-weight:bold;color:black;">Payment schedule:</span>
           <br/><br/>
-          <table>
+          <table style="font-size:12px;">
             <tr>
-              <td width="50%" style="text-decoration: underline; font-weight:bold;">Due Date</td>
-              <td width="25%" style="text-decoration: underline; font-weight:bold;">Student</td>
-              <td width="25%" style="text-decoration: underline; font-weight:bold;">Chaperone</td>
+              <td style="text-decoration: underline; font-weight:bold;">Due Date</td>
+              <td style="text-decoration: underline; font-weight:bold;">Student</td>
+              <td style="text-decoration: underline; font-weight:bold;">Chaperone</td>
             </tr>
-              <% @schedule.each do |pmt| %>
+            <% @schedule.each do |pmt| %>
                 <tr>
-                  <td><%= pmt[:date].strftime("%m/%d/%Y") %></td>
-                  <td><%= number_to_currency(pmt[:student]) %></td>
-                  <td><%= number_to_currency(pmt[:chaperone]) %></td>
+                  <td style="padding-top:0;"><%= pmt[:date].strftime("%m/%d/%Y") %></td>
+                  <td style="padding-top:0;"><%= number_to_currency(pmt[:student]) %></td>
+                  <td style="padding-top:0;"><%= number_to_currency(pmt[:chaperone]) %></td>
                 </tr>
-              <% end %>
+            <% end %>
           </table>
-          <ul>
-          </ul>
-          <p>
+          <p style="margin-top:20px;">
             <% if @registration.grade == 5 %>
-                If necessary, on 5/26/2017, an extra payment of <strong>#300-$500 for students</strong> and <strong>$600-$800 for chaperones</strong> may be needed.
+                If necessary, on 5/26/2017, an extra payment of <strong>#300-$500 for students</strong> and
+                <strong>$600-$800 for chaperones</strong> may be needed.
             <% end %>
             <% if @registration.grade == 8 %>
-                If necessary, on 4/6/2017, an extra payment of <strong>#200-$500 for students</strong> and <strong>$400-$800 for chaperones</strong> may be needed.
+                If necessary, on 4/6/2017, an extra payment of <strong>#200-$500 for students</strong> and
+                <strong>$400-$800 for chaperones</strong> may be needed.
             <% end %>
-            This may change based on airfare (the most expensive part of the trip), exchange rates and our fund raising plus scrip credits – so buy scrip!
+            This may change based on airfare (the most expensive part of the trip), exchange rates and our fund
+            raising plus scrip credits – so buy scrip!
           </p>
         </div>
-      </td>
-      <td width="33%">
-        <div style="margin-bottom: 10px;" class="box_heading"><h3 style="top: 8px;">Upcoming Payment</h3><span class="line"></span>
-        </div>
-        <div class="events">
-              <div class="date">
-                Due Date: <span><%= @registration.next_pmt_date.strftime("%m/%d/%Y") %></span>
-              </div>
-              <div class="details">
-                <p>Status:
-                  <% if @registration.total_due > 0 %>
-                      <span style="color:red;">Payment Due</span>
-                  <% else %>
-                      <span style="color:green;">Current</span>
-                  <% end %>
-                </p>
-              </div>
-              <div>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                  <input type="hidden" name="cmd" value="_cart">
-                  <input type="hidden" name="upload" value="1">
-                  <input type="hidden" name="business" value="kathy.black@pdx.edu">
-                  <input type="hidden" name="currency_code" value="USD">
-                  <input type="hidden" name="notify_url" value="<%= payments_receipt_url %>">
-                  <input type="hidden" name="shopping_url" value="<%= payments_overview_url %>">
-                  <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>">
-                  <input type="hidden" name="item_name_1" value="<%= @registration.fname %> <%= @registration.lname %> - <%= @registration.grade %>th Grade Trip">
-                  <input type="hidden" name="item_number_1" value="<%= @registration.next_pmt_date.strftime("%m/%d/%Y") %> <%= @registration.chaperone_parent ? "Chaperone" : "Student" %> Payment">
-                  <input type="hidden" name="quantity_1" value="1">
-                  $<input style="width:135px;height:30px;padding-left:5px;margin-top:20px;" type="text" name="amount_1" value="<%= @registration.total_due %>"><br/>
-                  <input type="image" name="submit" style="margin-top: 10px;"
-                         src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
-                </form>
-              </div>
-          <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payment Due:</span>  <%= number_to_currency(@registration.total_due) %></p>
-          <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payments Made:</span> <%= number_to_currency(@registration.total_paid) %></p>
+      </div>
+    </div>
+
+    <div class="one-third-responsive half-bottom">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+        <h1 style="font-size:20px;">Upcoming Payment</h1>
+        <div style="padding:5px; margin-top: 10px;">
+          <div class="date">
+            Due Date: <span><%= @registration.next_pmt_date.strftime("%m/%d/%Y") %></span>
+          </div>
+          <div class="details">
+            <p>Status:
+              <% if @registration.total_due > 0 %>
+                  <span style="color:red;">Payment Due</span>
+              <% else %>
+                  <span style="color:green;">Current</span>
+              <% end %>
+            </p>
+          </div>
+          <div>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="upload" value="1">
+              <input type="hidden" name="business" value="kathy.black@pdx.edu">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="notify_url" value="<%= payments_receipt_url %>">
+              <input type="hidden" name="shopping_url" value="<%= payments_overview_url %>">
+              <input type="hidden" name="invoice" value="<%= @registration.id %>-<%= (@registration.payments.length + 1) %>-<%= Time.now.to_i %>">
+              <input type="hidden" name="item_name_1" value="<%= @registration.fname %> <%= @registration.lname %> - <%= @registration.grade %>th Grade Trip">
+              <input type="hidden" name="item_number_1" value="<%= @registration.next_pmt_date.strftime("%m/%d/%Y") %> <%= @registration.chaperone_parent ? "Chaperone" : "Student" %> Payment">
+              <input type="hidden" name="quantity_1" value="1">
+              $<input style="width:135px;height:30px;padding-left:5px;margin-top:10px;display:inline;" type="text" name="amount_1" value="<%= @registration.total_due %>"><br/>
+              <input type="image" name="submit" style="margin-top: 10px;"
+                     src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
+            </form>
+          </div>
+          <p style="margin-top:20px;margin-bottom:5px;">
+            <span style="font-weight:bold;color:black;">Payment Due:</span>  <%= number_to_currency(@registration.total_due) %>
+          </p>
+          <p style="margin-bottom:5px;">
+            <span style="font-weight:bold;color:black;">Payments Made:</span> <%= number_to_currency(@registration.total_paid) %>
+          </p>
           <% if @registration.scholarship > 0 %>
-              <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Scholarships:</span> <%= number_to_currency(@registration.scholarship) %></p>
+              <p style="margin-bottom:5px;">
+                <span style="font-weight:bold;color:black;">Scholarships:</span> <%= number_to_currency(@registration.scholarship) %>
+              </p>
           <% end %>
-          <p style="margin-bottom:5px;"><span style="font-weight:bold;color:black;">Payoff Amount:</span> <%= number_to_currency(@registration.payoff_amount) %></p>
-          <p style="margin-bottom:10px;"><span style="font-weight:bold;color:black;">Total Amount:</span> <%= number_to_currency(@registration.total_amount) %></p>
+          <p style="margin-bottom:5px;">
+            <span style="font-weight:bold;color:black;">Payoff Amount:</span> <%= number_to_currency(@registration.payoff_amount) %>
+          </p>
+          <p style="margin-bottom:10px;">
+            <span style="font-weight:bold;color:black;">Total Amount:</span> <%= number_to_currency(@registration.total_amount) %>
+          </p>
           <p>
-            If you can not make a full payment this pay period, then pay what you can.  Make the rest up as soon as you can.
+            If you can not make a full payment this pay period, then pay what you can. Make the rest up as soon as you
+            can.
             If you would like to pay ahead or make your payment in full then feel free to do so.
           </p>
         </div>
-      </td>
-      <td width="33%">
-        <div style="margin-bottom: 10px;" class="box_heading"><h3 style="top: 8px;">History</h3><span class="line"></span></div>
-        <div class="news">
+      </div>
+    </div>
+
+    <div class="one-third-responsive last half-bottom">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+        <h1 style="font-size:20px;">History</h1>
+        <div style="padding:5px; margin-top: 10px;">
           <ul>
+            <% if @registration.payments.length == 0 %>
+              No payment history yet...
+            <% end %>
             <% @registration.payments.each do |pmt| %>
-                <li style="margin-bottom:5px;padding-bottom:5px;"><h5 style="margin-bottom:0px;"><%= number_to_currency(pmt.amount) %> - <%= pmt.pmtdate.strftime("%b #{pmt.pmtdate.day.ordinalize}, %Y") %></h5>
+                <li style="margin-bottom:5px;padding-bottom:5px;">
+                  <h5 style="margin-bottom:0px;"><%= number_to_currency(pmt.amount) %>
+                    - <%= pmt.pmtdate.strftime("%b #{pmt.pmtdate.day.ordinalize}, %Y") %></h5>
                   <p style="font-size: .9em;">
                     Payment: <%= pmt.pmtnum %><br/>
                     Logged on: <%= pmt.pmtdate.strftime("%m/%d/%Y %T") %>
@@ -97,16 +121,9 @@
             <% end %>
           </ul>
         </div>
-      </td>
-    </tr>
-  </table>
+      </div>
+    </div>
 
+  </div>
 
-  <div class="one_third">
-  </div>
-  <div class="one_third">
-  </div>
-  <div class="one_third column_last">
-  </div>
-  <div class="clear"></div>
 </div>
