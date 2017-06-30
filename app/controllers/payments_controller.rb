@@ -3,12 +3,14 @@ class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:receipt, :onk_receipt]
 
   def overview
-    @registration = Registration.find_or_initialize_by(user_id: current_user.id)
+    @registration = Registration.where('user_id=? and id=?', current_user.id, params[:id]).first
 
     if @registration.grade == 5
       @schedule = Registration.get_5th_pay_schedule
     elsif @registration.grade == 8
       @schedule = Registration.get_8th_pay_schedule
+    elsif @registration.grade == 11
+      @schedule = Registration.get_11th_pay_schedule
     end
   end
 

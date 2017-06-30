@@ -24,6 +24,17 @@ module PaymentMgr
       records << {date: Date.strptime("3/2/2017", '%m/%d/%Y'), student: 500, chaperone: 500}
       records << {date: Date.strptime("4/9/2017", '%m/%d/%Y'), student: 183.84, chaperone: 300}
     end
+
+    def get_11th_pay_schedule
+      records = Array.new
+      records << {date: Date.strptime("6/11/2016", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("10/1/2016", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("11/1/2016", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("1/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("2/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("3/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("4/1/2017", '%m/%d/%Y'), student: 183.84, chaperone: 0}
+    end
   end
 
   def get_schedule
@@ -40,7 +51,7 @@ module PaymentMgr
     schedule = get_schedule
     due = schedule.map { |r| r[:student] }.reduce { |map, n| map + n }
 
-    if self.user.chaperone
+    if self.chaperone_parent
       due += schedule.map { |r| r[:chaperone] }.reduce { |map, n| map + n }
     end
 
@@ -62,7 +73,7 @@ module PaymentMgr
       r[:date] < Date.today ? r[:student] : 0
     }.reduce { |map, n| map + n }
 
-    if self.user.chaperone
+    if self.chaperone_parent
       due += schedule.map { |r|
         r[:date] < Date.today ? r[:chaperone] : 0
       }.reduce { |map, n| map + n }
@@ -83,7 +94,7 @@ module PaymentMgr
     schedule.each do |r|
       sofar += r[:student]
 
-      if self.user.chaperone
+      if self.chaperone_parent
         sofar += r[:chaperone]
       end
 

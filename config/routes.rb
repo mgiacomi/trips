@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   match '/support'  => 'todos#support',        :as => :support,           :via => :get
   match '/privacy'  => 'todos#privacy',        :as => :privacy,           :via => :get
 
-  match '/receipt'  => 'payments#receipt',     :as => :payments_receipt,  :via => :post
-  match '/onk'      => 'payments#onk_receipt', :as => :onk_receipt,       :via => :post
-  match '/payments' => 'payments#overview',    :as => :payments_overview, :via => :get
+  match '/receipt'      => 'payments#receipt',     :as => :payments_receipt,  :via => :post
+  match '/onk'          => 'payments#onk_receipt', :as => :onk_receipt,       :via => :post
+  match '/payments/:id' => 'payments#overview',    :as => :payments_overview, :via => :get
 
   match '/parents'  => 'parents#edit',         :as => :parents_edit,      :via => :get
   match '/parents'  => 'parents#update',       :as => :parents_update,    :via => [:post,:put,:patch]

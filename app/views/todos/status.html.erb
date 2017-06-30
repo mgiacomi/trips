@@ -21,7 +21,7 @@
             <div class="box_heading" style="color:black; font-weight: bold;">Step 1: Parent Info</div>
             <p>Before registering for a trip provide us with your contact information
               <%= link_to 'contact information', parents_edit_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
-            <% if @registrations.length == 0 %>
+            <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
                 <div style="margin-top:10px;">Status:
                   <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
             <% else %>
