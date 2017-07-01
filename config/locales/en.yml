@@ -41,5 +41,12 @@ en:
           date_of_birth: "Date of Birth"
         payment:
           pmtdate: "Payment Date"
-
-
+        loi:
+          p1name: "Parent 1 Name"
+          p1phone: "Parent 1 Phone"
+          p1email: "Parent 1 Email"
+          p1address: "Parent 1 Address"
+          p1signature: "Parent 1 Signature"
+          p1sigdate: "Parent 1 Signature Date"
+          p1understand: "Parent 1 Understand"
+          p1relationship: " Parent 1 Relationship"

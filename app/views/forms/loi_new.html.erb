@@ -1,0 +1,253 @@
+<div class="content">
+  <%= render '/includes/breadcrumb', page_name: 'Parent Information' %>
+
+  <div class="header-strip box-960 content">
+    <% if @loi.errors.any? %>
+        <div class="red-notification" style="margin-bottom:20px;">
+          <p class="left-text uppercase" style="margin-top:0; margin-bottom:0; padding:10px;">
+            <i class="fa fa-warning"></i>
+            <%= pluralize(@loi.errors.count, "error") %>, scroll down to view details.
+          </p>
+        </div>
+    <% end %>
+
+    <div class="half-bottom">
+      <div class="left-header-strip">
+        <h3>Letter of Intention</h3>
+        <p>Dear Parent or Guardian of <%= @registration.fname %> <%= @registration.lname %>,</p>
+        <p>Each year since 1995, Oya No Kai, Inc. has solely sponsored a cultural exchange trip to Japan for the
+          recently matriculated 5th grade students of the Japanese Immersion Program of Portland Public Schools. Over
+          the years, Oya No Kai, Inc. has established and built relationships with a number of Japanese schools and
+          locales that help make this trip a successful educational experience.</p>
+        <p>This trip to Japan (Exchange) occurs during the summer when school is not in session. <b>Accordingly, the
+          Exchange is not funded, sponsored, or endorsed by Portland Public Schools</b>. Consequently, there is no
+          requirement for your child to participant in the Exchange. Portland Public Schools does not fund, sponsor, or
+          endorse this travel study program. The District is not responsible for conducting or supervising this trip.
+          PPS employees who participate in travel study programs are not acting in their capacity as District employees
+          and do so at their own risk. Students participating in travel study programs do so at their own risk.</p>
+        <p><b>If it is your intention for <%= @registration.fname %> <%= @registration.lname %> to participate in next
+          year’s 5th grade trip scheduled for mid-June to beginning of July 2018, please complete this form and return
+          it to the 5th Grade Cultural Exchange Committee c/o Oya No Kai, Inc., PO Box 13786, Portland, OR 97213 by June
+          30th, 2017. You will also need to pay through this portal or include $200 check ($150 is non-refundable) that
+          will be applied to your total deposit.</b> Completion of this form is necessary to establish the size of our
+          group. We understand that family circumstances change. If you later decide your child is not ready to
+          participate in the exchange, or if your circumstances change for any reason, you will have many opportunities
+          to withdraw your student’s name from the list of participants.</p>
+        <p>The Exchange has the following main objectives.</p>
+        <ul>
+          <li style="margin-left:40px;">To provide students with an authentic cultural experience;</li>
+          <li style="margin-left:40px;">To allow students to use their language skills and cultural knowledge</li>
+          <li style="margin-left:40px;">To provide a home stay experience in Japan</li>
+          <li style="margin-left:40px;">To have a culminating experience in recognition of six years of dedication to
+            the learning of Japanese
+          </li>
+          <li style="margin-left:40px;">To encourage students as their families make the decision to continue with the
+            Japanese Immersion Program
+            in middle and high school
+          </li>
+        </ul>
+        <br/>
+        <p>The Exchange is an extraordinary undertaking, requiring many volunteer hours of work on the part of every
+          participating family. The opportunity to experience Japan in-person will establish a foundation for your
+          child’s continued Japanese language study in middle school. The Exchange should not be confused with the
+          Portland Public School-sponsored trip, called the Research Residency in Japan, which occurs in the 8th
+          grade.</p>
+        <p><b>TRIP PLANNING</b></p>
+        <p>Oya No Kai, Inc. in conjunction with your student’s class, will form a Trip Committee to plan the details for
+          the 2017 Exchange. Based on previous experience, the Trip Committee, with its volunteer members, will work
+          many hours on your behalf. All input from parents is welcome and should be submitted to the Trip Committee. A
+          direct line of communication will be created for all participating families (i.e., a Google group or similar
+          service.) Please understand that final decisions, once made by the Trip Committee, should be accepted and
+          supported by everyone. If you have concerns about the trip planning process please feel free to discuss them
+          with the trip chairs, the Oya No Kai Trip Liaison Andrea Matsumura, or the president of Oya No Kai, Inc., Jeff
+          Hopper.</p>
+        <p><b>COSTS</b></p>
+        <p>The anticipated cost of this trip will be approximately $3,200 to $3,700. However, this is a difficult amount
+          to forecast with any precision. Airfare can be very volatile and can change daily. Itinerary choices,
+          particularly the balance between homestay nights and hotel nights, also have a significant effect on the total
+          cost. The schedule for payments partially results from the need to make advance payments on certain portions
+          of the itinerary, particularly airplane tickets. Fundraising by the class, as well as current class funds will
+          pay for various trip costs including the costs of the Trip Director's, Assistant Trip Directors and the
+          accompanying teachers. Any residual amount will serve to subsidize each participating student’s overall cost.
+        </p>
+        <p style="text-decoration: underline;"><b>MANDATORY MEETINGS AND PARTICIPATION:</b></p>
+        <p>Mandatory meetings play a critical part in communicating information to participating families. They serve to
+          relay and explain many aspects of trip planning and preparedness. It is therefore necessary that at least one
+          responsible parent or adult attend these meetings to receive information and to ask questions.</p>
+        <p>No more than four excused absences for a family are allowed between June 2015 and June 2016 for
+          <b>mandatory meetings, cultural series, and performance practices</b>. A request for an excused absence must
+          be submitted in <b>advance and in writing</b> (e-mail is acceptable) to the Trip Committee Chairperson(s).</p>
+        <p>In case of illness or family emergency, a phone call or e-mail will suffice. If you do not notify a Trip
+          Co-Chair of an absence <b>before</b> it takes place, your absence will be considered an unexcused absence.</p>
+        <p>Two unexcused absences for a family will result in your child being denied participation in the Exchange. You
+          will be responsible for catching up on the content of any missed meetings.</p>
+        <p>Please read the statements on the following page; complete the information requested and return the form to
+          trip the committee by mail at <b>5th Grade Cultural Exchange Committee c/o Oya No Kai, Inc., PO Box 13786,
+          Portland, OR 97213 by June 30th 2016.</b></p>
+        <p>Please retain this letter as a source of information, but your signature on the attached form represents that
+          you have read and understood the information contained herein.</p>
+        <br/>
+        <p style="text-align: center; font-weight: bold;">2017 “Our Dreams Take Flight” 5th Grade<br/>
+          Cultural Exchange Trip to Japan<br/>
+          Statement of Intention</p>
+        <p><b>The family of every participating student will need to commit to the following:</b></p><br/>
+        <ul>
+          <li style="margin-left:40px;">Review all correspondence from the Trip Committee.</li>
+          <li style="margin-left:40px;">Ensure that the Trip Committee has current e-mail addresses, street addresses
+            and phone numbers for your participating student
+          </li>
+          <li style="margin-left:40px;">Attend all mandatory meetings, including Cultural Series meetings and
+            performance practice meetings occurring the spring before the trip
+          </li>
+          <li style="margin-left:40px;">Provide a written excuse to the Trip Chairperson if a mandatory meeting must be
+            missed.
+          </li>
+          <li style="margin-left:40px;">Complete and submit all required forms and documents prior to or on the
+            deadlines established and communicated by the Trip Committee
+          </li>
+          <li style="margin-left:40px;">Make all deposits on time and in full (tentative deposit schedule follows)</li>
+          <li style="margin-left:40px;">Agree to follow all rules associated with trip participation throughout the
+            planning process, during meetings and on the trip (copy follows)
+          </li>
+          <li style="margin-left:40px;">Agree to make a concerted effort to participate in as many fundraising
+            activities which benefit the 5th grade trip as is possible
+          </li>
+          <li style="margin-left:40px;">Agree to make an effort to host an exchange student from Japan when one of our
+            sister schools visit during the 5th grade year (where practical and possible.) (Maximum one week commitment
+            during October or February.)
+          </li>
+        </ul><br/>
+      </div>
+      <div class="right-header-strip">
+      </div>
+    </div>
+  </div>
+
+  <div class="content box-960 container">
+
+    <% if @loi.errors.any? %>
+        <div class="red-notification" style="margin-bottom:20px;">
+          <p class="left-text uppercase" style="margin-top:0; margin-bottom:0; padding:10px;">
+            <i class="fa fa-warning"></i>
+            <%= pluralize(@loi.errors.count, "error") %> prohibited this registration from being saved:
+          </p>
+          <ul style="margin-left: 20px;">
+            <% @loi.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+          <br/>
+        </div>
+    <% end %>
+
+    <%= form_for @loi, url: loi_create_path(@registration.id) do |f| %>
+        <div class="one-half-responsive half-bottom">
+          <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+            <h1>Parent #1 Electronic Signature</h1>
+            <ul>
+              <li style="text-align: left;padding-left:60px;">
+                Name
+                <%= f.text_field :p1name, class: "text-input-one", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Phone <%= f.text_field :p1phone, class: "text-input-one", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Email <%= f.text_field :p1email, class: "text-input-one", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Address <%= f.text_field :p1address, class: "text-input-one", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Signature <%= f.text_field :p1signature, class: "text-input-one", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Date <%= f.text_field :p1sigdate, class: "text-input-one", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:20px;">
+              I have fully read and fully understood the Letter of Intention?
+              <br/>
+              <select name="loi[p1understand]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
+                <option></option>
+                <option <%= (@loi.p1understand == "Yes, I fully understand the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                  Yes, I fully understand the Letter of Intention.
+                </option>
+                <option <%= (@loi.p1understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                  No, I do not understand or agree with the Letter of Intention.
+                </option>
+              </select>
+              </li>
+              <li style="text-align: left;padding-left:20px;">
+                One of the following statements needs to be true to sign this form.
+                If not, don't continue or sign this form.
+                <select name="loi[p1relationship]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
+                  <option></option>
+                  <option <%= (@loi.p1relationship == "I am a parent of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
+                    I am a parent of <%= @registration.fname %> <%= @registration.lname %>
+                  </option>
+                  <option <%= (@loi.p1relationship == "I am the legal guardian of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
+                    I am the legal guardian of <%= @registration.fname %> <%= @registration.lname %>
+                  </option>
+                </select>
+              </li>
+            </ul>
+            <%= f.submit "E-Sign Form", class: "button center-button button-blue", style: "width:170px;" %>
+          </div>
+        </div>
+
+        <div class="one-half-responsive last half-bottom">
+          <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+            <h1>Parent #2 Electronic Signature</h1>
+            <ul>
+              <li style="text-align: left;padding-left:60px;">
+                Name
+                <%= f.text_field :p2name, class: "text-input-one", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Phone <%= f.text_field :p2phone, class: "text-input-one", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Email <%= f.text_field :p2email, class: "text-input-one", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Address <%= f.text_field :p2address, class: "text-input-one", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Signature <%= f.text_field :p2signature, class: "text-input-one", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:60px;">
+                Date <%= f.text_field :p2sigdate, class: "text-input-one", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+              </li>
+              <li style="text-align: left;padding-left:20px;">
+                I have fully read and fully understood the Letter of Intention?
+                <br/>
+                <select name="loi[p2understand]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
+                  <option></option>
+                  <option <%= (@loi.p2understand == "Yes, I fully understand the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                    Yes, I fully understand the Letter of Intention.
+                  </option>
+                  <option <%= (@loi.p2understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                    No, I do not understand or agree with the Letter of Intention.
+                  </option>
+                </select>
+              </li>
+              <li style="text-align: left;padding-left:20px;">
+                One of the following statements needs to be true to sign this form.
+                If not, don't continue or sign this form.
+                <select name="loi[p2relationship]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
+                  <option></option>
+                  <option <%= (@loi.p2relationship == "I am a parent of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
+                    I am a parent of <%= @registration.fname %> <%= @registration.lname %>
+                  </option>
+                  <option <%= (@loi.p2relationship == "I am the legal guardian of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
+                    I am the legal guardian of <%= @registration.fname %> <%= @registration.lname %>
+                  </option>
+                </select>
+              </li>
+            </ul>
+            <%= f.submit "E-Sign Form", class: "button center-button button-blue", style: "width:170px;" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

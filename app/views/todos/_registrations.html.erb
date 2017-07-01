@@ -11,7 +11,10 @@
           Trip: <%= textByGrade(reg.grade) %><br/>
           Gender: <%= reg.gender %><br/>
           DOB: <%= reg.date_of_birth.strftime "%m/%d/%Y" %><br/>
-          <%= link_to "edit registration", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %>
+          <%= link_to "edit registration", registrations_edit_path(reg.id), style: 'text-decoration:underline;' %><br/>
+          <% if reg.grade == 5 %>
+              <%= link_to 'sign letter of intention', loi_new_path(reg.id), style: 'text-decoration: underline;' %>
+          <% end %>
           <br/><br/>
           Payment Status:
           <% if reg.total_due > 0 %>

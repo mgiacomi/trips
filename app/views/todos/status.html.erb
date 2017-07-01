@@ -108,7 +108,7 @@
           <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
       <% end %>
       <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
-          <a style="text-decoration: underline;" href="#">Payment Due!</a>
+          Payment Due!
       <% end %>
       <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
           <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
@@ -116,7 +116,7 @@
       <% unless @parent.onk %>
           <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
       <% end %>
-      <a href="<%= todos_home_path %>" style="text-decoration: underline;">Sign Participant Agrement</a>
+      Sign Letter of Intention
     </blockquote>
     <br/>
     <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>

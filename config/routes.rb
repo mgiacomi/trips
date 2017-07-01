@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   match '/parents'  => 'parents#edit',         :as => :parents_edit,      :via => :get
   match '/parents'  => 'parents#update',       :as => :parents_update,    :via => [:post,:put,:patch]
 
+  match '/loi/:id'  => 'forms#loi_new',         :as => :loi_new,      :via => :get
+  match '/loi/:id'  => 'forms#loi_create',      :as => :loi_create,   :via => :post
+
   match '/registration/new'       => 'registrations#new',         :as => :registrations_new,          :via => :get
   match '/registration/new'       => 'registrations#create',      :as => :registrations_create,       :via => :post
   match '/registration/:id'       => 'registrations#edit',        :as => :registrations_edit,         :via => :get
