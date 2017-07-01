@@ -41,10 +41,10 @@ class PaymentsController < ApplicationController
       parent = Parent.find parent_id
       parent.onk = true
 
-      if registration.save
-        logger.info "ONK Membership added for registration id: #{registration.id}"
+      if parent.save
+        logger.info "ONK Membership added for parent id: #{parent.id}"
       else
-        logger.info "Failed to add ONK Membership for registration id: #{registration.id}"
+        logger.info "Failed to add ONK Membership for parent id: #{parent.id}"
       end
     end
   end
