@@ -113,7 +113,7 @@
       <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
           <a style="text-decoration: underline;" href="#">Update Parent Data</a>
       <% end %>
-      <% if @parent.onk %>
+      <% unless @parent.onk %>
           <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
       <% end %>
       <a href="<%= todos_home_path %>" style="text-decoration: underline;">Sign Participant Agrement</a>
