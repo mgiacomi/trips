@@ -21,6 +21,7 @@
           <% end %>
           <br/>
           Amount Due: <%= number_to_currency(reg.total_due) %><br/>
+          Amount Paid: <%= number_to_currency(reg.total_paid) %><br/>
           <%= link_to "payment details", payments_overview_path(reg.id), style: 'text-decoration:underline;' %>
         </p>
       </div>
