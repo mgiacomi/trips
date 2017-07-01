@@ -114,8 +114,8 @@
                   <h5 style="margin-bottom:0px;"><%= number_to_currency(pmt.amount) %>
                     - <%= pmt.pmtdate.strftime("%b #{pmt.pmtdate.day.ordinalize}, %Y") %></h5>
                   <p style="font-size: .9em;">
-                    Payment: <%= pmt.pmtnum %><br/>
-                    Logged on: <%= pmt.pmtdate.strftime("%m/%d/%Y %T") %>
+                    Method: <%= pmt.pmtnum %><br/>
+                    Date: <%= pmt.pmtdate.strftime("%m/%d/%Y %T") %>
                   </p>
                 </li>
             <% end %>
