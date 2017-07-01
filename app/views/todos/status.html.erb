@@ -108,10 +108,10 @@
           <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
       <% end %>
       <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
-          <a style="text-decoration: underline;" href="#">Payment Due! Review your registrations.</a>
+          <a style="text-decoration: underline;" href="#">Payment Due!</a>
       <% end %>
       <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
-          <a style="text-decoration: underline;" href="#">Update Parent Data</a>
+          <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
       <% end %>
       <% unless @parent.onk %>
           <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
