@@ -2,14 +2,21 @@
   <%= render '/includes/breadcrumb', page_name: 'Payments' %>
 
   <div class="content container">
+    <div>
+      <div class="left-header-strip">
+        <h3 style="margin-bottom:5px;">Japan Trip Payments</h3>
+        <p>Registration: <%= @registration.fname %> <%= @registration.lname %></p>
+      </div>
+      <div class="right-header-strip">
+      </div>
+    </div>
 
     <div class="one-third-responsive half-bottom">
-      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px; margin-top: 10px;">
         <h1 style="font-size:20px;">Overview</h1>
         <div style="padding:5px; margin-top: 10px;">
           <p>Total fees for the trip are <%= number_to_currency(@registration.total_amount) %> and is due in full by
-            March 14th 2017. To help make the payments
-            less painful we break them up into installments.</p>
+            March 14th 2017. To help make the payments less painful we break them up into installments.</p>
           <span style="font-weight:bold;color:black;">Payment schedule:</span>
           <br/><br/>
           <table style="font-size:12px;">
@@ -43,7 +50,7 @@
     </div>
 
     <div class="one-third-responsive half-bottom">
-      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px; margin-top: 10px;">
         <h1 style="font-size:20px;">Upcoming Payment</h1>
         <div style="padding:5px; margin-top: 10px;">
           <div class="date">
@@ -102,7 +109,7 @@
     </div>
 
     <div class="one-third-responsive last half-bottom">
-      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px;">
+      <div class="pricing-table pricing-unselected" style="max-width: 400px; padding-bottom: 20px; margin-top: 10px;">
         <h1 style="font-size:20px;">History</h1>
         <div style="padding:5px; margin-top: 10px;">
           <ul>
