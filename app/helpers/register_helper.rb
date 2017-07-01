@@ -1,7 +1,6 @@
 module RegisterHelper
 
   def textByGrade(grade)
-puts "grade: #{grade}"
     case grade
       when 5
         "5th Grade"
