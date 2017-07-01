@@ -90,6 +90,7 @@
                       <span style="margin-left:20px;font-weight:bold; color:green;">Current</span>
                   <% end %>
                   </div>
+                  Total Paid: <%= number_to_currency(@parent.total_paid) %><br/>
                   Total Due: <%= number_to_currency(@parent.total_due) %><br/>
                   <% unless @parent.total_due <= 0 %>
                       Next Pmt Date: <%= @parent.next_pmt_date.strftime("%m/%d/%Y") %><br/>
