@@ -16,16 +16,16 @@ class PaymentsController < ApplicationController
 
   def receipt
     if params[:payment_status] == "Completed"
-      reg_id = params[:invoice].split('-')[0]
-      registration = Registration.find reg_id
+      parent_id = params[:invoice].split('-')[0]
+      parent = Parent.find parent_id
 
       payment = Payment.new
       payment.amount = params[:payment_gross]
       payment.fee = params[:payment_fee]
       payment.pmtdate = params[:payment_date]
       payment.pmtnum = "Paypal"
-      payment.registration = registration
-      payment.user = current_user
+      payment.parent = parent
+      payment.user = parent.user
 
       if payment.save
         logger.info "Saved Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
