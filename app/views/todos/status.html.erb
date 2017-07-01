@@ -92,9 +92,7 @@
                   </div>
                   Total Paid: <%= number_to_currency(@parent.total_paid) %><br/>
                   Total Due: <%= number_to_currency(@parent.total_due) %><br/>
-                  <% unless @parent.total_due <= 0 %>
-                      Next Pmt Date: <%= @parent.next_pmt_date.strftime("%m/%d/%Y") %><br/>
-                  <% end %>
+                  Next Pmt Date: <%= @parent.next_pmt_date.strftime("%m/%d/%Y") %><br/>
               <% end %>
               </div>
         </div>
@@ -106,13 +104,20 @@
   <div class="one-half-responsive last half-bottom">
     <span style="font-weight:bold;">Outstanding Action Items:</span>
     <blockquote class="quote-one red-quote">
-      <a style="text-decoration: underline;" href="<%= todos_home_path %>">Create a Registration</a>
-      <a style="text-decoration: underline;" href="<%= todos_home_path %>">Cain Giacomini - $500 Payment Due</a>
-      <a style="text-decoration: underline;" href="<%= todos_home_path %>">Update Parent Data</a>
-      <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
+      <% if @registrations.length == 0 %>
+          <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
+      <% end %>
+      <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
+          <a style="text-decoration: underline;" href="#">Payment Due! Review your registrations.</a>
+      <% end %>
+      <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
+          <a style="text-decoration: underline;" href="#">Update Parent Data</a>
+      <% end %>
+      <% if @parent.onk %>
+          <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
+      <% end %>
       <a href="<%= todos_home_path %>" style="text-decoration: underline;">Sign Participant Agrement</a>
     </blockquote>
-
     <br/>
     <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>
     <%= render '/todos/registrations' %>
