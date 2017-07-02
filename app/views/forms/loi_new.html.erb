@@ -1,5 +1,17 @@
+<script>
+    jQuery(document).ready(function () {
+        <% unless @loi.p1signature.nil? %>
+        $(".p1field").attr("disabled", true).css("background-color", "#F8F8F8");
+        $("#p1submit").css("background-color", "grey").prop('value', 'Signature Accepted').attr("disabled", true);
+        <% end %>
+        <% unless @loi.p2signature.nil? %>
+        $(".p2field").attr("disabled", true).css("background-color", "#F8F8F8");
+        $("#p2submit").css("background-color", "grey").prop('value', 'Signature Accepted').attr("disabled", true);
+        <% end %>
+    });
+</script>
 <div class="content">
-  <%= render '/includes/breadcrumb', page_name: 'Parent Information' %>
+  <%= render '/includes/breadcrumb', page_name: 'Letter of Intention' %>
 
   <div class="header-strip box-960 content">
     <% if @loi.errors.any? %>
@@ -114,7 +126,8 @@
             sister schools visit during the 5th grade year (where practical and possible.) (Maximum one week commitment
             during October or February.)
           </li>
-        </ul><br/>
+        </ul>
+        <br/>
       </div>
       <div class="right-header-strip">
       </div>
@@ -145,40 +158,40 @@
             <ul>
               <li style="text-align: left;padding-left:60px;">
                 Name
-                <%= f.text_field :p1name, class: "text-input-one", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                <%= f.text_field :p1name, class: "text-input-one p1field", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Phone <%= f.text_field :p1phone, class: "text-input-one", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Phone <%= f.text_field :p1phone, class: "text-input-one p1field", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Email <%= f.text_field :p1email, class: "text-input-one", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Email <%= f.text_field :p1email, class: "text-input-one p1field", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Address <%= f.text_field :p1address, class: "text-input-one", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Address <%= f.text_field :p1address, class: "text-input-one p1field", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Signature <%= f.text_field :p1signature, class: "text-input-one", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Signature <%= f.text_field :p1signature, class: "text-input-one p1field", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Date <%= f.text_field :p1sigdate, class: "text-input-one", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Date <%= f.text_field :p1sigdate, value: @loi.p1sigdate_formatted, class: "text-input-one p1field", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:20px;">
-              I have fully read and fully understood the Letter of Intention?
-              <br/>
-              <select name="loi[p1understand]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
-                <option></option>
-                <option <%= (@loi.p1understand == "Yes, I fully understand the Letter of Intention.") ? 'selected="selected"' : "" %>>
-                  Yes, I fully understand the Letter of Intention.
-                </option>
-                <option <%= (@loi.p1understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
-                  No, I do not understand or agree with the Letter of Intention.
-                </option>
-              </select>
+                I have fully read and fully understood the Letter of Intention?
+                <br/>
+                <select name="loi[p1understand]" class="p1field" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
+                  <option></option>
+                  <option <%= (@loi.p1understand == "Yes, I fully understand the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                    Yes, I fully understand the Letter of Intention.
+                  </option>
+                  <option value="" <%= (@loi.p1understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                    No, I do not understand or agree with the Letter of Intention.
+                  </option>
+                </select>
               </li>
               <li style="text-align: left;padding-left:20px;">
                 One of the following statements needs to be true to sign this form.
                 If not, don't continue or sign this form.
-                <select name="loi[p1relationship]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
+                <select name="loi[p1relationship]" class="p1field" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
                   <option></option>
                   <option <%= (@loi.p1relationship == "I am a parent of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
                     I am a parent of <%= @registration.fname %> <%= @registration.lname %>
@@ -189,7 +202,7 @@
                 </select>
               </li>
             </ul>
-            <%= f.submit "E-Sign Form", class: "button center-button button-blue", style: "width:170px;" %>
+            <%= f.submit "E-Sign Form", id: "p1submit", class: "button center-button button-blue", style: "width:170px;" %>
           </div>
         </div>
 
@@ -199,32 +212,32 @@
             <ul>
               <li style="text-align: left;padding-left:60px;">
                 Name
-                <%= f.text_field :p2name, class: "text-input-one", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                <%= f.text_field :p2name, class: "text-input-one p2field", style: 'margin-left:35px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Phone <%= f.text_field :p2phone, class: "text-input-one", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Phone <%= f.text_field :p2phone, class: "text-input-one p2field", style: 'margin-left:31px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Email <%= f.text_field :p2email, class: "text-input-one", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Email <%= f.text_field :p2email, class: "text-input-one p2field", style: 'margin-left:37px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Address <%= f.text_field :p2address, class: "text-input-one", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Address <%= f.text_field :p2address, class: "text-input-one p2field", style: 'margin-left:17px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Signature <%= f.text_field :p2signature, class: "text-input-one", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Signature <%= f.text_field :p2signature, class: "text-input-one p2field", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Date <%= f.text_field :p2sigdate, class: "text-input-one", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Date <%= f.text_field :p2sigdate, class: "text-input-one p2field", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:20px;">
                 I have fully read and fully understood the Letter of Intention?
                 <br/>
-                <select name="loi[p2understand]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
+                <select name="loi[p2understand]" class="p2field" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px">
                   <option></option>
                   <option <%= (@loi.p2understand == "Yes, I fully understand the Letter of Intention.") ? 'selected="selected"' : "" %>>
                     Yes, I fully understand the Letter of Intention.
                   </option>
-                  <option <%= (@loi.p2understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
+                  <option value="" <%= (@loi.p2understand == "No, I do not understand or agree with the Letter of Intention.") ? 'selected="selected"' : "" %>>
                     No, I do not understand or agree with the Letter of Intention.
                   </option>
                 </select>
@@ -232,7 +245,7 @@
               <li style="text-align: left;padding-left:20px;">
                 One of the following statements needs to be true to sign this form.
                 If not, don't continue or sign this form.
-                <select name="loi[p2relationship]" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
+                <select name="loi[p2relationship]" class="p2field" style="-webkit-appearance: menulist; border:1px solid black; padding:3px; width:350px;">
                   <option></option>
                   <option <%= (@loi.p2relationship == "I am a parent of #{@registration.fname} #{@registration.lname}") ? 'selected="selected"' : "" %>>
                     I am a parent of <%= @registration.fname %> <%= @registration.lname %>
@@ -243,7 +256,7 @@
                 </select>
               </li>
             </ul>
-            <%= f.submit "E-Sign Form", class: "button center-button button-blue", style: "width:170px;" %>
+            <%= f.submit "E-Sign Form", id: "p2submit", class: "button center-button button-blue", style: "width:170px;" %>
           </div>
         </div>
     <% end %>

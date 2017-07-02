@@ -3,6 +3,7 @@ class Registration < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :parent
+  has_one :loi
   has_many :payments
 
   validates :fname, :lname, :gender, :grade, presence: {message: " is required"}

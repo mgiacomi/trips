@@ -2,6 +2,7 @@ class CreateRegistrations < ActiveRecord::Migration
   def change
     create_table "registrations", force: :cascade do |t|
       t.integer  "user_id",              limit: 4
+      t.integer  "parent_id",            limit: 4
       t.string   "gender_pronoun",       limit: 45
       t.string   "fname",                limit: 45
       t.string   "mname",                limit: 45

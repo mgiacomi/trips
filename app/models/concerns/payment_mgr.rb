@@ -4,7 +4,7 @@ module PaymentMgr
   module ClassMethods
     def get_5th_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("6/1/2017", '%m/%d/%Y'), student: 200, chaperone: 0}
+      records << {date: Date.strptime("7/15/2017", '%m/%d/%Y'), student: 200, chaperone: 0}
       records << {date: Date.strptime("8/15/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
       records << {date: Date.strptime("10/15/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
       records << {date: Date.strptime("11/1/2017", '%m/%d/%Y'), student: 0, chaperone: 250}
@@ -16,24 +16,23 @@ module PaymentMgr
 
     def get_8th_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("6/11/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("10/6/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("11/17/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("1/5/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("2/2/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("3/2/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("4/9/2018", '%m/%d/%Y'), student: 183.84, chaperone: 300}
+      records << {date: Date.strptime("7/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("10/1/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
+      records << {date: Date.strptime("11/1/2017", '%m/%d/%Y'), student: 500, chaperone: 0}
+      records << {date: Date.strptime("1/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("2/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("3/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
     end
 
     def get_11th_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("6/11/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("10/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("11/1/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("1/1/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("2/1/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("3/1/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("4/1/2018", '%m/%d/%Y'), student: 183.84, chaperone: 0}
+      records << {date: Date.strptime("6/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("10/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("11/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("1/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("2/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("3/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("4/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
     end
   end
 

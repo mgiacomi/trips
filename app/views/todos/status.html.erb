@@ -116,7 +116,9 @@
       <% unless @parent.onk %>
           <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
       <% end %>
-      Sign Letter of Intention
+      <% if @parent.registrations.select {|r| r.grade==5}.any? {|r| r.loi.nil? || r.loi.p1signature.nil?} %>
+          Sign Letter of Intention
+      <% end %>
     </blockquote>
     <br/>
     <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>
