@@ -13,6 +13,10 @@ class RegistrationsController < ApplicationController
     @registration = Registration.create(user_id: current_user.id)
     @registration.parent = Parent.find_by_user_id(current_user.id)
 
+    unless params[:registration]['date_of_birth'].blank?
+      params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'],"%m/%d/%Y")
+    end
+
     if @registration.update_attributes(params[:registration])
       redirect_to todos_home_path, notice: 'Registration was successfully updated.'
     else
@@ -22,6 +26,9 @@ class RegistrationsController < ApplicationController
 
   def update
     @registration = Registration.where('user_id=? and id=?', current_user.id, params[:id]).first
+    unless params[:registration]['date_of_birth'].blank?
+      params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'],"%m/%d/%Y")
+    end
 
     if @registration.update_attributes(params[:registration])
       redirect_to todos_home_path, notice: 'Registration was successfully updated.'
