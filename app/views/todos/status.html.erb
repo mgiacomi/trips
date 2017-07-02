@@ -134,7 +134,9 @@
       <br/>
     </div>
 
-    <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>
+    <% unless @parent.new_record? %>
+        <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>
+    <% end %>
     <%= render '/todos/registrations' %>
 
   </div>
