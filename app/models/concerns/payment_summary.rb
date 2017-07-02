@@ -21,7 +21,7 @@ module PaymentSummary
   end
 
   def next_pmt_date
-    Date.strptime("5/26/2017", '%m/%d/%Y')
+    self.user.registrations.map { |r| r.next_pmt_date}.min
   end
 
 end
