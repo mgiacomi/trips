@@ -1,13 +1,13 @@
 <script>
-  jQuery(function () {
-    jQuery('.remove_pmt').click(function () {
+  $(function () {
+    $('.remove_pmt').click(function () {
       var strconfirm = confirm("Are you sure you want to delete payment?");
       if (strconfirm == false) {
         return true;
       }
 
-      jQuery('#delete_id').val(jQuery(this).attr("data-id"));
-      jQuery('#delete_form').submit();
+      $('#delete_id').val($(this).attr("data-id"));
+      $('#delete_form').submit();
     });
   });
 </script>
@@ -57,7 +57,7 @@
                      <%= @registration.onk == true ? 'checked="checked"' : '' %>
                      name="onk_member"
                      value="true"
-                     onclick="jQuery('#onk_member_form').submit()"/>
+                     onclick="$('#onk_member_form').submit()"/>
             </p>
           </td>
           </tr>
@@ -70,7 +70,7 @@
                 <input type="checkbox"
                        <%= @registration.user.chaperone == true ? 'checked="checked"' : '' %>
                        name="chaperone"
-                       onclick="jQuery('#chaperone_form').submit()"/>
+                       onclick="$('#chaperone_form').submit()"/>
               </p>
             </td>
           </tr>
@@ -107,7 +107,7 @@
                 <input type="checkbox"
                        <%= @registration.withdrawn == true ? 'checked="checked"' : '' %>
                        name="withdrawn"
-                       onclick="jQuery('#withdrawn_form').submit()"/>
+                       onclick="$('#withdrawn_form').submit()"/>
               </p>
             </td>
           </tr>

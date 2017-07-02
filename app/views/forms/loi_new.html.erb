@@ -1,5 +1,5 @@
 <script>
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
         <% unless @loi.new_record? %>
         $(".p1field").attr("disabled", true).css("background-color", "#F8F8F8");
         $("#p1submit").css("background-color", "grey").prop('value', 'Signature Accepted').attr("disabled", true);
