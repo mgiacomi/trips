@@ -22,7 +22,7 @@
         <div class="decoration"></div>
         <div class="box one_half">
           <div class="inner">
-            <div class="box_heading" style="color:black; font-weight: bold;">Step 1: Parent Info</div>
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 1: Parent Information</div>
             <p>Before registering for a trip provide us with your contact information
               <%= link_to 'contact information', parents_edit_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
             <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
@@ -40,12 +40,17 @@
             <div class="box_heading" style="color:black; font-weight: bold;">Step 2: Registrations</div>
             <p>You need to sign up your kid(s) for a trip. Edit an existing registartion or
               <%= link_to 'add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
-            <% if @registrations.length == 0 %>
-                <div style="margin-top:10px;">Status:
-                  <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
+            <% if @parent.new_record? %>
+                <div style="margin-top:10px;">Status:<span style="margin-left:20px;font-weight:bold; color:red;">Complete Parent Information</span>
+                </div>
             <% else %>
-                <div style="margin-top:10px;">Status:
-                  <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
+                <% if @registrations.length == 0 %>
+                    <div style="margin-top:10px;">Status:<span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span>
+                    </div>
+                <% else %>
+                    <div style="margin-top:10px;">Status:<span style="margin-left:20px;font-weight:bold; color:green;">Complete</span>
+                    </div>
+                <% end %>
             <% end %>
           </div>
         </div>

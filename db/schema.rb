@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160703031846) do
 
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "parent_id"
     t.string   "gender_pronoun",   limit: 45
     t.string   "fname",            limit: 45
     t.string   "mname",            limit: 45

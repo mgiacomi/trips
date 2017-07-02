@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = Registration.create(user_id: current_user.id)
+    @registration.parent = Parent.find_by_user_id(current_user.id)
 
     if @registration.update_attributes(params[:registration])
       redirect_to todos_home_path, notice: 'Registration was successfully updated.'
