@@ -115,7 +115,7 @@
     <div id="outstanding_items_container">
       <span style="font-weight:bold;">Outstanding Action Items:</span>
       <blockquote id="outstanding_items" class="quote-one red-quote">
-        <% if @registrations.length == 0 %>
+        <% if !@parent.new_record? && @registrations.length == 0 %>
             <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
         <% end %>
         <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
