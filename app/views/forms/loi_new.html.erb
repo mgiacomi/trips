@@ -1,10 +1,10 @@
 <script>
     jQuery(document).ready(function () {
-        <% unless @loi.p1signature.nil? %>
+        <% unless @loi.new_record? %>
         $(".p1field").attr("disabled", true).css("background-color", "#F8F8F8");
         $("#p1submit").css("background-color", "grey").prop('value', 'Signature Accepted').attr("disabled", true);
         <% end %>
-        <% unless @loi.p2signature.nil? %>
+        <% unless @loi.errors.any? || @loi.p2signature.blank? %>
         $(".p2field").attr("disabled", true).css("background-color", "#F8F8F8");
         $("#p2submit").css("background-color", "grey").prop('value', 'Signature Accepted').attr("disabled", true);
         <% end %>

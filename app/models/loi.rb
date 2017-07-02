@@ -14,6 +14,11 @@ class Loi < ActiveRecord::Base
     end
   end
 
+  def p1_signature_accepted
+    !self.p2name.blank? || !self.p2phone.blank? || !self.p2email.blank? || !self.p2address.blank? ||
+        !self.p2signature.blank? || !self.p2understand.blank? || !self.p2relationship.blank? || !self.p2sigdate.blank?
+  end
+
   private
 
   def signed_sig2

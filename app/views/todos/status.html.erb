@@ -1,8 +1,12 @@
 <script>
-    jQuery(document).ready(function () {
-        jQuery(".onk_membership").click(function () {
+    $(document).ready(function () {
+        $(".onk_membership").click(function () {
             $('#onk_membership_form').submit()
         });
+
+        if ($('#outstanding_items').children().length === 0) {
+            $('#outstanding_items_container').hide();
+        }
     });
 </script>
 <div class="content">
@@ -102,25 +106,29 @@
   </div>
 
   <div class="one-half-responsive last half-bottom">
-    <span style="font-weight:bold;">Outstanding Action Items:</span>
-    <blockquote class="quote-one red-quote">
-      <% if @registrations.length == 0 %>
-          <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
-      <% end %>
-      <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
-          Payment Due!
-      <% end %>
-      <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
-          <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
-      <% end %>
-      <% unless @parent.onk %>
-          <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
-      <% end %>
-      <% if @parent.registrations.select {|r| r.grade==5}.any? {|r| r.loi.nil? || r.loi.p1signature.nil?} %>
-          Sign Letter of Intention
-      <% end %>
-    </blockquote>
-    <br/>
+
+    <div id="outstanding_items_container">
+      <span style="font-weight:bold;">Outstanding Action Items:</span>
+      <blockquote id="outstanding_items" class="quote-one red-quote">
+        <% if @registrations.length == 0 %>
+            <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
+        <% end %>
+        <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
+            <div>Payment Due!</div>
+        <% end %>
+        <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
+            <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
+        <% end %>
+        <% unless @parent.onk %>
+            <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
+        <% end %>
+        <% if @parent.registrations.select {|r| r.grade==5}.any? {|r| r.loi.nil? || r.loi.p1signature.blank?} %>
+            <div>Sign Letter of Intention</div>
+        <% end %>
+      </blockquote>
+      <br/>
+    </div>
+
     <div style="margin-bottom:10px;"><%= link_to 'Add a Registration', registrations_new_path, style: 'color: #0b84fe; text-decoration: underline;' %></div>
     <%= render '/todos/registrations' %>
 
