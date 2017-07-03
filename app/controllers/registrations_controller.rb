@@ -13,8 +13,13 @@ class RegistrationsController < ApplicationController
     @registration = Registration.create(user_id: current_user.id)
     @registration.parent = Parent.find_by_user_id(current_user.id)
 
+    # Needs to move to a concern?
     unless params[:registration]['date_of_birth'].blank?
-      params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'],"%m/%d/%Y")
+      begin
+        params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'], "%m/%d/%Y")
+      rescue
+        params[:registration]['date_of_birth'] = ''
+      end
     end
 
     if @registration.update_attributes(params[:registration])
@@ -26,8 +31,14 @@ class RegistrationsController < ApplicationController
 
   def update
     @registration = Registration.where('user_id=? and id=?', current_user.id, params[:id]).first
+
+    # Needs to move to a concern?
     unless params[:registration]['date_of_birth'].blank?
-      params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'],"%m/%d/%Y")
+      begin
+        params[:registration]['date_of_birth'] = Date.strptime(params[:registration]['date_of_birth'], "%m/%d/%Y")
+      rescue
+        params[:registration]['date_of_birth'] = ''
+      end
     end
 
     if @registration.update_attributes(params[:registration])

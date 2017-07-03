@@ -10,12 +10,22 @@ class FormsController < ApplicationController
     @registration = Registration.where("user_id=? and id=?", current_user.id, params[:id]).first
     @loi = Loi.find_or_initialize_by(registration_id: @registration.id)
 
+    # Needs to move to a concern?
     unless params[:loi]['p1sigdate'].blank?
-      params[:loi]['p1sigdate'] = Date.strptime(params[:loi]['p1sigdate'],"%m/%d/%Y")
+      begin
+        params[:loi]['p1sigdate'] = Date.strptime(params[:loi]['p1sigdate'], "%m/%d/%Y")
+      rescue
+        params[:loi]['p1sigdate'] = ''
+      end
     end
 
+    # Needs to move to a concern?
     unless params[:loi]['p2sigdate'].blank?
-      params[:loi]['p2sigdate'] = Date.strptime(params[:loi]['p2sigdate'],"%m/%d/%Y")
+      begin
+        params[:loi]['p2sigdate'] = Date.strptime(params[:loi]['p2sigdate'], "%m/%d/%Y")
+      rescue
+        params[:loi]['p2sigdate'] = ''
+      end
     end
 
     if @loi.update_attributes(params[:loi])
