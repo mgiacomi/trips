@@ -15,7 +15,7 @@ class CreateRegistrations < ActiveRecord::Migration
       t.string   "ec_relationship",      limit: 45
       t.string   "ec_phone",             limit: 45
       t.string   "ec_address",           limit: 256
-      t.string   "chaperone_parent",     limit: 48
+      t.string   "chaperone",            limit: 48
       t.string   "refund_to",            limit: 48
       t.boolean  "withdrawn",            default: false
 

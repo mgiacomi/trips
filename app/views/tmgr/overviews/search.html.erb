@@ -35,7 +35,7 @@ Returned results for search term: <strong><i><%= params[:term] %></i></strong>
 
           </p>
         </td>
-        <td><p style="margin-bottom:0;"><%= reg.user.chaperone ? "Chaperone" : "Student" %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.chaperone ? "Chaperone" : "Student" %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.sfname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.slname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.grade %></p></td>

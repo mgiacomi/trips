@@ -54,7 +54,7 @@
           <td>
             <p style="margin-bottom:0;color:black;margin-left:10px;">
               <input type="checkbox"
-                     <%= @registration.onk == true ? 'checked="checked"' : '' %>
+                     <%= @registration.parent.onk == true ? 'checked="checked"' : '' %>
                      name="onk_member"
                      value="true"
                      onclick="$('#onk_member_form').submit()"/>
@@ -68,7 +68,7 @@
             <td>
               <p style="margin-bottom:0;color:black;margin-left:10px;">
                 <input type="checkbox"
-                       <%= @registration.user.chaperone == true ? 'checked="checked"' : '' %>
+                       <%= @registration.chaperone == true ? 'checked="checked"' : '' %>
                        name="chaperone"
                        onclick="$('#chaperone_form').submit()"/>
               </p>

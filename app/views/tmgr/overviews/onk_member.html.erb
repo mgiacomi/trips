@@ -34,7 +34,7 @@
         <td><p style="margin-bottom:0;"><%= reg.p1fname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.p1lname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.created_at.strftime("%m/%d/%Y") %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.onk %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.parent.onk %></p></td>
       </tr>
   <% end %>
 </table>
