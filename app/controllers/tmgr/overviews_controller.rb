@@ -26,7 +26,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def loi
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     if params[:outstanding] == 'true'
       registrations = Registration.outstanding_loi all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -39,7 +39,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def onk_member
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     if params[:member] == 'true'
       registrations = Registration.onk_members all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -52,7 +52,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def registered
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     registrations = Registration.registered all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -62,7 +62,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def withdrawn
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     registrations = Registration.withdrawn all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -72,13 +72,13 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def scholarships
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     registrations = Registration.scholarships all
     @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
   end
 
   def collected
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     registrations = Registration.collected all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -90,7 +90,7 @@ class Tmgr::OverviewsController < ApplicationController
   end
 
   def past_due
-    all = Registration.all.order(:slname, :sfname)
+    all = Registration.all.order(:lname, :fname)
     registrations = Registration.past_due all
     if params[:type] == "Students"
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
@@ -138,7 +138,7 @@ class Tmgr::OverviewsController < ApplicationController
 
   def update_onk
     registration = Registration.find(params[:id])
-    registration.update_attribute(:onk, params[:onk_member])
+    registration.parent.update_attribute(:onk, params[:onk_member])
     redirect_to tmgr_form_view_path, notice: 'ONK status has bee updated.'
   end
 

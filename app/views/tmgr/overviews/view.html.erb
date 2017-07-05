@@ -26,28 +26,26 @@
   <table>
     <tr>
       <td><p style="margin-bottom:0;">Student First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sfname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.fname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Student Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.slname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.lname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Gender:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.sgender %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.gender %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Trip:</p></td>
       <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
     </tr>
-    <% unless @registration.file_name.nil? %>
-        <tr>
-          <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
-          <td>
-            <p style="margin-bottom:0;color:black;margin-left:10px;"><%= link_to 'Download LOI', tmgr_form_loi_path(@registration.id) %></p>
-          </td>
-        </tr>
-    <% end %>
+    <tr>
+      <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
+      <td>
+        <p style="margin-bottom:0;color:black;margin-left:10px;">??</p>
+      </td>
+    </tr>
     <tr>
       <td><p style="margin-bottom:0;">ONK Member:</p></td>
       <%= form_tag tmgr_form_onk_path(@registration.id), method: :post, id: 'onk_member_form' do %>
@@ -56,6 +54,7 @@
               <input type="checkbox"
                      <%= @registration.parent.onk == true ? 'checked="checked"' : '' %>
                      name="onk_member"
+                     style="height:25px;display:inline;border:1px solid gray;padding-left: 5px;"
                      value="true"
                      onclick="$('#onk_member_form').submit()"/>
             </p>
@@ -69,7 +68,7 @@
               <p style="margin-bottom:0;color:black;margin-left:10px;">
                 <input type="checkbox"
                        <%= @registration.chaperone == true ? 'checked="checked"' : '' %>
-                       name="chaperone"
+                       name="chaperone" style=""
                        onclick="$('#chaperone_form').submit()"/>
               </p>
             </td>
@@ -124,67 +123,67 @@
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1fname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1fname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1lname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1lname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 Phone:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1phone %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1phone %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 Email:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p1email %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1email %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 Street:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.street %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1street %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 City:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.city %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1city %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 State:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.state %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1state %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 1 Zip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.zip %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1zip %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2fname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2fname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2lname %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2lname %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 Phone:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2phone %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2phone %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 Email:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.p2email %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2email %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 Street:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.street2 %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2street %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 City:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.city2 %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2city %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 State:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.state2 %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2state %></p></td>
     </tr>
     <tr>
       <td><p style="margin-bottom:0;">Parent 2 Zip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.zip2 %></p></td>
+      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2zip %></p></td>
     </tr>
   </table>
 

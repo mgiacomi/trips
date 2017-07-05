@@ -29,12 +29,12 @@
 
           </p>
         </td>
-        <td><p style="margin-bottom:0;"><%= reg.sfname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.slname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.fname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.lname %></p></td>
         <td><p style="margin-bottom:0;"><%= reg.grade %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.p1fname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.p1lname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.user.email %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.parent.p1fname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.parent.p1lname %></p></td>
+        <td><p style="margin-bottom:0;"><%= reg.parent.user.email %></p></td>
         <td><p style="margin-bottom:0;"><%= number_to_currency(reg.total_due) %></p></td>
         <td><p style="margin-bottom:0;"><%= number_to_currency(reg.total_paid) %></p></td>
       </tr>
