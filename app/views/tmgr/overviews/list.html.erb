@@ -1,0 +1,46 @@
+<script>
+    jQuery(document).ready(function () {
+        jQuery("tr:odd").addClass("even");
+    });
+</script>
+
+<%= render '/tmgr/includes/search' %>
+
+<div class="content">
+  <div class="half-bottom"></div>
+  <div class="box-960 half-bottom">
+
+    <h4 style="float:left;"><%= @title %></h4>
+    <div style="float:right;"><%= Time.zone.now.strftime "%m/%d/%Y %H:%M:%S" %></div>
+    <div style="clear:both"></div>
+
+    <table class="table">
+      <tbody><tr>
+        <th class="table-title">Id</th>
+        <th class="table-title">Student First</th>
+        <th class="table-title">Student Last</th>
+        <th class="table-title">Grade</th>
+        <th class="table-title">Parent First</th>
+        <th class="table-title">Parent Last</th>
+        <th class="table-title">ONK</th>
+        <th class="table-title">Paid</th>
+        <th class="table-title">Due</th>
+      </tr>
+      <% @registrations.each do |reg| %>
+          <tr>
+            <td><%= link_to reg.id, tmgr_form_view_path(reg), style: "text-decoration: underline" %></td>
+            <td><%= reg.fname %></td>
+            <td><%= reg.lname %></td>
+            <td><%= reg.grade %></td>
+            <td><%= reg.parent.p1fname %></td>
+            <td><%= reg.parent.p1lname %></td>
+            <td><%= reg.parent.onk %></td>
+            <td><%= number_to_currency(reg.total_paid) %></td>
+            <td><%= number_to_currency(reg.total_due) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,111 +1,113 @@
 <script>
-  $(document).ready(function () {
-    $("tr:odd").css("background-color", "#CEF5FF");
-    $("td").css("padding-left", "10px");
-    $("td").css("padding-right", "10px");
-  });
+    jQuery(document).ready(function () {
+        jQuery("tr:odd").addClass("even");
+    });
 </script>
 
-<h3>5th & 8th Grade Trip Administration</h3>
-<br/><br/>
-<%= form_tag(tmgr_search_path, method: :put) do %>
-    Search: <%= text_field_tag 'term', "", style: "width:200px;" %>
-    <%= submit_tag 'Search', class: "button black" %>
-<% end %>
-<br/><br/>
-<table style="border-bottom: 1px;width:100%;">
-  <tr>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;"></p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">5th Graders</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">5th Grade Chaperones</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">8th Graders</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">8th Grade Chaperones</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;color:black;text-decoration: underline;text-align:right;">Total</p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Registered</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:registered][:s_fifth].length, tmgr_overview_registered_path('5th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:registered][:c_fifth].length, tmgr_overview_registered_path('5th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:registered][:s_eighth].length, tmgr_overview_registered_path('8th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:registered][:c_eighth].length, tmgr_overview_registered_path('8th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:registered][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Withdrawn</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:s_fifth].length, tmgr_overview_withdrawn_path('5th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:c_fifth].length, tmgr_overview_withdrawn_path('5th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:s_eighth].length, tmgr_overview_withdrawn_path('8th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:withdrawn][:c_eighth].length, tmgr_overview_withdrawn_path('8th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:withdrawn][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">ONK Members</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'true') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'true') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:onk_members][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Not ONK Members</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:not_onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'false') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:not_onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'false') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:not_onk_members][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">LOI's Uploaded</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:uploaded_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'false') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:uploaded_loi][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Outstanding LOI's</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:outstanding_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'true') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><i>N/A</i></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= @summary[:outstanding_loi][:total] %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">Scholarships</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:scholarships][:s_fifth].length, tmgr_overview_scholarships_path('5th') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to @summary[:scholarships][:s_eighth].length, tmgr_overview_scholarships_path('8th') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;">N/A</p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:scholarships][:total]) %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Collected</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_fifth_r]), tmgr_overview_collected_path('5th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_fifth_r]), tmgr_overview_collected_path('5th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_eighth_r]), tmgr_overview_collected_path('8th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_eighth_r]), tmgr_overview_collected_path('8th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:collected][:total]) %></p></td>
-  </tr>
-  <tr>
-    <td><p style="margin-bottom:0;color:black;font-weight:bold;">$ Past Due</p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_fifth_r]), tmgr_overview_past_due_path('5th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_fifth_r]), tmgr_overview_past_due_path('5th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_eighth_r]), tmgr_overview_past_due_path('8th', 'Students') %></p></td>
-    <td><p style="margin-bottom:0;text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_eighth_r]), tmgr_overview_past_due_path('8th', 'Chaperones') %></p></td>
-    <td><p style="margin-bottom:0;color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:past_due][:total]) %></p></td>
-  </tr>
-</table>
+<%= render '/tmgr/includes/search' %>
 
-<br/><br/>
+<div class="content">
+  <div class="full-bottom"></div>
+  <div class="box-960 half-bottom">
 
-<%= form_tag(tmgr_registrations_path, method: :post, style: 'margin-left:50px;') do %>
-    Registrations created in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
-    <%= submit_tag 'Search Registrations', class: "button black" %>
-<% end %>
+    <table class="table">
+      <tbody>
+      <tr>
+        <th class="table-title"></th>
+        <th class="table-title">5th Graders</th>
+        <th class="table-title">5th Grade Chaperones</th>
+        <th class="table-title">8th Graders</th>
+        <th class="table-title">8th Grade Chaperones</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Registered</td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:s_fifth].length, tmgr_overview_registered_path('5th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:c_fifth].length, tmgr_overview_registered_path('5th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:s_eighth].length, tmgr_overview_registered_path('8th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:c_eighth].length, tmgr_overview_registered_path('8th', 'Chaperones') %></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:registered][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Withdrawn</td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:s_fifth].length, tmgr_overview_withdrawn_path('5th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:c_fifth].length, tmgr_overview_withdrawn_path('5th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:s_eighth].length, tmgr_overview_withdrawn_path('8th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:c_eighth].length, tmgr_overview_withdrawn_path('8th', 'Chaperones') %></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:withdrawn][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">ONK Members</td>
+        <td style="text-align:right;"><%= link_to @summary[:onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'true') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><%= link_to @summary[:onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'true') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:onk_members][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Not ONK Members</td>
+        <td style="text-align:right;"><%= link_to @summary[:not_onk_members][:s_fifth].length, tmgr_overview_onk_member_path('5th', 'false') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><%= link_to @summary[:not_onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'false') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:not_onk_members][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Signed LOI's</td>
+        <td style="text-align:right;"><%= link_to @summary[:uploaded_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'false') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:uploaded_loi][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Unsigned LOI's</td>
+        <td style="text-align:right;"><%= link_to @summary[:outstanding_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'true') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><i>N/A</i></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:outstanding_loi][:total] %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Scholarships</td>
+        <td style="text-align:right;"><%= link_to @summary[:scholarships][:s_fifth].length, tmgr_overview_scholarships_path('5th') %></td>
+        <td style="text-align:right;">N/A</td>
+        <td style="text-align:right;"><%= link_to @summary[:scholarships][:s_eighth].length, tmgr_overview_scholarships_path('8th') %></td>
+        <td style="text-align:right;">N/A</td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:scholarships][:total]) %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">$ Collected</td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_fifth_r]), tmgr_overview_collected_path('5th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_fifth_r]), tmgr_overview_collected_path('5th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_eighth_r]), tmgr_overview_collected_path('8th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_eighth_r]), tmgr_overview_collected_path('8th', 'Chaperones') %></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:collected][:total]) %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">$ Past Due</td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_fifth_r]), tmgr_overview_past_due_path('5th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_fifth_r]), tmgr_overview_past_due_path('5th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_eighth_r]), tmgr_overview_past_due_path('8th', 'Students') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_eighth_r]), tmgr_overview_past_due_path('8th', 'Chaperones') %></td>
+        <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:past_due][:total]) %></td>
+      </tr>
+      </tbody>
+    </table>
 
-<br/>
+    <br/>
+    <%= form_tag(tmgr_registrations_path, method: :post, style: 'margin-left:50px;') do %>
+        Registrations created in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
+        <%= submit_tag 'Search Registrations', class: "button black" %>
+    <% end %>
 
-<%= form_tag(tmgr_payments_path, method: :post, style: 'margin-left:50px;') do %>
-    Payments made in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
-    <%= submit_tag 'Search Payments', class: "button black" %>
-<% end %>
+    <br/>
+
+    <%= form_tag(tmgr_payments_path, method: :post, style: 'margin-left:50px;') do %>
+        Payments made in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
+        <%= submit_tag 'Search Payments', class: "button black" %>
+    <% end %>
+
+  </div>
+</div>
+

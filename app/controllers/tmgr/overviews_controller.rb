@@ -15,8 +15,8 @@ class Tmgr::OverviewsController < ApplicationController
   def recent_registrations
     date = Date.today - params[:days].to_i
     @registrations = Registration.where("created_at > ?", date)
-    params[:type] = "in the last #{params[:days]} days"
-    render :registered
+    @title = "Registered in the last #{params[:days].html_safe} days"
+    render action: "list"
   end
 
   def recent_payments
@@ -30,12 +30,13 @@ class Tmgr::OverviewsController < ApplicationController
     if params[:outstanding] == 'true'
       registrations = Registration.outstanding_loi all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
-      @title = "Oustanding LOI's"
+      @title = "Unsigned LOI's"
     else
       registrations = Registration.uploaded_loi all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
-      @title = "Uploaded LOI's"
+      @title = "Signed LOI's"
     end
+    render action: "list"
   end
 
   def onk_member
@@ -43,12 +44,13 @@ class Tmgr::OverviewsController < ApplicationController
     if params[:member] == 'true'
       registrations = Registration.onk_members all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
-      @title = "ONK Members"
+      @title = "ONK Members #{params[:grade].html_safe}"
     else
       registrations = Registration.not_onk_members all
       @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
-      @title = "Not ONK Members"
+      @title = "Not ONK Members #{params[:grade].html_safe}"
     end
+    render action: "list"
   end
 
   def registered
@@ -59,6 +61,8 @@ class Tmgr::OverviewsController < ApplicationController
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
+    @title = "Registered #{params[:grade].html_safe} #{params[:type].html_safe}"
+    render action: "list"
   end
 
   def withdrawn
@@ -69,12 +73,16 @@ class Tmgr::OverviewsController < ApplicationController
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
+    @title = "Withdrawn #{params[:grade].html_safe} #{params[:type].html_safe}"
+    render action: "list"
   end
 
   def scholarships
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.scholarships all
     @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+    @title = "Scholarships #{params[:grade].html_safe}"
+    render action: "list"
   end
 
   def collected
@@ -85,8 +93,8 @@ class Tmgr::OverviewsController < ApplicationController
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
-    @title = "Collected"
-    render :past_due
+    @title = "Collected #{params[:grade].html_safe} #{params[:type].html_safe}"
+    render action: "list"
   end
 
   def past_due
@@ -97,7 +105,8 @@ class Tmgr::OverviewsController < ApplicationController
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
-    @title = "Past Due"
+    @title = "Past Due #{params[:grade].html_safe} #{params[:type].html_safe}"
+    render action: "list"
   end
 
   def view

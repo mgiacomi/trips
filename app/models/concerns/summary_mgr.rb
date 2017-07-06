@@ -75,10 +75,10 @@ module SummaryMgr
 
     def outstanding_loi all
       s_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.withdrawn && reg.loi.nil?
+        reg.grade == 5 && !reg.withdrawn && (reg.loi.nil? || reg.loi.p1signature.blank?)
       end
       s_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.withdrawn && reg.loi.nil?
+        reg.grade == 8 && !reg.withdrawn && (reg.loi.nil? || reg.loi.p1signature.blank?)
       end
       total = s_fifth.length + s_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
@@ -86,10 +86,10 @@ module SummaryMgr
 
     def uploaded_loi all
       s_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.withdrawn && !reg.loi.nil?
+        reg.grade == 5 && !reg.withdrawn && !reg.loi.nil? && !reg.loi.p1signature.blank?
       end
       s_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.withdrawn && !reg.loi.nil?
+        reg.grade == 8 && !reg.withdrawn && !reg.loi.nil? && !reg.loi.p1signature.blank?
       end
       total = s_fifth.length + s_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, total: total}
