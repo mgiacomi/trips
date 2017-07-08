@@ -37,9 +37,9 @@ Rails.application.routes.draw do
 
   match '/tmgr/forms/view/:id'        => 'tmgr/overviews#view',         :as => :tmgr_form_view,        :via => :get
   match '/tmgr/forms/loi/:id'         => 'tmgr/overviews#download_loi', :as => :tmgr_form_loi,         :via => :get
-  match '/tmgr/forms/onk/:id'         => 'tmgr/overviews#update_onk',   :as => :tmgr_form_onk,         :via => :post
-  match '/tmgr/forms/chaperone/:id'   => 'tmgr/overviews#update_chap',  :as => :tmgr_form_chaperone,   :via => [:post]
-  match '/tmgr/forms/withdrawn/:id'   => 'tmgr/overviews#update_with',  :as => :tmgr_form_withdrawn,   :via => [:post]
+  match '/tmgr/toggle/onk/:id'        => 'tmgr/overviews#toggle_onk',   :as => :tmgr_toggle_onk,       :via => :post
+  match '/tmgr/toggle/chaperone/:id'  => 'tmgr/overviews#toggle_chap',  :as => :tmgr_toggle_chaperone, :via => :post
+  match '/tmgr/toggle/withdrawn/:id'  => 'tmgr/overviews#toggle_with',  :as => :tmgr_toggle_withdrawn, :via => :post
   match '/tmgr/forms/scholarship/:id' => 'tmgr/overviews#scholarship',  :as => :tmgr_form_scholarship, :via => [:post,:put,:patch]
 
   match '/tmgr/payment/:id'    => 'tmgr/overviews#payment',        :as => :tmgr_payment,        :via => [:post,:put]

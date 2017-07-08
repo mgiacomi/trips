@@ -145,21 +145,25 @@ class Tmgr::OverviewsController < ApplicationController
     end
   end
 
-  def update_onk
+  def toggle_onk
     registration = Registration.find(params[:id])
-    registration.parent.update_attribute(:onk, params[:onk_member])
+    unless registration.parent.nil?
+    registration.parent.toggle :onk
+    registration.parent.save
+    end
     redirect_to tmgr_form_view_path, notice: 'ONK status has bee updated.'
   end
 
-  def update_chap
-    registration = Registration.find(params[:id])
-    registration.user.update_attribute(:chaperone, params[:chaperone])
-    redirect_to tmgr_form_view_path, notice: 'Chaperone status has bee updated.'
+  def toggle_chap
+    #registration = Registration.find(params[:id])
+    #registration.user.update_attribute(:chaperone, params[:chaperone])
+    #redirect_to tmgr_form_view_path, notice: 'Chaperone status has bee updated.'
   end
 
-  def update_with
+  def toggle_with
     registration = Registration.find(params[:id])
-    registration.update_attribute(:withdrawn, params[:withdrawn])
+    registration.toggle :withdrawn
+    registration.save
     redirect_to tmgr_form_view_path, notice: 'Withdrawn status has bee updated.'
   end
 

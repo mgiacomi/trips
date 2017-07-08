@@ -1,256 +1,254 @@
 <script>
-  $(function () {
-    $('.remove_pmt').click(function () {
-      var strconfirm = confirm("Are you sure you want to delete payment?");
-      if (strconfirm == false) {
-        return true;
-      }
+    $(function () {
+        $('.remove_pmt').click(function () {
+            var strconfirm = confirm("Are you sure you want to delete payment?");
+            if (strconfirm == false) {
+                return true;
+            }
 
-      $('#delete_id').val($(this).attr("data-id"));
-      $('#delete_form').submit();
+            $('#delete_id').val($(this).attr("data-id"));
+            $('#delete_form').submit();
+        });
     });
-  });
 </script>
 
-<h3><%= @registration.grade %>th Grade Trip Administration</h3>
+<%= render '/tmgr/includes/search' %>
 
-<form id="delete_form" method="post" action="<%= tmgr_payment_delete_path %>">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <input type="hidden" name="id" id="delete_id">
-  <input type="hidden" name="reg_id" value="<%= @registration.id %>">
-</form>
 
-<br/>
-<div style="width:45%; float:left;">
-  <p style="color:black;margin-bottom:10px;"><strong>Student Information</strong></p>
-  <table>
-    <tr>
-      <td><p style="margin-bottom:0;">Student First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.fname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Student Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.lname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Gender:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.gender %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Trip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.grade %>th</p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Letter Of Intent:</p></td>
-      <td>
-        <p style="margin-bottom:0;color:black;margin-left:10px;">??</p>
-      </td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">ONK Member:</p></td>
-      <%= form_tag tmgr_form_onk_path(@registration.id), method: :post, id: 'onk_member_form' do %>
-          <td>
-            <p style="margin-bottom:0;color:black;margin-left:10px;">
-              <input type="checkbox"
-                     <%= @registration.parent.onk == true ? 'checked="checked"' : '' %>
-                     name="onk_member"
-                     style="height:25px;display:inline;border:1px solid gray;padding-left: 5px;"
-                     value="true"
-                     onclick="$('#onk_member_form').submit()"/>
-            </p>
-          </td>
-          </tr>
+<div class="content box-960 container">
+  <br/>
+  <h3><%= @registration.grade %>th Grade Trip Administration</h3>
+
+  <form id="delete_form" method="post" action="<%= tmgr_payment_delete_path %>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="id" id="delete_id">
+    <input type="hidden" name="reg_id" value="<%= @registration.id %>">
+  </form>
+
+  <div class="one-half-responsive half-bottom">
+    <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+      <h3>Student Information</h3>
+      <ul>
+        <li style="text-align: left;padding-left:30px;">
+          First Name
+          <span style="margin-left:33px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.fname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Last Name
+          <span style="margin-left:33px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.lname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Gender
+          <span style="margin-left:56px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.gender %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Grade
+          <span style="margin-left:65px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.grade %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          LOI
+          <span style="margin-left:81px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= !@registration.loi.nil? && !@registration.loi.p1signature.blank? %></span>
+        </li>
+        <%= form_tag tmgr_toggle_onk_path(@registration.id), method: :post, id: 'onk_member_form' do %>
+            <li style="text-align: left;padding-left:30px;">
+              ONK Member
+              <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+                  <a href="#" onclick="$('#onk_member_form').submit()"
+                     class="toggle_prefs checkbox checkbox-class-1
+                       <% unless @registration.parent.nil? || !@registration.parent.onk? %>checkbox-unselected-1
+                       <% end %>">
+                  </a>
+              </span>
+            </li>
+        <% end %>
+        <%= form_tag(tmgr_toggle_chaperone_path, method: :post, id: 'chaperone_form') do %>
+            <li style="text-align: left;padding-left:30px;">
+              Chaperone
+              <span style="margin-left:29px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+              </span>
+            </li>
+        <% end %>
+        <% if @registration.grade == 8 %>
+            <li style="text-align: left;padding-left:30px;">
+              Send Refund To
+              <span style="margin-left:15px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+                  <%= @registration.refund_to %>
+              </span>
+            </li>
+        <% end %>
+
+        <%= form_for @registration, :url => tmgr_form_scholarship_path(@registration) do |f| %>
+            <li style="text-align: left;padding-left:30px;">
+              Scholarship
+              <span style="margin-left:21px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+                  $<%= f.text_field :scholarship, style: "display:inline;height:25px;width:80px;" %>
+                <%= f.submit "Update", class: "button button-blue", style: "padding: 4px 13px" %>
+              </span>
+            </li>
+        <% end %>
+
+        <%= form_tag(tmgr_toggle_withdrawn_path, method: :post, id: 'withdrawn_form') do %>
+            <li style="text-align: left;padding-left:30px;">
+              Withdrawn
+              <span style="margin-left:27px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+                  <a href="#" onclick="$('#withdrawn_form').submit()"
+                     class="toggle_prefs checkbox checkbox-class-1
+                       <% unless @registration.withdrawn == true %>checkbox-unselected-1
+                       <% end %>">
+                  </a>
+              </span>
+            </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="one-half-responsive last half-bottom">
+    <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+      <h3>Parent 1 Information</h3>
+      <ul>
+        <li style="text-align: left;padding-left:30px;">
+          Login Account
+          <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.user.email %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          First Name
+          <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1fname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Last Name
+          <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1lname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Phone
+          <span style="margin-left:43px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1phone %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Email
+          <span style="margin-left:48px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1email %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Street
+          <span style="margin-left:43px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1street %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          City
+          <span style="margin-left:57px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1city %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          State
+          <span style="margin-left:47px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1state %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Zip
+          <span style="margin-left:59px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p1zip %></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="one-half-responsive half-bottom">
+    <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 20px;">
+      <h3>Parent 2 Information</h3>
+      <ul>
+        <li style="text-align: left;padding-left:30px;">
+          First Name
+          <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2fname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Last Name
+          <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2lname %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Phone
+          <span style="margin-left:43px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2phone %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Email
+          <span style="margin-left:48px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2email %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Street
+          <span style="margin-left:43px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2street %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          City
+          <span style="margin-left:57px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2city %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          State
+          <span style="margin-left:47px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2state %></span>
+        </li>
+        <li style="text-align: left;padding-left:30px;">
+          Zip
+          <span style="margin-left:59px;width:180px;height:25px;display:inline;padding-left:7px;color:black;"><%= @registration.parent.p2zip %></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="one-half-responsive last half-bottom">
+    <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 2px;">
+      <h3>Add Payment</h3>
+      <% if @payment.errors.any? %>
+          <div id="error_explanation">
+            <h1><%= pluralize(@payment.errors.count, "error") %> Error(s):</h1>
+            <ul>
+              <% @payment.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      <%= form_tag(tmgr_form_chaperone_path, method: :post, id: 'chaperone_form') do %>
-          <tr>
-            <td><p style="margin-bottom:0;">Chaperone:</p></td>
-            <td>
-              <p style="margin-bottom:0;color:black;margin-left:10px;">
-                <input type="checkbox"
-                       <%= @registration.chaperone == true ? 'checked="checked"' : '' %>
-                       name="chaperone" style=""
-                       onclick="$('#chaperone_form').submit()"/>
-              </p>
-            </td>
-          </tr>
-      <% end %>
 
-      <% if @registration.grade == 8 %>
-      <tr>
-        <td><p style="margin-bottom:0;">Send Refund To:</p></td>
-        <td>
-          <p style="margin-bottom:0;color:black;margin-left:10px;">
-            <%= @registration.refund_to %>
-          </p>
-        </td>
-      </tr>
+      <%= form_for @payment, :url => tmgr_payment_path(@registration) do |f| %>
+          <%= f.hidden_field :registration_id %>
+          <table>
+            <tr>
+              <td><p style="margin-bottom:0;">Type:</p></td>
+              <td><%= f.text_field :pmtnum, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+            </tr>
+            <tr>
+              <td><p style="margin-bottom:0;">Date:</p></td>
+              <td><%= f.text_field :pmtdate, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+            </tr>
+            <tr>
+              <td><p style="margin-bottom:0;">Amount:</p></td>
+              <td nowrap="nowrap"><%= f.text_field :amount, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+            </tr>
+            <tr>
+              <td><p style="margin-bottom:0;">Fee:</p></td>
+              <td nowrap="nowrap"><%= f.text_field :fee, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+            </tr>
+            <tr>
+              <td colspan="2"><%= f.submit "Add Payment", class: "button button-blue center-button half-bottom" %></td>
+            </tr>
+          </table>
       <% end %>
-
-      <%= form_for @registration, :url => tmgr_form_scholarship_path(@registration) do |f| %>
+      <h3>Payment History</h3>
+      <table style="border-bottom: 1px; width:100%; ">
         <tr>
-          <td><p style="margin-bottom:0;">Scholarship:</p></td>
-          <td>
-            <p style="margin-bottom:0;color:black;margin-left:10px;">
-              $<%= f.text_field :scholarship, style: "height:25px;width:80px;" %>
-              <%= f.submit "Update", class: "button black" %>
-            </p>
-          </td>
+          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Date</td>
+          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Type</td>
+          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Amount</td>
+          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Fee</td>
+          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Remove</td>
         </tr>
-      <% end %>
-
-      <%= form_tag(tmgr_form_withdrawn_path, method: :post, id: 'withdrawn_form') do %>
-          <tr>
-            <td><p style="margin-bottom:0;">Withdrawn:</p></td>
-            <td>
-              <p style="margin-bottom:0;color:black;margin-left:10px;">
-                <input type="checkbox"
-                       <%= @registration.withdrawn == true ? 'checked="checked"' : '' %>
-                       name="withdrawn"
-                       onclick="$('#withdrawn_form').submit()"/>
-              </p>
-            </td>
-          </tr>
-      <% end %>
+        <% @registration.payments.each do |pmt| %>
+            <tr>
+              <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></td>
+              <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.pmtnum %></td>
+              <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></td>
+              <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></td>
+              <td style="padding:2px 5px;margin-bottom:0;text-align:center;">
+                <img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0" style="display:inline"/>
+              </td>
+            </tr>
+        <% end %>
       </table>
 
-      <br/>
-
-  <p style="color:black;margin-bottom:10px;"><strong>Parent Information</strong></p>
-  <table>
-    <tr>
-      <td><p style="margin-bottom:0;">Login Account:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.user.email %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1fname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1lname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 Phone:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1phone %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 Email:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1email %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 Street:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1street %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 City:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1city %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 State:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1state %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 1 Zip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p1zip %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 First Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2fname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 Last Name:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2lname %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 Phone:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2phone %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 Email:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2email %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 Street:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2street %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 City:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2city %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 State:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2state %></p></td>
-    </tr>
-    <tr>
-      <td><p style="margin-bottom:0;">Parent 2 Zip:</p></td>
-      <td><p style="margin-bottom:0;color:black;margin-left:10px;"><%= @registration.parent.p2zip %></p></td>
-    </tr>
-  </table>
-
-</div>
-
-<div style="width:45%; float:left;">
-  <p style="color:black;margin-bottom:10px;"><strong>Add Payment</strong></p>
-  <% if @payment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@payment.errors.count, "error") %> Error(s):</h2>
-
-        <ul>
-          <% @payment.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-  <% end %>
-
-  <%= form_for @payment, :url => tmgr_payment_path(@registration) do |f| %>
-      <%= f.hidden_field :registration_id %>
-      <table>
-        <tr>
-          <td><p style="margin-bottom:0;">Payment Type:</p></td>
-          <td><%= f.text_field :pmtnum, style: "height:25px;" %></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Payment Date:</p></td>
-          <td><%= f.text_field :pmtdate, style: "height:25px;" %></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Payment Amount:</p></td>
-          <td nowrap="nowrap">$<%= f.text_field :amount, style: "padding-top:0;padding-bottom:0;height:25px;width:185px;" %></td>
-        </tr>
-        <tr>
-          <td><p style="margin-bottom:0;">Payment Fee:</p></td>
-          <td nowrap="nowrap">$<%= f.text_field :fee, style: "padding-top:0;padding-bottom:0;height:25px;width:185px;" %></td>
-        </tr>
-      </table>
-      <%= f.submit "Add Payment", class: "button black" %>
-  <% end %>
-
-  <br/><br/>
-  <p style="color:black;margin-bottom:10px;"><strong>Payment History</strong></p>
-  <table style="border-bottom: 1px; width:100%; ">
-    <tr>
-      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Payment Date</p></td>
-      <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Type</p></td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Amount</p>
-      </td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Fee</p>
-      </td>
-      <td style="text-align:right;"><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Remove?</p>
-      </td>
-    </tr>
-    <% @registration.payments.each do |pmt| %>
-        <tr>
-          <td><p style="margin-bottom:0;"><%= pmt.pmtdate.strftime('%m/%d/%Y') %></p></td>
-          <td><p style="margin-bottom:0;"><%= pmt.pmtnum %></p></td>
-          <td style="text-align:right;">
-            <p style="margin-bottom:0;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></p></td>
-          <td style="text-align:right;">
-            <p style="margin-bottom:0;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></p></td>
-          <td style="text-align:right;width:50px;">
-            <img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0"/></td>
-        </tr>
-    <% end %>
-  </table>
+    </div>
+  </div>
 
 </div>
