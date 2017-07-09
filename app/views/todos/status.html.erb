@@ -58,7 +58,7 @@
         <div class="box one_half">
           <div class="inner">
             <div class="box_heading" style="color:black; font-weight: bold;">Step 3: ONK Membership</div>
-            <p>In order to be eligible for the JRR or Trip to Japan you must be a current ONK Member.</p>
+            <p>In order to be eligible for the JRR or Trip to Japan you must renew your ONK membership for the 2017-18 school year.</p>
             <div style="margin-top:10px;">Status:
               <% if @parent.onk %>
                   <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
@@ -124,7 +124,7 @@
             <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
         <% end %>
         <% unless @parent.onk %>
-            <a class="onk_membership" style="text-decoration: underline;" href="#">Become an Oya No Kai member</a>
+            <a class="onk_membership" style="text-decoration: underline;" href="#">Renew Oya No Kai membership</a>
         <% end %>
         <% if @parent.registrations.select {|r| r.grade==5}.any? {|r| r.loi.nil? || r.loi.p1signature.blank?} %>
             <div>Sign Letter of Intention</div>

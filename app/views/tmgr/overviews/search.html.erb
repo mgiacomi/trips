@@ -1,49 +1,47 @@
 <script>
-  $(document).ready(function () {
-    $("tr:odd").css("background-color", "#CEF5FF");
-    $("td").css("padding-left", "10px");
-    $("td").css("padding-right", "10px");
-  });
+    jQuery(document).ready(function () {
+        jQuery("tr:odd").addClass("even");
+    });
 </script>
 
-<h3>Trip Administration - Search Results</h3>
-<br/><br/>
-<%= form_tag(tmgr_search_path, method: :put) do %>
-    Search: <%= text_field_tag 'term', params[:term], style: "width:200px;" %>
-    <%= submit_tag 'Search', class: "button black" %>
-<% end %>
-<br/>
-Returned results for search term: <strong><i><%= params[:term] %></i></strong>
-<br/><br/>
-<table style="border-bottom: 1px;">
-  <tr>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Id</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Account</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student First</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Student Last</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Grade</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent First</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Parent Last</p></td>
-    <td><p style="margin-bottom:0;font-weight: bold;text-decoration: underline;">Registration Date</p></td>
-  </tr>
-  <% @results.each do |reg| %>
-      <tr>
-        <td>
-          <p style="margin-bottom:0;">
-            <%= link_to reg.id, tmgr_form_view_path(reg) %>
+<%= render '/tmgr/includes/search' %>
 
-          </p>
-        </td>
-        <td><p style="margin-bottom:0;"><%= reg.chaperone ? "Chaperone" : "Student" %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.fname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.lname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.grade %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.parent.p1fname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.parent.p1lname %></p></td>
-        <td><p style="margin-bottom:0;"><%= reg.created_at.strftime("%m/%d/%Y") %></p></td>
+<div class="content">
+  <div class="half-bottom"></div>
+  <div class="box-960 half-bottom">
+
+    <h4 style="float:left;">Returned results for search term: <strong><i><%= params[:term] %></i></strong></h4>
+
+    <div style="float:right;"><%= Time.zone.now.strftime "%m/%d/%Y %H:%M:%S" %></div>
+    <div style="clear:both"></div>
+
+    <table class="table">
+      <tbody><tr>
+        <th class="table-title">Id</th>
+        <th class="table-title">Student First</th>
+        <th class="table-title">Student Last</th>
+        <th class="table-title">Grade</th>
+        <th class="table-title">Parent First</th>
+        <th class="table-title">Parent Last</th>
+        <th class="table-title">ONK</th>
+        <th class="table-title">Paid</th>
+        <th class="table-title">Due</th>
       </tr>
-  <% end %>
-</table>
+      <% @results.each do |reg| %>
+          <tr>
+            <td><%= link_to reg.id, tmgr_form_view_path(reg), style: "text-decoration: underline" %></td>
+            <td><%= reg.fname %></td>
+            <td><%= reg.lname %></td>
+            <td><%= reg.grade %></td>
+            <td><%= reg.parent.p1fname %></td>
+            <td><%= reg.parent.p1lname %></td>
+            <td><%= reg.parent.onk %></td>
+            <td><%= number_to_currency(reg.total_paid) %></td>
+            <td><%= number_to_currency(reg.total_due) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<br/><br/>
-
+  </div>
+</div>

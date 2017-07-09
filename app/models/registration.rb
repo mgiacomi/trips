@@ -13,7 +13,7 @@ class Registration < ActiveRecord::Base
 
   scope :search, lambda {|term|
     term = "%#{term}%"
-    where('fname like ? or lname like ?', term, term).order(:lname, :fname)
+    where('lower(fname) like ? or lower(lname) like ?', term.downcase , term.downcase ).order(:lname, :fname)
   }
 
   # Needs to move to a helper

@@ -10,7 +10,7 @@
   <div class="full-bottom"></div>
   <div class="box-960 half-bottom">
 
-    <table class="table">
+    <table class="table full-bottom">
       <tbody>
       <tr>
         <th class="table-title"></th>
@@ -95,18 +95,25 @@
       </tbody>
     </table>
 
-    <br/>
-    <%= form_tag(tmgr_registrations_path, method: :post, style: 'margin-left:50px;') do %>
-        Registrations created in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
-        <%= submit_tag 'Search Registrations', class: "button black" %>
-    <% end %>
+    <div class="one-half-responsive half-bottom">
+      <div class="pricing-table pricing-selected-green" style="max-width: 400px; padding-bottom: 20px;text-align:center;">
+        <h3 style="margin-bottom: 10px;">Recent Registrations</h3>
+        <%= form_tag(tmgr_registrations_path, method: :post) do %>
+            Registrations created in the last <%= text_field_tag 'days', "5", style: "padding: 0 5px;width:30px;display:inline;" %> days.
+            <%= submit_tag 'Search Registrations', class: "button button-dark", style: "margin-top:10px;" %>
+        <% end %>
+      </div>
+    </div>
 
-    <br/>
-
-    <%= form_tag(tmgr_payments_path, method: :post, style: 'margin-left:50px;') do %>
-        Payments made in the last <%= text_field_tag 'days', "5", style: "width:50px;" %> days.
-        <%= submit_tag 'Search Payments', class: "button black" %>
-    <% end %>
+    <div class="one-half-responsive last half-bottom">
+      <div class="pricing-table pricing-selected-green" style="max-width: 400px; padding-bottom: 20px;text-align:center;">
+        <h3 style="margin-bottom: 10px;">Recent Payments</h3>
+        <%= form_tag(tmgr_payments_path, method: :post) do %>
+            Payments made in the last <%= text_field_tag 'days', "5", style: "padding: 0 5px;width:30px;display:inline" %> days.
+            <%= submit_tag 'Search Payments', class: "button button-dark", style: "margin-top:10px;" %>
+        <% end %>
+      </div>
+    </div>
 
   </div>
 </div>

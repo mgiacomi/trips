@@ -789,6 +789,10 @@ h1, h2, h3, h4, h5, h6{	font-family:'Source Sans Pro', sans-serif;	color:#1f1f1f
 	background-color:#27ae60!important;
 }
 
+.pricing-selected-green h3{
+    background-color:#27ae60!important;
+}
+
 .pricing-selected-blue h1{
 	background-color:#3498db!important;
 }
