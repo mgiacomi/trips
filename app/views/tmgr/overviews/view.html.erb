@@ -55,7 +55,7 @@
               <span style="margin-left:13px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
                   <a href="#" onclick="$('#onk_member_form').submit()"
                      class="toggle_prefs checkbox checkbox-class-1
-                       <% unless @registration.parent.nil? || !@registration.parent.onk? %>checkbox-unselected-1
+                       <% unless !@registration.parent.nil? && @registration.parent.onk? %>checkbox-unselected-1
                        <% end %>">
                   </a>
               </span>
@@ -93,7 +93,7 @@
               <span style="margin-left:27px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
                   <a href="#" onclick="$('#withdrawn_form').submit()"
                      class="toggle_prefs checkbox checkbox-class-1
-                       <% unless @registration.withdrawn == true %>checkbox-unselected-1
+                       <% unless @registration.withdrawn? %>checkbox-unselected-1
                        <% end %>">
                   </a>
               </span>
