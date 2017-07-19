@@ -227,7 +227,7 @@
                 Signature <%= f.text_field :p2signature, class: "text-input-one p2field", style: 'margin-left:4px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:60px;">
-                Date <%= f.text_field :p2sigdate, class: "text-input-one p2field", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
+                Date <%= f.text_field :p2sigdate, value: @loi.p2sigdate_formatted, class: "text-input-one p2field", style: 'margin-left:42px;width:180px;height:25px;display:inline;padding-left:7px;color:black;' %>
               </li>
               <li style="text-align: left;padding-left:20px;">
                 I have fully read and fully understood the Letter of Intention?
