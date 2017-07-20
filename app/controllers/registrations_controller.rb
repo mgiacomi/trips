@@ -22,10 +22,14 @@ class RegistrationsController < ApplicationController
       end
     end
 
-    if @registration.update_attributes(params[:registration])
-      redirect_to todos_home_path, notice: 'Registration was successfully updated.'
-    else
-      render :action => "new"
+    begin
+      if @registration.update_attributes(params[:registration])
+        redirect_to todos_home_path, notice: 'Registration was successfully updated.'
+      else
+        render :action => "new"
+      end
+    rescue ActiveRecord::RecordNotUnique => e
+      redirect_to todos_home_path, alert: 'Error Adding Registration: Likely duplicate First/Last name.'
     end
   end
 

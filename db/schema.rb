@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703031846) do
+ActiveRecord::Schema.define(version: 20160703031847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,21 +76,21 @@ ActiveRecord::Schema.define(version: 20160703031846) do
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "parent_id"
-    t.string   "gender_pronoun",   limit: 45
-    t.string   "fname",            limit: 45
-    t.string   "mname",            limit: 45
-    t.string   "lname",            limit: 45
-    t.string   "gender",           limit: 45
-    t.integer  "grade",                                                default: 0
+    t.string   "gender_pronoun",  limit: 45
+    t.string   "fname",           limit: 45
+    t.string   "mname",           limit: 45
+    t.string   "lname",           limit: 45
+    t.string   "gender",          limit: 45
+    t.integer  "grade",                                               default: 0
     t.datetime "date_of_birth"
-    t.decimal  "scholarship",                  precision: 6, scale: 2, default: 0.0
-    t.string   "ec_name",          limit: 45
-    t.string   "ec_relationship",  limit: 45
-    t.string   "ec_phone",         limit: 45
-    t.string   "ec_address",       limit: 256
-    t.string   "chaperone", limit: 48
-    t.string   "refund_to",        limit: 48
-    t.boolean  "withdrawn",                                            default: false
+    t.decimal  "scholarship",                 precision: 6, scale: 2, default: 0.0
+    t.string   "ec_name",         limit: 45
+    t.string   "ec_relationship", limit: 45
+    t.string   "ec_phone",        limit: 45
+    t.string   "ec_address",      limit: 256
+    t.string   "chaperone",       limit: 48
+    t.string   "refund_to",       limit: 48
+    t.boolean  "withdrawn",                                           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
