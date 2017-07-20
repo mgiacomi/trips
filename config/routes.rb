@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   match '/tmgr/toggle/chaperone/:id'  => 'tmgr/overviews#toggle_chap',  :as => :tmgr_toggle_chaperone, :via => :post
   match '/tmgr/toggle/withdrawn/:id'  => 'tmgr/overviews#toggle_with',  :as => :tmgr_toggle_withdrawn, :via => :post
   match '/tmgr/forms/scholarship/:id' => 'tmgr/overviews#scholarship',  :as => :tmgr_form_scholarship, :via => [:post,:put,:patch]
+  match '/tmgr/forms/delete/:id'      => 'tmgr/overviews#delete',       :as => :tmgr_form_delete,      :via => :delete
 
   match '/tmgr/payment/:id'    => 'tmgr/overviews#payment',        :as => :tmgr_payment,        :via => [:post,:put]
   match '/tmgr/delete/payment' => 'tmgr/overviews#payment_delete', :as => :tmgr_payment_delete, :via => :post

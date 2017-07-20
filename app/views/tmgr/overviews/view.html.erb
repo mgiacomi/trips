@@ -82,7 +82,9 @@
               Scholarship
               <span style="margin-left:21px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
                   $<%= f.text_field :scholarship, style: "display:inline;height:25px;width:80px;" %>
-                <%= f.submit "Update", class: "button button-blue", style: "padding: 4px 13px" %>
+                <% if current_user.super_admin? %>
+                    <%= f.submit "Update", class: "button button-blue", style: "padding: 4px 13px" %>
+                <% end %>
               </span>
             </li>
         <% end %>
@@ -190,41 +192,43 @@
 
   <div class="one-half-responsive last half-bottom">
     <div class="pricing-table pricing-selected-blue" style="max-width: 400px; padding-bottom: 2px;">
-      <h3>Add Payment</h3>
-      <% if @payment.errors.any? %>
-          <div id="error_explanation">
-            <h1><%= pluralize(@payment.errors.count, "error") %> Error(s):</h1>
-            <ul>
-              <% @payment.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
+      <% if current_user.super_admin? %>
+          <h3>Add Payment</h3>
+          <% if @payment.errors.any? %>
+              <div id="error_explanation">
+                <h1><%= pluralize(@payment.errors.count, "error") %> Error(s):</h1>
+                <ul>
+                  <% @payment.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
 
-      <%= form_for @payment, :url => tmgr_payment_path(@registration) do |f| %>
-          <%= f.hidden_field :registration_id %>
-          <table>
-            <tr>
-              <td><p style="margin-bottom:0;">Type:</p></td>
-              <td><%= f.text_field :pmtnum, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
-            </tr>
-            <tr>
-              <td><p style="margin-bottom:0;">Date:</p></td>
-              <td><%= f.text_field :pmtdate, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
-            </tr>
-            <tr>
-              <td><p style="margin-bottom:0;">Amount:</p></td>
-              <td nowrap="nowrap"><%= f.text_field :amount, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
-            </tr>
-            <tr>
-              <td><p style="margin-bottom:0;">Fee:</p></td>
-              <td nowrap="nowrap"><%= f.text_field :fee, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
-            </tr>
-            <tr>
-              <td colspan="2"><%= f.submit "Add Payment", class: "button button-blue center-button half-bottom" %></td>
-            </tr>
-          </table>
+          <%= form_for @payment, :url => tmgr_payment_path(@registration) do |f| %>
+              <%= f.hidden_field :registration_id %>
+              <table>
+                <tr>
+                  <td><p style="margin-bottom:0;">Type:</p></td>
+                  <td><%= f.text_field :pmtnum, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+                </tr>
+                <tr>
+                  <td><p style="margin-bottom:0;">Date:</p></td>
+                  <td><%= f.text_field :pmtdate, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+                </tr>
+                <tr>
+                  <td><p style="margin-bottom:0;">Amount:</p></td>
+                  <td nowrap="nowrap"><%= f.text_field :amount, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+                </tr>
+                <tr>
+                  <td><p style="margin-bottom:0;">Fee:</p></td>
+                  <td nowrap="nowrap"><%= f.text_field :fee, style: "padding:0 10px;height:25px;width:177px;border: 1px solid grey;" %></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><%= f.submit "Add Payment", class: "button button-blue center-button half-bottom" %></td>
+                </tr>
+              </table>
+          <% end %>
       <% end %>
       <h3>Payment History</h3>
       <table style="border-bottom: 1px; width:100%; ">
@@ -233,7 +237,9 @@
           <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Type</td>
           <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Amount</td>
           <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Fee</td>
-          <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Remove</td>
+          <% if current_user.super_admin? %>
+              <td style="padding:2px 5px;margin-bottom:0;font-size:10px;font-weight: bold;text-decoration: underline;">Remove</td>
+          <% end %>
         </tr>
         <% @registration.payments.each do |pmt| %>
             <tr>
@@ -241,14 +247,22 @@
               <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.pmtnum %></td>
               <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.amount.present? ? number_to_currency(pmt.amount) : "" %></td>
               <td style="padding:2px 5px;margin-bottom:0;font-size:10px;"><%= pmt.fee.present? ? number_to_currency(pmt.fee) : "" %></td>
-              <td style="padding:2px 5px;margin-bottom:0;text-align:center;">
-                <img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0" style="display:inline"/>
-              </td>
+              <% if current_user.super_admin? %>
+                  <td style="padding:2px 5px;margin-bottom:0;text-align:center;">
+                    <img class="remove_pmt" data-id="<%= pmt.id %>" src="/remove.png" height="13" width="13" border="0" style="display:inline"/>
+                  </td>
+              <% end %>
             </tr>
         <% end %>
       </table>
-
     </div>
+
+    <% if current_user.email == 'mgiacomi@gltech.com' && @registration.payments.length == 0 %>
+      <%= link_to 'Delete Registration',url_for(action: :delete, id: @registration.id), method: :delete, style: "width:200px;", class: "button button-red center-button half-bottom", data: {confirm: "Are you sure?"} %>
+    <% end %>
+
   </div>
 
+
 </div>
+

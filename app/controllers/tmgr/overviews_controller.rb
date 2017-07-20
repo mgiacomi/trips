@@ -1,7 +1,12 @@
 class Tmgr::OverviewsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_privileges!, only: [:payment, :payment_delete, :toggle_with, :toggle_chap, :toggle_onk,  :scholarship, :delete]
   before_filter do
     redirect_to :denied unless current_user.admin?
+  end
+
+  def check_privileges!
+    redirect_to :denied unless current_user.super_admin?
   end
 
   def index
@@ -115,12 +120,6 @@ class Tmgr::OverviewsController < ApplicationController
     @payment.registration = @registration
   end
 
-  def download_loi
-    registration = Registration.find(params[:id])
-    file_path = "#{Rails.configuration.loi_file_dir}/#{registration.id}#{registration.file_ext}"
-    send_file file_path, disposition: 'attachment', filename: registration.file_url
-  end
-
   def payment
     @registration = Registration.find(params[:id])
     @payment = Payment.new(params[:payment])
@@ -171,6 +170,12 @@ class Tmgr::OverviewsController < ApplicationController
     registration = Registration.find(params[:id])
     registration.update_attribute(:scholarship, params[:registration]['scholarship'])
     redirect_to tmgr_form_view_path(params[:id]), notice: 'Scholarship has been updated.'
+  end
+
+  def delete
+    registration = Registration.find(params[:id])
+    registration.destroy
+    redirect_to tmgr_overview_path, notice: 'Registration has been removed.'
   end
 
 end

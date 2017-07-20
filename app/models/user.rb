@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :registrations
   has_one :parent
+
+  def super_admin?
+    ['mgiacomi@gltech.com','kblack@pdx.edu'].include? self.email
+  end
 end
