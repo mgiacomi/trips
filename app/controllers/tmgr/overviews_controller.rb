@@ -178,4 +178,9 @@ class Tmgr::OverviewsController < ApplicationController
     redirect_to tmgr_overview_path, notice: 'Registration has been removed.'
   end
 
+  def fifthgrade
+    all = Registration.all.order(:lname, :fname)
+    registrations = Registration.registered all
+    @registrations = registrations[:s_fifth]
+  end
 end
