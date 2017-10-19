@@ -25,13 +25,17 @@
             <div class="box_heading" style="color:black; font-weight: bold;">Step 1: Parent Information</div>
             <p>Before registering for a trip provide us with your contact information
               <%= link_to 'contact information', parents_edit_path, style: 'color: #0b84fe; text-decoration: underline;' %></p>
-            <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
-                <div style="margin-top:10px;">Status:
-                  <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span></div>
-            <% else %>
-                <div style="margin-top:10px;">Status:
-                  <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span></div>
-            <% end %>
+            <div style="margin-top:10px;">
+              <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
+                  Status: <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete</span>
+              <% else %>
+                  Status: <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span>
+              <% end %>
+
+              <% if @parent.chaperone? %>
+                  <br/>Chaperone: <span style="margin-left:20px;font-weight:bold; color:green;">Confirmed</span>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="decoration"></div>
@@ -58,7 +62,8 @@
         <div class="box one_half">
           <div class="inner">
             <div class="box_heading" style="color:black; font-weight: bold;">Step 3: ONK Membership</div>
-            <p>In order to be eligible for the JRR or Trip to Japan you must renew your ONK membership for the 2017-18 school year.</p>
+            <p>In order to be eligible for the JRR or Trip to Japan you must renew your ONK membership for the 2017-18
+              school year.</p>
             <div style="margin-top:10px;">Status:
               <% if @parent.onk %>
                   <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>

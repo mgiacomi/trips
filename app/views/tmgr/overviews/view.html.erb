@@ -61,10 +61,15 @@
               </span>
             </li>
         <% end %>
-        <%= form_tag(tmgr_toggle_chaperone_path, method: :post, id: 'chaperone_form') do %>
+        <%= form_tag tmgr_toggle_chaperone_path(@registration.id), method: :post, id: 'chaperone_form' do %>
             <li style="text-align: left;padding-left:30px;">
               Chaperone
               <span style="margin-left:29px;width:180px;height:25px;display:inline;padding-left:7px;color:black;">
+                  <a href="#" onclick="$('#chaperone_form').submit()"
+                     class="toggle_prefs checkbox checkbox-class-1
+                       <% unless !@registration.parent.nil? && @registration.parent.chaperone? %>checkbox-unselected-1
+                       <% end %>">
+                  </a>
               </span>
             </li>
         <% end %>
