@@ -52,7 +52,7 @@ module PaymentMgr
     schedule = get_schedule
     due = schedule.map { |r| r[:student] }.reduce { |map, n| map + n }
 
-    if self.parent.chaperone
+    if self.chaperone
       due += schedule.map { |r| r[:chaperone] }.reduce { |map, n| map + n }
     end
 
@@ -74,7 +74,7 @@ module PaymentMgr
       r[:date] < Date.today ? r[:student] : 0
     }.reduce { |map, n| map + n }
 
-    if self.parent.chaperone
+    if self.chaperone
       due += schedule.map { |r|
         r[:date] < Date.today ? r[:chaperone] : 0
       }.reduce { |map, n| map + n }
@@ -95,7 +95,7 @@ module PaymentMgr
     schedule.each do |r|
       sofar += r[:student]
 
-      if self.parent.chaperone
+      if self.chaperone
         sofar += r[:chaperone]
       end
 

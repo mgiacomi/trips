@@ -25,10 +25,10 @@ module SummaryMgr
         reg.grade == 8 && !reg.withdrawn
       end
       c_fifth = all.select do |reg|
-        reg.grade == 5 && !reg.withdrawn && reg.parent.chaperone
+        reg.grade == 5 && !reg.withdrawn && reg.chaperone
       end
       c_eighth = all.select do |reg|
-        reg.grade == 8 && !reg.withdrawn && reg.parent.chaperone
+        reg.grade == 8 && !reg.withdrawn && reg.chaperone
       end
       total = s_fifth.length + s_eighth.length + c_fifth.length + c_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, c_fifth: c_fifth, c_eighth: c_eighth, total: total}
@@ -42,10 +42,10 @@ module SummaryMgr
         reg.grade == 8 && reg.withdrawn
       end
       c_fifth = all.select do |reg|
-        reg.grade == 5 && reg.withdrawn && reg.parent.chaperone
+        reg.grade == 5 && reg.withdrawn && reg.chaperone
       end
       c_eighth = all.select do |reg|
-        reg.grade == 8 && reg.withdrawn && reg.parent.chaperone
+        reg.grade == 8 && reg.withdrawn && reg.chaperone
       end
       total = s_fifth.length + s_eighth.length + c_fifth.length + c_eighth.length
       {s_fifth: s_fifth, s_eighth: s_eighth, c_fifth: c_fifth, c_eighth: c_eighth, total: total}
@@ -114,10 +114,10 @@ module SummaryMgr
     end
 
     def collected all
-      s_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && !reg.parent.chaperone }
-      s_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && !reg.parent.chaperone }
-      c_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && reg.parent.chaperone }
-      c_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && reg.parent.chaperone }
+      s_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && !reg.chaperone }
+      s_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && !reg.chaperone }
+      c_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && reg.chaperone }
+      c_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && reg.chaperone }
 
       s_fifth_r = s_fifth.map{|r| r.total_paid}.reduce {|sum, n| sum + n}
       s_eighth_r = s_eighth.map{|r| r.total_paid}.reduce {|sum, n| sum + n}
@@ -136,10 +136,10 @@ module SummaryMgr
     end
 
     def past_due all
-      s_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && !reg.parent.chaperone && reg.total_due > 0 }
-      s_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && !reg.parent.chaperone && reg.total_due > 0 }
-      c_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && reg.parent.chaperone && reg.total_due > 0 }
-      c_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && reg.parent.chaperone && reg.total_due > 0 }
+      s_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && !reg.chaperone && reg.total_due > 0 }
+      s_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && !reg.chaperone && reg.total_due > 0 }
+      c_fifth = all.select { |reg| reg.grade == 5 && !reg.withdrawn && reg.chaperone && reg.total_due > 0 }
+      c_eighth = all.select { |reg| reg.grade == 8 && !reg.withdrawn && reg.chaperone && reg.total_due > 0 }
 
       s_fifth_r = s_fifth.map{|r| r.total_due}.reduce {|sum, n| sum + n}
       s_eighth_r = s_eighth.map{|r| r.total_due}.reduce {|sum, n| sum + n}

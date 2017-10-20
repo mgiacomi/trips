@@ -155,10 +155,8 @@ class Tmgr::OverviewsController < ApplicationController
 
   def toggle_chap
     registration = Registration.find(params[:id])
-    unless registration.parent.nil?
-      registration.parent.toggle :chaperone
-      registration.parent.save
-    end
+    registration.toggle :chaperone
+    registration.save
     redirect_to tmgr_form_view_path, notice: 'Chaperone has been updated.'
   end
 
