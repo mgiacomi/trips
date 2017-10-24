@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   match '/tmgr/overview/scholarships/:grade'     => 'tmgr/overviews#scholarships', :as => :tmgr_overview_scholarships, :via => :get
   match '/tmgr/overview/collected/:grade/:type'  => 'tmgr/overviews#collected',    :as => :tmgr_overview_collected,    :via => :get
   match '/tmgr/overview/past_due/:grade/:type'   => 'tmgr/overviews#past_due',     :as => :tmgr_overview_past_due,     :via => :get
+
   match '/tmgr/reports/fifthgrade.:format'       => 'tmgr/overviews#fifthgrade',   :as => :tmgr_overview_fifthgrade,   :via => :get
+  match '/tmgr/reports/latepayments.:format'     => 'tmgr/overviews#latepayments', :as => :tmgr_overview_latepayments, :via => :get
 
   match '/tmgr/search'               => 'tmgr/overviews#search',               :as => :tmgr_search,        :via => [:post,:put]
   match '/tmgr/recent/registrations' => 'tmgr/overviews#recent_registrations', :as => :tmgr_registrations, :via => [:post,:put]

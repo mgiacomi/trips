@@ -184,4 +184,17 @@ class Tmgr::OverviewsController < ApplicationController
     registrations = Registration.registered all
     @registrations = registrations[:s_fifth]
   end
+
+  def latepayments
+    all = Registration.all.order(:lname, :fname)
+    registrations = Registration.past_due all
+
+    @registrations = []
+    @registrations << registrations[:s_fifth]
+    @registrations << registrations[:c_fifth]
+    @registrations << registrations[:s_eighth]
+    @registrations << registrations[:c_eighth]
+    @registrations.flatten!
+  end
+
 end

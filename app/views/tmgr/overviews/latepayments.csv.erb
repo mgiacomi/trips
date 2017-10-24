@@ -1,0 +1,24 @@
+<%- headers = ['Child First', 'Child Last', 'Child Grade', 'Login Email', 'P1 First', 'P1 Last', 'P1 Phone', 'P1 Email', 'P2 First', 'P2 Last', 'P2 Phone', 'P2 Email', 'Paid', 'Past Due'] -%>
+<%= CSV.generate_line headers -%>
+<%=
+  CSV.generate do |csv|
+    @registrations.each do |reg|
+      csv << [
+          reg.fname,
+          reg.lname,
+          reg.grade,
+          reg.user.email,
+          reg.parent.p1fname,
+          reg.parent.p1lname,
+          reg.parent.p1phone,
+          reg.parent.p1email,
+          reg.parent.p2fname,
+          reg.parent.p2lname,
+          reg.parent.p2phone,
+          reg.parent.p2email,
+          reg.parent.total_paid,
+          reg.parent.total_due
+      ]
+    end
+  end.html_safe
+%>
