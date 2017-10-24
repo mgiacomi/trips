@@ -182,7 +182,21 @@ class Tmgr::OverviewsController < ApplicationController
   def fifthgrade
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.registered all
-    @registrations = registrations[:s_fifth]
+    @registrations = []
+    @registrations << registrations[:s_fifth]
+    @registrations << registrations[:c_fifth]
+    @registrations.flatten!
+    render action: "registrations"
+  end
+
+  def eighthgrade
+    all = Registration.all.order(:lname, :fname)
+    registrations = Registration.registered all
+    @registrations = []
+    @registrations << registrations[:s_eighth]
+    @registrations << registrations[:c_eighth]
+    @registrations.flatten!
+    render action: "registrations"
   end
 
   def latepayments

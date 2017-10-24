@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   match '/tmgr/overview/collected/:grade/:type'  => 'tmgr/overviews#collected',    :as => :tmgr_overview_collected,    :via => :get
   match '/tmgr/overview/past_due/:grade/:type'   => 'tmgr/overviews#past_due',     :as => :tmgr_overview_past_due,     :via => :get
 
+  match '/tmgr/reports/eighthgrade.:format'      => 'tmgr/overviews#eighthgrade',  :as => :tmgr_overview_eighthgrade,  :via => :get
   match '/tmgr/reports/fifthgrade.:format'       => 'tmgr/overviews#fifthgrade',   :as => :tmgr_overview_fifthgrade,   :via => :get
   match '/tmgr/reports/latepayments.:format'     => 'tmgr/overviews#latepayments', :as => :tmgr_overview_latepayments, :via => :get
 
