@@ -24,15 +24,11 @@ module PaymentMgr
       records << {date: Date.strptime("3/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
     end
 
-    def get_11th_pay_schedule
+    def get_ssi_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("6/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("10/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("11/7/2017", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("1/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("2/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("3/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("4/7/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("11/15/2017", '%m/%d/%Y'), student: 250, chaperone: 0}
+      records << {date: Date.strptime("1/15/2018", '%m/%d/%Y'), student: 2000, chaperone: 0}
+      records << {date: Date.strptime("3/15/2018", '%m/%d/%Y'), student: 500, chaperone: 0}
     end
   end
 
@@ -42,7 +38,7 @@ module PaymentMgr
     elsif self.grade == 8
       Registration.get_8th_pay_schedule
     elsif self.grade == 11
-      Registration.get_11th_pay_schedule
+      Registration.get_ssi_pay_schedule
     else
       Array.new
     end

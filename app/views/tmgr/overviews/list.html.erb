@@ -31,7 +31,7 @@
             <td><%= link_to reg.id, tmgr_form_view_path(reg), style: "text-decoration: underline" %></td>
             <td><%= reg.fname %></td>
             <td><%= reg.lname %></td>
-            <td><%= reg.grade %></td>
+            <td><%= textByGradeShort(reg.grade) %></td>
             <td><%= reg.parent.p1fname %></td>
             <td><%= reg.parent.p1lname %></td>
             <td><%= reg.parent.onk %></td>

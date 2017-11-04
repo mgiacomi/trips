@@ -14,10 +14,11 @@
       <tbody>
       <tr>
         <th class="table-title"></th>
-        <th class="table-title">5th Graders</th>
-        <th class="table-title">5th Grade Chaperones</th>
-        <th class="table-title">8th Graders</th>
-        <th class="table-title">8th Grade Chaperones</th>
+        <th class="table-title">5th</th>
+        <th class="table-title">5th Chap</th>
+        <th class="table-title">8th</th>
+        <th class="table-title">8th Chap</th>
+        <th class="table-title">SSI</th>
         <th>Total</th>
       </tr>
       <tr>
@@ -26,6 +27,7 @@
         <td style="text-align:right;"><%= link_to @summary[:registered][:c_fifth].length, tmgr_overview_registered_path('5th', 'Chaperones') %></td>
         <td style="text-align:right;"><%= link_to @summary[:registered][:s_eighth].length, tmgr_overview_registered_path('8th', 'Students') %></td>
         <td style="text-align:right;"><%= link_to @summary[:registered][:c_eighth].length, tmgr_overview_registered_path('8th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:s_ssi].length, tmgr_overview_registered_path('SSI', 'Students') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:registered][:total] %></td>
       </tr>
       <tr>
@@ -34,6 +36,7 @@
         <td style="text-align:right;"><%= link_to @summary[:withdrawn][:c_fifth].length, tmgr_overview_withdrawn_path('5th', 'Chaperones') %></td>
         <td style="text-align:right;"><%= link_to @summary[:withdrawn][:s_eighth].length, tmgr_overview_withdrawn_path('8th', 'Students') %></td>
         <td style="text-align:right;"><%= link_to @summary[:withdrawn][:c_eighth].length, tmgr_overview_withdrawn_path('8th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:s_ssi].length, tmgr_overview_withdrawn_path('SSI', 'Students') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:withdrawn][:total] %></td>
       </tr>
       <tr>
@@ -42,6 +45,7 @@
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><%= link_to @summary[:onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'true') %></td>
         <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><%= link_to @summary[:onk_members][:s_ssi].length, tmgr_overview_onk_member_path('SSI', 'true') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:onk_members][:total] %></td>
       </tr>
       <tr>
@@ -50,11 +54,13 @@
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><%= link_to @summary[:not_onk_members][:s_eighth].length, tmgr_overview_onk_member_path('8th', 'false') %></td>
         <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><%= link_to @summary[:not_onk_members][:s_ssi].length, tmgr_overview_onk_member_path('SSI', 'false') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:not_onk_members][:total] %></td>
       </tr>
       <tr>
         <td class="table-sub-title blue-title">Signed LOI's</td>
         <td style="text-align:right;"><%= link_to @summary[:uploaded_loi][:s_fifth].length, tmgr_overview_loi_path('5th', 'false') %></td>
+        <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><i>N/A</i></td>
@@ -66,6 +72,7 @@
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><i>N/A</i></td>
         <td style="text-align:right;"><i>N/A</i></td>
+        <td style="text-align:right;"><i>N/A</i></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= @summary[:outstanding_loi][:total] %></td>
       </tr>
       <tr>
@@ -74,6 +81,7 @@
         <td style="text-align:right;">N/A</td>
         <td style="text-align:right;"><%= link_to @summary[:scholarships][:s_eighth].length, tmgr_overview_scholarships_path('8th') %></td>
         <td style="text-align:right;">N/A</td>
+        <td style="text-align:right;"><%= link_to @summary[:scholarships][:s_ssi].length, tmgr_overview_scholarships_path('SSI') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:scholarships][:total]) %></td>
       </tr>
       <tr>
@@ -82,6 +90,7 @@
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_fifth_r]), tmgr_overview_collected_path('5th', 'Chaperones') %></td>
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_eighth_r]), tmgr_overview_collected_path('8th', 'Students') %></td>
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:c_eighth_r]), tmgr_overview_collected_path('8th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_ssi_r]), tmgr_overview_collected_path('SSI', 'Students') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:collected][:total]) %></td>
       </tr>
       <tr>
@@ -90,6 +99,7 @@
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_fifth_r]), tmgr_overview_past_due_path('5th', 'Chaperones') %></td>
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_eighth_r]), tmgr_overview_past_due_path('8th', 'Students') %></td>
         <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:c_eighth_r]), tmgr_overview_past_due_path('8th', 'Chaperones') %></td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_ssi_r]), tmgr_overview_past_due_path('SSI', 'Students') %></td>
         <td style="color: black;font-weight:bold;text-align:right;"><%= number_to_currency(@summary[:past_due][:total]) %></td>
       </tr>
       </tbody>

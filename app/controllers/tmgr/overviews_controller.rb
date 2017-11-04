@@ -48,7 +48,7 @@ class Tmgr::OverviewsController < ApplicationController
     all = Registration.all.order(:lname, :fname)
     if params[:member] == 'true'
       registrations = Registration.onk_members all
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
       @title = "ONK Members #{params[:grade].html_safe}"
     else
       registrations = Registration.not_onk_members all
@@ -62,7 +62,7 @@ class Tmgr::OverviewsController < ApplicationController
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.registered all
     if params[:type] == "Students"
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
@@ -74,7 +74,7 @@ class Tmgr::OverviewsController < ApplicationController
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.withdrawn all
     if params[:type] == "Students"
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
@@ -85,7 +85,7 @@ class Tmgr::OverviewsController < ApplicationController
   def scholarships
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.scholarships all
-    @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+    @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
     @title = "Scholarships #{params[:grade].html_safe}"
     render action: "list"
   end
@@ -94,7 +94,7 @@ class Tmgr::OverviewsController < ApplicationController
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.collected all
     if params[:type] == "Students"
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end
@@ -106,7 +106,7 @@ class Tmgr::OverviewsController < ApplicationController
     all = Registration.all.order(:lname, :fname)
     registrations = Registration.past_due all
     if params[:type] == "Students"
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
     else
       @registrations = params[:grade] == "5th" ? registrations[:c_fifth] : registrations[:c_eighth]
     end

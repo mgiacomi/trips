@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
     elsif @registration.grade == 8
       @schedule = Registration.get_8th_pay_schedule
     elsif @registration.grade == 11
-      @schedule = Registration.get_11th_pay_schedule
+      @schedule = Registration.get_ssi_pay_schedule
     end
   end
 

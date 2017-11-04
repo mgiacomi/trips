@@ -17,7 +17,7 @@
 
 <div class="content box-960 container">
   <br/>
-  <h3><%= @registration.grade %>th Grade Trip Administration</h3>
+  <h3><%= textByGrade(@registration.grade) %> Trip Administration</h3>
 
   <form id="delete_form" method="post" action="<%= tmgr_payment_delete_path %>">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
