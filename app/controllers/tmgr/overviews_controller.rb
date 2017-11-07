@@ -52,7 +52,7 @@ class Tmgr::OverviewsController < ApplicationController
       @title = "ONK Members #{params[:grade].html_safe}"
     else
       registrations = Registration.not_onk_members all
-      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : registrations[:s_eighth]
+      @registrations = params[:grade] == "5th" ? registrations[:s_fifth] : params[:grade] == "8th" ? registrations[:s_eighth] : registrations[:s_ssi]
       @title = "Not ONK Members #{params[:grade].html_safe}"
     end
     render action: "list"
