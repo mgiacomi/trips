@@ -10,7 +10,7 @@
           reg.mname,
           reg.lname,
           reg.gender,
-          reg.grade,
+          textByGradeShort(reg.grade),
           reg.date_of_birth.strftime("%m/%d/%Y"),
           number_to_currency(reg.scholarship),
           reg.parent.p1fname,
