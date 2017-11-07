@@ -31,7 +31,7 @@
             <td><%= link_to payment.registration.id, tmgr_form_view_path(payment.registration) %></td>
             <td><%= payment.registration.fname %></td>
             <td><%= payment.registration.lname %></td>
-            <td><%= payment.registration.grade %></td>
+            <td><%= textByGradeShort(payment.registration.grade) %></td>
             <td><%= payment.created_at.strftime('%m/%d/%Y') %></td>
             <td><%= payment.pmtdate.strftime('%m/%d/%Y') %></td>
             <td><%= payment.pmtnum %></td>
