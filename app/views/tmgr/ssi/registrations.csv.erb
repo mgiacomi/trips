@@ -1,0 +1,41 @@
+<%- headers = ['Child First', 'Child Middle', 'Child Last', 'Child Gender', 'Child Grade', 'Child DOB', 'Scholarship', 'P1 First', 'P1 Last',
+               'P1 Phone', 'P1 Email', 'P1 Street', 'P1 City', 'P1 State', 'P1 Zip', 'P2 First', 'P2 Last', 'P2 Phone', 'P2 Email', 'P2 Street',
+               'P2 City', 'P2 State', 'P2 Zip', 'EC Name', 'EC Relationship', 'EC Phone', 'EC Address', 'Withdrawn', 'Created'] -%>
+<%= CSV.generate_line headers -%>
+<%=
+  CSV.generate do |csv|
+    @registrations.each do |reg|
+      csv << [
+          reg.fname,
+          reg.mname,
+          reg.lname,
+          reg.gender,
+          textByGradeShort(reg.grade),
+          reg.date_of_birth.strftime("%m/%d/%Y"),
+          number_to_currency(reg.scholarship),
+          reg.parent.p1fname,
+          reg.parent.p1lname,
+          reg.parent.p1phone,
+          reg.parent.p1email,
+          reg.parent.p1street,
+          reg.parent.p1city,
+          reg.parent.p1state,
+          reg.parent.p1zip,
+          reg.parent.p2fname,
+          reg.parent.p2lname,
+          reg.parent.p2phone,
+          reg.parent.p2email,
+          reg.parent.p2street,
+          reg.parent.p2city,
+          reg.parent.p2state,
+          reg.parent.p2zip,
+          reg.ec_name,
+          reg.ec_relationship,
+          reg.ec_phone,
+          reg.ec_address,
+          reg.withdrawn,
+          reg.created_at.strftime("%m/%d/%Y"),
+      ]
+    end
+  end.html_safe
+%>

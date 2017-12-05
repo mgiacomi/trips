@@ -50,6 +50,15 @@ Rails.application.routes.draw do
   match '/tmgr/payment/:id'    => 'tmgr/overviews#payment',        :as => :tmgr_payment,        :via => [:post,:put]
   match '/tmgr/delete/payment' => 'tmgr/overviews#payment_delete', :as => :tmgr_payment_delete, :via => :post
 
+  match '/tmgr/ssi'                         => 'tmgr/ssi#index',        :as => :tmgr_ssi,              :via => :get
+  match '/tmgr/ssi/report'                  => 'tmgr/ssi#report',       :as => :tmgr_ssi_report,       :via => :get
+  match '/tmgr/ssi/onk/:grade/:member'      => 'tmgr/ssi#onk_member',   :as => :tmgr_ssi_onk_member,   :via => :get
+  match '/tmgr/ssi/registered/:grade/:type' => 'tmgr/ssi#registered',   :as => :tmgr_ssi_registered,   :via => :get
+  match '/tmgr/ssi/withdrawn/:grade/:type'  => 'tmgr/ssi#withdrawn',    :as => :tmgr_ssi_withdrawn,    :via => :get
+  match '/tmgr/ssi/scholarships/:grade'     => 'tmgr/ssi#scholarships', :as => :tmgr_ssi_scholarships, :via => :get
+  match '/tmgr/ssi/collected/:grade/:type'  => 'tmgr/ssi#collected',    :as => :tmgr_ssi_collected,    :via => :get
+  match '/tmgr/ssi/past_due/:grade/:type'   => 'tmgr/ssi#past_due',     :as => :tmgr_ssi_past_due,     :via => :get
+
   root 'todos#status'
 
   # The priority is based upon order of creation: first created -> highest priority.

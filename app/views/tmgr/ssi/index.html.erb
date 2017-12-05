@@ -1,0 +1,54 @@
+<script>
+    jQuery(document).ready(function () {
+        jQuery("tr:odd").addClass("even");
+    });
+</script>
+
+<%= render '/tmgr/includes/search' %>
+
+<div class="content">
+  <div class="full-bottom"></div>
+  <div class="box-960 half-bottom">
+
+    <table class="table half-bottom">
+      <tbody>
+      <tr>
+        <th class="table-title" style="width:200px;">Category</th>
+        <th class="table-title">SSI</th>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Registered</td>
+        <td style="text-align:right;"><%= link_to @summary[:registered][:s_ssi].length, tmgr_ssi_registered_path('SSI', 'Students') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Withdrawn</td>
+        <td style="text-align:right;"><%= link_to @summary[:withdrawn][:s_ssi].length, tmgr_ssi_withdrawn_path('SSI', 'Students') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">ONK Members</td>
+        <td style="text-align:right;"><%= link_to @summary[:onk_members][:s_ssi].length, tmgr_ssi_onk_member_path('SSI', 'true') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Not ONK Members</td>
+        <td style="text-align:right;"><%= link_to @summary[:not_onk_members][:s_ssi].length, tmgr_ssi_onk_member_path('SSI', 'false') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">Scholarships</td>
+        <td style="text-align:right;"><%= link_to @summary[:scholarships][:s_ssi].length, tmgr_ssi_scholarships_path('SSI') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">$ Collected</td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:collected][:s_ssi_r]), tmgr_ssi_collected_path('SSI', 'Students') %></td>
+      </tr>
+      <tr>
+        <td class="table-sub-title blue-title">$ Past Due</td>
+        <td style="text-align:right;"><%= link_to number_to_currency(@summary[:past_due][:s_ssi_r]), tmgr_ssi_past_due_path('SSI', 'Students') %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <%= link_to 'SSI Registered Students Report', tmgr_ssi_report_path('csv') %>
+
+  </div>
+</div>
+
