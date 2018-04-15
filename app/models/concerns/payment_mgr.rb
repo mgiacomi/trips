@@ -22,6 +22,7 @@ module PaymentMgr
       records << {date: Date.strptime("1/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
       records << {date: Date.strptime("2/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
       records << {date: Date.strptime("3/1/2018", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("4/14/2018", '%m/%d/%Y'), student: 0, chaperone: 200}
     end
 
     def get_ssi_pay_schedule
