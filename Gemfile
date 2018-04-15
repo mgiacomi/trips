@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.8'
 gem "bitly"
 gem 'devise'
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'raygun4ruby'
 gem 'request_store'
 gem 'rails_12factor'
