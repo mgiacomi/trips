@@ -7,21 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'mgiacomi@gltech.com', password: password, admin: true)
-puts "#{user.email} #{password}"
-
-password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'kblack@pdx.edu', password: password, admin: true)
-puts "#{user.email} #{password}"
-
-password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'walcottma@msn.com', password: password, admin: true)
-puts "#{user.email} #{password}"
-
-password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'ssi.ishibuchi@gmail.com', password: password, ssi_admin: true)
-puts "#{user.email} #{password}"
-
-password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'pjbilotta@aol.com', password: password, admin: true)
+user = User.create(email: 'triciawaineo@gmail.com', password: password, admin: true)
 puts "#{user.email} #{password}"
