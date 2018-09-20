@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 password = SecureRandom.urlsafe_base64(6)
-user = User.create(email: 'triciawaineo@gmail.com', password: password, admin: true)
+user = User.create(email: 'xxx', password: password, admin: true)
 puts "#{user.email} #{password}"
