@@ -19,10 +19,10 @@ module PaymentMgr
       records = Array.new
       records << {date: Date.strptime("7/1/2018", '%m/%d/%Y'), student: 100, chaperone: 0}
       records << {date: Date.strptime("10/1/2018", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("11/1/2018", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("1/1/2019", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("2/1/2019", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("3/1/2019", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("11/1/2018", '%m/%d/%Y'), student: 700, chaperone: 0}
+      records << {date: Date.strptime("1/1/2019", '%m/%d/%Y'), student: 600, chaperone: 500}
+      records << {date: Date.strptime("2/1/2019", '%m/%d/%Y'), student: 600, chaperone: 500}
+      records << {date: Date.strptime("3/1/2019", '%m/%d/%Y'), student: 600, chaperone: 500}
       records << {date: Date.strptime("4/14/2019", '%m/%d/%Y'), student: 0, chaperone: 200}
     end
 
