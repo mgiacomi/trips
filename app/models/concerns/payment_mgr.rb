@@ -6,13 +6,13 @@ module PaymentMgr
       records = Array.new
       records << {date: Date.strptime("7/1/2018", '%m/%d/%Y'), student: 200, chaperone: 0}
       records << {date: Date.strptime("8/15/2018", '%m/%d/%Y'), student: 500, chaperone: 0}
-      records << {date: Date.strptime("10/15/2018", '%m/%d/%Y'), student: 500, chaperone: 250}
+      records << {date: Date.strptime("10/15/2018", '%m/%d/%Y'), student: 500, chaperone: 0}
       records << {date: Date.strptime("11/1/2018", '%m/%d/%Y'), student: 0, chaperone: 0}
       records << {date: Date.strptime("11/15/2018", '%m/%d/%Y'), student: 500, chaperone: 700}
       records << {date: Date.strptime("1/15/2019", '%m/%d/%Y'), student: 500, chaperone: 700}
       records << {date: Date.strptime("3/15/2019", '%m/%d/%Y'), student: 500, chaperone: 700}
       records << {date: Date.strptime("4/15/2019", '%m/%d/%Y'), student: 500, chaperone: 700}
-      records << {date: Date.strptime("5/15/2019", '%m/%d/%Y'), student: 150, chaperone: 0}
+      records << {date: Date.strptime("5/15/2019", '%m/%d/%Y'), student: 150, chaperone: 250}
     end
 
     def get_8th_pay_schedule
