@@ -5,7 +5,8 @@ task :setup_admin => :environment do
   puts "Enter an email address:"
   email = STDIN.gets
   password = SecureRandom.urlsafe_base64(6)
-  unless email.strip!.blank? || password.strip!.blank?
+
+  unless email.strip!.blank? || password.blank?
     if User.create!(email: email, password: password, admin: true)
       puts "The admin was created successfully. #{email} #{password}"
     else
