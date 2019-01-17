@@ -138,6 +138,7 @@ class Tmgr::OverviewsController < Tmgr::CommonController
     @registrations << registrations[:c_fifth]
     @registrations << registrations[:s_eighth]
     @registrations << registrations[:c_eighth]
+    @registrations << registrations[:s_ssi]
     @registrations.flatten!
   end
 
