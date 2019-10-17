@@ -18,12 +18,12 @@ module PaymentMgr
     def get_8th_pay_schedule
       records = Array.new
       records << {date: Date.strptime("7/1/2019", '%m/%d/%Y'), student: 100, chaperone: 0}
-      records << {date: Date.strptime("10/17/2019", '%m/%d/%Y'), student: 600, chaperone: 0}
-      records << {date: Date.strptime("11/14/2019", '%m/%d/%Y'), student: 600, chaperone: 0}
-      records << {date: Date.strptime("1/9/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
-      records << {date: Date.strptime("2/6/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
-      records << {date: Date.strptime("3/5/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
-      records << {date: Date.strptime("4/2/2020", '%m/%d/%Y'), student: 0, chaperone: 200}
+      records << {date: Date.strptime("10/10/2019", '%m/%d/%Y'), student: 600, chaperone: 0}
+      records << {date: Date.strptime("11/15/2019", '%m/%d/%Y'), student: 600, chaperone: 0}
+      records << {date: Date.strptime("1/16/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
+      records << {date: Date.strptime("2/13/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
+      records << {date: Date.strptime("3/12/2020", '%m/%d/%Y'), student: 600, chaperone: 500}
+      records << {date: Date.strptime("4/1/2020", '%m/%d/%Y'), student: 400, chaperone: 200}
     end
 
     def get_ssi_pay_schedule
