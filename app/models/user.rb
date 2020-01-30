@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_one :parent
 
   def super_admin?
-    ['mgiacomi@gltech.com','tricia.waineo@oyanokai.org'].include? self.email
+    ['mgiacomi@gltech.com','tricia.waineo@oyanokai.org','peter.bilotta@oyanokai.org'].include? self.email
   end
 end
