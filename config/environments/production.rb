@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.url_enc_base = ENV["SECRET_KEY_BASE"]
 
-  config.action_mailer.default_url_options = { :host => 'onktrips2020.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'onktrips2022.herokuapp.com' }
 
   ActionMailer::Base.smtp_settings = {
       :user_name => ENV['SENDGRID_USERNAME'],
