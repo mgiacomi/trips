@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def loi_new
     @registration = Registration.where("user_id=? and id=?", current_user.id, params[:id]).first

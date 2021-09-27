@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def edit
     @parent = Parent.find_or_initialize_by(user_id: current_user.id)

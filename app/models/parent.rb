@@ -1,4 +1,4 @@
-class Parent < ActiveRecord::Base
+class Parent < ApplicationRecord
   include PaymentSummary
 
   belongs_to :user

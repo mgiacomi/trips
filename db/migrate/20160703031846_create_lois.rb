@@ -1,8 +1,6 @@
-class CreateLois < ActiveRecord::Migration
+class CreateLois < ActiveRecord::Migration[6.1]
   def change
     create_table "lois", force: :cascade do |t|
-      t.datetime "created_at"
-      t.datetime "updated_at"
 
       t.integer  "registration_id", limit: 4
       t.integer  "user_id",         limit: 4

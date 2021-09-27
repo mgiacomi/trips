@@ -1,4 +1,4 @@
-class CreateRegistrations < ActiveRecord::Migration
+class CreateRegistrations < ActiveRecord::Migration[6.1]
   def change
     create_table "registrations", force: :cascade do |t|
       t.integer  "user_id",              limit: 4

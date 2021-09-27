@@ -1,7 +1,7 @@
 class Tmgr::OverviewsController < Tmgr::CommonController
-  before_filter :authenticate_user!
-  before_filter :check_privileges!, only: [:payment, :payment_delete, :toggle_with, :toggle_chap, :toggle_onk,  :scholarship, :delete]
-  before_filter do
+  before_action :authenticate_user!
+  before_action :check_privileges!, only: [:payment, :payment_delete, :toggle_with, :toggle_chap, :toggle_onk,  :scholarship, :delete]
+  before_action do
     redirect_to :denied unless current_user.admin?
   end
 

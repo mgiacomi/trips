@@ -1,6 +1,6 @@
 class Tmgr::SsiController < Tmgr::CommonController
-  before_filter :authenticate_user!
-  before_filter do
+  before_action :authenticate_user!
+  before_action do
     redirect_to :denied unless current_user.ssi_admin?
   end
 

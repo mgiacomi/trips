@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Registration < ApplicationRecord
   include SummaryMgr, PaymentMgr
 
   belongs_to :user

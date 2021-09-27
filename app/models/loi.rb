@@ -1,4 +1,4 @@
-class Loi < ActiveRecord::Base
+class Loi < ApplicationRecord
 
   belongs_to :user
   belongs_to :registration

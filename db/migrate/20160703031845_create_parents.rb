@@ -1,4 +1,4 @@
-class CreateParents < ActiveRecord::Migration
+class CreateParents < ActiveRecord::Migration[6.1]
   def change
     create_table "parents", force: :cascade do |t|
       t.integer  "user_id"

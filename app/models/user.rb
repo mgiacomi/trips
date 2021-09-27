@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_one :parent
 
   def super_admin?
-    ['mgiacomi@gltech.com','tricia.waineo@oyanokai.org','peter.bilotta@oyanokai.org'].include? self.email
+    ['mgiacomi@gltech.com','tricia.waineo@oyanokai.org'].include? self.email
   end
 end

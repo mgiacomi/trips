@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:receipt, :onk_receipt]
+  before_action :authenticate_user!, :except => [:receipt, :onk_receipt]
   skip_before_action :verify_authenticity_token, :only => [:receipt, :onk_receipt]
 
   def overview
