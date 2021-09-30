@@ -45,7 +45,7 @@ class RegistrationsController < ApplicationController
       end
     end
 
-    if @registration.update_attributes(params[:registration])
+    if @registration.update(registration_params)
       redirect_to todos_home_path, notice: 'Registration was successfully updated.'
     else
       render :action => "edit"
@@ -56,7 +56,7 @@ class RegistrationsController < ApplicationController
   end
 
   def registration_params
-    params.require(:registration).permit(:fname, :mname, :lname, :gender, :grade, :date_of_birth, :ec_name, :ec_relationship, :ec_phone, :ec_address)
+    params.require(:registration).permit(:fname, :mname, :lname, :gender, :gender_pronoun, :grade, :date_of_birth, :ec_name, :ec_relationship, :ec_phone, :ec_address)
   end
 
 end

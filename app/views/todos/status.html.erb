@@ -14,8 +14,7 @@
 
   <div class="one-half-responsive half-bottom">
     <h3>JRR & Japan Trip Overview</h3>
-    <p>This app will help you manage your ONK Membership, registrations, and payments for your upcoming 5th, 8th, or
-      High School trip to Japan.</p>
+    <p>This app will help you manage your ONK Membership, registrations, and payments for your upcoming 5th, 8th, or High School trip to Japan.</p>
 
     <div id="actions">
       <ul>
@@ -124,10 +123,10 @@
             <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
         <% end %>
         <% unless @parent.onk %>
-            <a class="onk_membership" style="text-decoration: underline;" href="#">Renew Oya No Kai membership</a>
+          <a class="onk_membership" style="text-decoration: underline;" href="#">Renew Oya No Kai membership</a>
         <% end %>
-        <% if @parent.registrations.select {|r| r.grade==5}.any? {|r| r.loi.nil? || r.loi.p1signature.blank?} %>
-            <div>Sign Letter of Intention</div>
+        <% @parent.registrations.select {|r| r.grade==5 && (r.loi.nil? || r.loi.p1signature.blank?)}.each do |r| %>
+          <%= link_to "Sign Letter of Intention (#{r.fname})", loi_new_path(r.id), style: 'text-decoration: underline;' %>
         <% end %>
       </blockquote>
       <br/>
