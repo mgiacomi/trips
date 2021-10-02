@@ -4,7 +4,7 @@ module PaymentMgr
   module ClassMethods
     def get_5th_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("10/15/2021", '%m/%d/%Y'), student: 200, chaperone: 0}
+      records << {date: Date.strptime("10/1/2021", '%m/%d/%Y'), student: 200, chaperone: 0}
       records << {date: Date.strptime("11/15/2021", '%m/%d/%Y'), student: 500, chaperone: 200}
       records << {date: Date.strptime("12/15/2021", '%m/%d/%Y'), student: 500, chaperone: 500}
       records << {date: Date.strptime("1/15/2022", '%m/%d/%Y'), student: 500, chaperone: 500}

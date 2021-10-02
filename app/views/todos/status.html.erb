@@ -56,36 +56,7 @@
         <div class="decoration"></div>
         <div class="box one_half">
           <div class="inner">
-            <div class="box_heading" style="color:black; font-weight: bold;">Step 3: ONK Membership</div>
-            <p>In order to be eligible for the JRR or Trip to Japan you must renew your ONK membership for the 2021-2022 school year.</p>
-            <div style="margin-top:10px;">Status:
-              <% if @parent.onk %>
-                  <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
-              <% else %>
-                  <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete (Required)</span><br/>
-                  <form id="onk_membership_form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                    <input type="hidden" name="cmd" value="_cart"/>
-                    <input type="hidden" name="upload" value="1"/>
-                    <input type="hidden" name="business" value="tricia.waineo@oyanokai.org">
-                    <input type="hidden" name="currency_code" value="USD"/>
-                    <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>"/>
-                    <input type="hidden" name="shopping_url" value="<%= todos_home_url %>"/>
-                    <input type="hidden" name="invoice" value="<%= @parent.id %>-onk-<%= Time.now.to_i %>"/>
-                    <input type="hidden" name="item_name_1" value="ONK Membership"/>
-                    <input type="hidden" name="item_number_1" value="<%= @parent.p1fname %> <%= @parent.p1lname %>"/>
-                    <input type="hidden" name="quantity_1" value="1"/>
-                    <input type="hidden" name="amount_1" value="30"/>
-                    <input type="image" name="submit" style="margin-top: 10px;"
-                           src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
-                  </form>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="decoration"></div>
-        <div class="box one_half">
-          <div class="inner">
-            <div class="box_heading" style="color:black; font-weight: bold;">Step 4: Payments</div>
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 3: Payments</div>
             <p>Here are the totals for all registrations. View payment details by clicking on a registration.</p>
             <div style="margin-top:10px;">Status:
               <% if @registrations.length == 0 %>
@@ -103,6 +74,35 @@
               <% end %>
               </div>
         </div>
+        <div class="decoration"></div>
+        <div class="box one_half">
+          <div class="inner">
+            <div class="box_heading" style="color:black; font-weight: bold;">Step 4: ONK Membership</div>
+            <p>In order to be eligible for the JRR or Trip to Japan you must renew your ONK membership for the 2021-2022 school year.</p>
+            <div style="margin-top:10px;">Status:
+              <% if @parent.onk %>
+                <span style="margin-left:20px;font-weight:bold; color:green;">Complete</span><br/>
+              <% else %>
+                <span style="margin-left:20px;font-weight:bold; color:red;">Incomplete (Required)</span><br/>
+                <form id="onk_membership_form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_cart"/>
+                  <input type="hidden" name="upload" value="1"/>
+                  <input type="hidden" name="business" value="tricia.waineo@oyanokai.org">
+                  <input type="hidden" name="currency_code" value="USD"/>
+                  <input type="hidden" name="notify_url" value="<%= onk_receipt_url %>"/>
+                  <input type="hidden" name="shopping_url" value="<%= todos_home_url %>"/>
+                  <input type="hidden" name="invoice" value="<%= @parent.id %>-onk-<%= Time.now.to_i %>"/>
+                  <input type="hidden" name="item_name_1" value="ONK Membership"/>
+                  <input type="hidden" name="item_number_1" value="<%= @parent.p1fname %> <%= @parent.p1lname %>"/>
+                  <input type="hidden" name="quantity_1" value="1"/>
+                  <input type="hidden" name="amount_1" value="30"/>
+                  <input type="image" name="submit" style="margin-top: 10px;"
+                         src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png" alt="PayPal - The safer, easier way to pay online">
+                </form>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </ul>
     </div>
 
@@ -113,21 +113,29 @@
     <div id="outstanding_items_container">
       <span style="font-weight:bold;">Outstanding Action Items:</span>
       <blockquote id="outstanding_items" class="quote-one red-quote">
+
         <% if !@parent.new_record? && @registrations.length == 0 %>
             <%= link_to 'Add a Registration', registrations_new_path, style: 'text-decoration: underline;' %>
         <% end %>
-        <% if !@parent.total_due.nil? && @parent.total_due > 0 %>
-            <div>Payment Due!</div>
-        <% end %>
-        <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
-            <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
-        <% end %>
-        <% unless @parent.onk %>
-          <a class="onk_membership" style="text-decoration: underline;" href="#">Renew Oya No Kai membership</a>
-        <% end %>
+
         <% @parent.registrations.select {|r| r.grade==5 && (r.loi.nil? || r.loi.p1signature.blank?)}.each do |r| %>
           <%= link_to "Sign Letter of Intention (#{r.fname})", loi_new_path(r.id), style: 'text-decoration: underline;' %>
         <% end %>
+
+        <% @registrations.each_with_index do |reg, idx| %>
+          <% if reg.total_due > 0 %>
+            <%= link_to "Payment Due (#{reg.fname})", payments_overview_path(reg.id), style: 'text-decoration:underline;' %>
+          <% end %>
+        <% end %>
+
+        <% if @parent.p1fname.blank? && @parent.p1lname.blank? %>
+            <%= link_to 'Update Parent Data', parents_edit_path, style: 'text-decoration: underline;' %>
+        <% end %>
+
+        <% unless @parent.onk %>
+          <a class="onk_membership" style="text-decoration: underline;" href="#">Renew Oya No Kai membership</a>
+        <% end %>
+
       </blockquote>
       <br/>
     </div>

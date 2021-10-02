@@ -24,7 +24,7 @@ class RegistrationsController < ApplicationController
 
     begin
       if @registration.update(registration_params)
-        redirect_to todos_home_path, notice: 'Registration was successfully updated.'
+        redirect_to loi_new_path(@registration.id), notice: 'Registration was successfully updated.'
       else
         render :action => "new"
       end
