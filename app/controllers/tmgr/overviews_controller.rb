@@ -52,7 +52,7 @@ class Tmgr::OverviewsController < Tmgr::CommonController
 
   def payment
     @registration = Registration.find(params[:id])
-    @payment = Payment.new(params[:payment])
+    @payment = Payment.new(payment_params)
     @payment.pmtdate = Date.strptime(params[:payment]["pmtdate"], "%m/%d/%Y")
     @payment.registration = @registration
     @payment.user = current_user
@@ -140,6 +140,10 @@ class Tmgr::OverviewsController < Tmgr::CommonController
     @registrations << registrations[:c_eighth]
     @registrations << registrations[:s_ssi]
     @registrations.flatten!
+  end
+
+  def payment_params
+    params.require(:payment).permit(:registration_id, :pmtnum, :pmtdate, :amount, :fee)
   end
 
 end
