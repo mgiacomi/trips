@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
       payment.pmtdate = params[:payment_date]
       payment.pmtnum = "Paypal"
       payment.registration = registration
-      payment.user = current_user
+      payment.user = registration.user
 
       if payment.save
         logger.info "Saved Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
