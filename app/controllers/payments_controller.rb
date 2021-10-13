@@ -31,6 +31,7 @@ class PaymentsController < ApplicationController
         logger.info "Saved Payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
       else
         logger.info "Failed to save payment: #{params[:invoice]} #{params[:payment_gross]} #{params[:payment_status]} #{params[:payment_date]}"
+        logger.error "Payment Error: #{payment.errors.full_messages}"
       end
     end
   end
