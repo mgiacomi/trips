@@ -21,7 +21,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-      :address              => "trips.oyanokai.org",
+      :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => "oyanokai.org",
       :user_name            => "no-reply@oyanokai.org",
