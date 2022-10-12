@@ -4,13 +4,13 @@ module PaymentMgr
   module ClassMethods
     def get_5th_pay_schedule
       records = Array.new
-      records << {date: Date.strptime("10/1/2022", '%m/%d/%Y'), student: 200, chaperone: 0}
-      records << {date: Date.strptime("11/15/2022", '%m/%d/%Y'), student: 500, chaperone: 200}
-      records << {date: Date.strptime("12/15/2022", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("1/15/2023", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("2/15/2023", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("3/15/2023", '%m/%d/%Y'), student: 500, chaperone: 500}
-      records << {date: Date.strptime("4/15/2023", '%m/%d/%Y'), student: 500, chaperone: 500}
+      records << {date: Date.strptime("10/1/2022", '%m/%d/%Y'), student: 100, chaperone: 0}
+      records << {date: Date.strptime("11/15/2022", '%m/%d/%Y'), student: 650, chaperone: 200}
+      records << {date: Date.strptime("12/15/2022", '%m/%d/%Y'), student: 650, chaperone: 600}
+      records << {date: Date.strptime("1/15/2023", '%m/%d/%Y'), student: 650, chaperone: 600}
+      records << {date: Date.strptime("2/15/2023", '%m/%d/%Y'), student: 650, chaperone: 600}
+      records << {date: Date.strptime("3/15/2023", '%m/%d/%Y'), student: 650, chaperone: 600}
+      records << {date: Date.strptime("4/15/2023", '%m/%d/%Y'), student: 650, chaperone: 600}
     end
 
     def get_8th_pay_schedule
