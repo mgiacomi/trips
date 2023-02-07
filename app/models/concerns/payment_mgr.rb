@@ -30,7 +30,6 @@ module PaymentMgr
       records << {date: Date.strptime("3/31/2023", '%m/%d/%Y'), student: 800, chaperone: 0}
       records << {date: Date.strptime("4/30/2023", '%m/%d/%Y'), student: 800, chaperone: 0}
       records << {date: Date.strptime("5/31/2023", '%m/%d/%Y'), student: 800, chaperone: 0}
-      records << {date: Date.strptime("6/15/2023", '%m/%d/%Y'), student: 400, chaperone: 0}
     end
   end
 
